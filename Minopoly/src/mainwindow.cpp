@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include <game-state/GameState.h>
+#include "game-state/GameState.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

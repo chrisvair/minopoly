@@ -1,0 +1,119 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "Minopoly",
+					"jsonFile" : "directory-Minopoly-Debug-34556561f70b754b1056.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Minopoly",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "game-state",
+					"jsonFile" : "directory-game-state-Debug-e9e3bd55bc35baab3ab0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "game-state",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "Minopoly",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "Minopoly::@f270459cad282b6304bb",
+					"jsonFile" : "target-Minopoly-Debug-5bef9a21c487c90870e0.json",
+					"name" : "Minopoly",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Minopoly_autogen::@f270459cad282b6304bb",
+					"jsonFile" : "target-Minopoly_autogen-Debug-9d855d41f7dc83e8d0bf.json",
+					"name" : "Minopoly_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "game-state::@02905ba0463827d0c3cf",
+					"jsonFile" : "target-game-state-Debug-e1c6634f392c5fd4d061.json",
+					"name" : "game-state",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "game-state_autogen::@02905ba0463827d0c3cf",
+					"jsonFile" : "target-game-state_autogen-Debug-493fda5850d67017a8c4.json",
+					"name" : "game-state_autogen",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/aymerigermain/Documents/depinfo/c++/minopoly/cmake-build-debug",
+		"source" : "/Users/aymerigermain/Documents/depinfo/c++/minopoly"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
