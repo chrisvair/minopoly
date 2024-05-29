@@ -8,7 +8,7 @@
 #include <string>
 
 class Event : protected Property{
-protected:
+public:
     std::string type;
     std::string name;
 };

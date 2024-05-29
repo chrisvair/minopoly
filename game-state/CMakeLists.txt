@@ -8,6 +8,9 @@ add_library(
         game-state
         src/GameState.cpp
         include/game-state/GameState.h
+        include/Board.h
+        include/Board.cpp
+        include/Property.h
 )
 
 target_include_directories(game-state PUBLIC include)
