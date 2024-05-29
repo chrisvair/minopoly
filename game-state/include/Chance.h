@@ -8,7 +8,7 @@
 #include "Event.h"
 
 
-class Chance : protected Event {
+class Chance : public Event {
     Card drawCard();
 };
 
