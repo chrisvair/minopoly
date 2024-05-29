@@ -11,21 +11,26 @@
 
 class Property : public Tile {
 protected:
+    int _id;
     int _price;
     std::string _group;
     int _owned;
     std::array<int,6> _rents;
 
 public:
+
     Property(int type, std::string &name, int position, int price, std::string &group, int owned,
         const std::array<int, 6> &rents)
         : Tile(type, name, position),
           _price(price),
           _group(group),
           _owned(owned),
-          _rents(rents) {
-    }
+          _rents(rents),
+          _id(position){}
 
+    int getId() const {
+        return _id;
+    }
     int price() const {
         return _price;
     }

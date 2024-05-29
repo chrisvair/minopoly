@@ -5,37 +5,41 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "Property.h"
 #include <string>
 #include <array>
 using namespace std;
 
 class Player {
 private:
-    int _type; //1 if human, 0 if bot
+    bool _type; // 0 for human, 1 for bot
+    int _id;
     string _name;
     int _money;
     std::array<int, 40> _properties{}; //we stock the id of the properties the player owns, at most, he can have 40 properties
     int _position;
-    int _jail;
+    bool _jail;
     //represents the current number of turns the player has been in jail
     //0 if is not, 1 if 1, 2 if 2, 3 if 3, 3-> he can get out of jail
+    int _getOutOfJailCards; // Number of get out of jail card the player has
+    int _moneyWorth;
 
 
 public:
-    Player();
-    Player(int type, string name, int money, int position, bool jail){
+Player(int type, int id, string name, int money, int position, bool jail){
         _type = type;
+        _id = id;
         _name = name;
         _money = money;
         _position = position;
         _jail = jail;
+        _getOutOfJailCards = 0;
     };
 
 
     void setPlayerName(string inputName);
     void setMoneyAmount(int inputNum);
 
-    string getPlayerName();
     int getMoneyAmount();
     int getPosition();
 
@@ -45,6 +49,10 @@ public:
 
     void reset();
 
+    string getPlayerName(){
+        return _name;
+    };
+
     int isInJail() const{
         return _jail;
     };
@@ -52,6 +60,21 @@ public:
     void setJail(int jail){
         _jail = jail;
     };
+
+    int getNumberOfGetOutOfJailCard() {
+        return _getOutOfJailCards;
+    };
+
+    int getMoneyWorth(){
+        return _moneyWorth;
+    }
+
+    std::array <int, 40> getProperties(){};
+
+    bool sellProperty(Property property, Player buyer); //return true if the property has been sold, false otherwise
+    void buyProperty(int idProperty); //add the property to the player's properties
+    bool sellPropertyToTheBank(Property property); //return true if the property has been sold, false otherwise
+    void buyPropertyFromTheBank(Property property); //add the property to the player's properties
 };
 
 
