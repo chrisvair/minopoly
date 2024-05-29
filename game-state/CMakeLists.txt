@@ -11,6 +11,8 @@ add_library(
         include/Board.h
         include/Board.cpp
         include/Property.h
+        include/Game.cpp
+        include/Player.cpp
 )
 
 target_include_directories(game-state PUBLIC include)

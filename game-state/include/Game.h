@@ -5,23 +5,26 @@
 #ifndef GAME_H
 #define GAME_H
 #include <array>
+#include <utility>
 
 #include "Board.h"
 #include "Player.h"
 
 class Game {
-
-    Game(int nbPlayers, int nbTurns, int bank, int communityBank, Board board);
-
 private:
     std::array<Player,2> _players;
     int _nbTurns;
     int _bank;
     int _communityBank;
-    Board _board;
+    //Board _board;
 
 public:
-
+    Game(const std::array<Player, 2> &players, int nb_turns, int bank, int community_bank)
+        : _players(players),
+          _nbTurns(nb_turns),
+          _bank(bank),
+          _communityBank(community_bank) {
+    }
 
     void start();
 
@@ -37,12 +40,8 @@ public:
         return _players;
     }
 
-    int & currentPlayer() {
-        return _currentPlayer;
-    }
-
-    int & nbPlayers() {
-        return _nbPlayers;
+    int nbPlayers() {
+        return _players.size();
     }
 
     int & nbTurns() {
@@ -57,9 +56,9 @@ public:
         return _communityBank;
     }
 
-    Board & board() {
-        return _board;
-    }
+    // Board & board() {
+    //     return _board;
+    // }
 };
 
 

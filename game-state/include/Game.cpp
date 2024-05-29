@@ -65,42 +65,6 @@ void Game::nextTurn(Player player) {
             }
         }
     }
-
-
-
-    //check if the player is in jail
-    //call the checkJail function from the player class
-        //check if the player can get out of jail with a card
-        //else check if the player can get out of jail with a roll
-
-
-    //pass the turn to the next player
-    //need to roll the dice
-
-    // then move the player
-    //call the move function from the player class
-
-    // then check if the player has landed on a property
-    //call the checkTile function from the player class
-
-    // then check if the player has landed on a community chest
-    //call the checkTile function from the player class
-
-    // then check if the player has landed on a chance
-    //call the checkTile function from the player class
-
-    // then check if the player has landed on a tax
-    //call the checkTile function from the player class
-
-    // then check if the player has landed on a jail
-    //call the checkTile function from the player class
-
-    // then check if the player has landed on a go to jail
-    //call the checkTile function from the player class
-
-    // then check if the player has landed on a free parking
-     //call the checkTile function from the player class
-
 }
 
 void endTurn(){
