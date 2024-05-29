@@ -25,17 +25,49 @@ void end() {
     //end the game
 }
 
-void nextTurn(Player player) {
+void Game::nextTurn(Player player) {
     std::cout << "It's " << player.getPlayerName() << " turn" << std::endl;
     if (player.isInJail() == 3) {
         std::cout << "You were in jail for 3 turn, you can get out of jail" << std::endl;
+        return;
     }
     else if (player.isInJail() != 0) {
         std::cout << "You are in jail, you have " << 3-player.isInJail() << " turns left" << std::endl;
-
         //check if the player can get out of jail with a card
-        //else check if the player can get out of jail with a roll
     }
+
+    int dice1 = rand() % 6 + 1;
+    int dice2 = rand() % 6 + 1;
+
+    std::cout << "You rolled a " << dice1 << " and a " << dice2 << std::endl;
+
+    bool doubleDice = (dice1 == dice2);
+
+    if (player.isInJail() != 0){ //if in jail
+        if (doubleDice){ // free if double
+            std::cout << "You are in jail but you are freed by your double" << std::endl;
+            player.setJail(0);
+            player.move(dice1 + dice2); //must check that after moving is not in jail again TO DO
+            return;
+        }
+        else {
+            return;
+        }
+    }
+    else {
+        if (doubleDice){
+            player.move(dice1 + dice2);
+            if (player.isInJail() != 0){
+                return this->nextTurn(player);
+            }
+            else {
+                return;
+            }
+        }
+    }
+
+
+
     //check if the player is in jail
     //call the checkJail function from the player class
         //check if the player can get out of jail with a card
