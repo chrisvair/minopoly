@@ -15,15 +15,51 @@ class Game {
 
 private:
     std::array<Player,2> _players;
-    int _currentPlayer;
-    int _nbPlayers;
     int _nbTurns;
     int _bank;
     int _communityBank;
     Board _board;
 
 public:
+
+
     void start();
+
+    void Play();
+
+    void end();
+
+    void nextTurn(Player player);
+
+    void endTurn();
+
+    std::array<Player,2> & players() {
+        return _players;
+    }
+
+    int & currentPlayer() {
+        return _currentPlayer;
+    }
+
+    int & nbPlayers() {
+        return _nbPlayers;
+    }
+
+    int & nbTurns() {
+        return _nbTurns;
+    }
+
+    int & bank() {
+        return _bank;
+    }
+
+    int & communityBank() {
+        return _communityBank;
+    }
+
+    Board & board() {
+        return _board;
+    }
 };
 
 
