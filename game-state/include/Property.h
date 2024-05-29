@@ -7,6 +7,7 @@
 #include "Tile.h"
 #include <string>
 #include <array>
+#include <utility>
 
 class Property : public Tile {
 protected:
@@ -16,12 +17,13 @@ protected:
     std::array<int,6> _rents;
 
 public:
-    Property(int id, std::string name, int price, std::string group, std::array<int,6> rents, int owned)
-        : Tile(id, name),
+    Property(int type, std::string &name, int position, int price, std::string &group, int owned,
+        const std::array<int, 6> &rents)
+        : Tile(type, name, position),
           _price(price),
           _group(group),
-          _rents(rents),
-          _owned(owned) {
+          _owned(owned),
+          _rents(rents) {
     }
 
     int price() const {

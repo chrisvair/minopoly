@@ -22,15 +22,14 @@ public:
           _tiles(tiles) {
     }
 
-    std::array<Card, 40> & cards() const {
+    std::array<Card, 40> & cards() {
         return _cards;
     }
 
-    std::array<Tile, 40> & tiles() const {
+    std::array<Tile, 40> & tiles() {
         return _tiles;
     }
 
-    Card get
 };
 
 
