@@ -9,30 +9,36 @@
 
 #include "Board.h"
 #include "Player.h"
+#include "Property.h"
+#include "Event.h"
+
 
 class Game {
 private:
     std::array<Player,2> _players;
-    int _nbTurns;
-    int _bank;
-    int _communityBank;
-    //Board _board;
+    int _nbTurns = 6;
+    int _bank = 10000;
+    int _communityBank = 0;
+    Board _board{};
 
 public:
-    Game(const std::array<Player, 2> &players, int nb_turns, int bank, int community_bank)
+    Game(){}
+
+    Game(const std::array<Player, 2> &players, int nb_turns, int bank, int community_bank, Board board)
         : _players(players),
           _nbTurns(nb_turns),
           _bank(bank),
-          _communityBank(community_bank) {
+          _communityBank(community_bank),
+          _board(board){
     }
 
     void start();
 
-    void Play();
+    void play();
 
     void end();
 
-    void nextTurn(Player player);
+    void nextTurn(Player &player);
 
     void endTurn();
 
@@ -56,9 +62,11 @@ public:
         return _communityBank;
     }
 
-    // Board & board() {
-    //     return _board;
-    // }
+    Board & board() {
+        return _board;
+    }
+
+    void onLand(Player player);
 };
 
 

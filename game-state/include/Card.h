@@ -9,9 +9,12 @@
 
 class Card {
 private:
-    int _id;
+    int _id=0;
     std::string _action;
-    int _value;
+    int _value=13;
+
+public:
+    Card()= default; //default constructor
 };
 
 
