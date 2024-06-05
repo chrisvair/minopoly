@@ -4,10 +4,10 @@
 
 #include "Board.h"
 
-Card Board::getCard(int id) {
+Card Board::drawCard(int id) {
     return _cards[id];
 }
 
-Tile Board::getTile(int id) {
-    return _tiles[id];
+Property* Board::getTile(int id) {
+    return &_tiles[id];
 }

@@ -7,6 +7,7 @@
 
 #include <string>
 #include <array>
+#include "Property.h"
 using namespace std;
 
 class Player {
@@ -19,16 +20,17 @@ private:
     int _jail;
     //represents the current number of turns the player has been in jail
     //0 if is not, 1 if 1, 2 if 2, 3 if 3, 3-> he can get out of jail
-
+    int _id;
 
 public:
-    Player();
-    Player(int type, string name, int money, int position, bool jail){
+    Player(){}
+    Player(int type, int id, string name, int money, int position, bool jail){
         _type = type;
         _name = name;
         _money = money;
         _position = position;
         _jail = jail;
+        _id = id;
     };
 
 
@@ -51,6 +53,14 @@ public:
 
     void setJail(int jail){
         _jail = jail;
+    };
+
+    int getId() const{
+        return _id;
+    };
+
+    void buyProperty(Property property){
+        _properties[property.id()] = 1;
     };
 };
 

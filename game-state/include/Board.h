@@ -7,28 +7,34 @@
 #include <array>
 #include "Card.h"
 #include "Tile.h"
+#include "Property.h"
 
 class Board {
 protected:
     std::array<Card,40> _cards; //the board has 40 cards
-    std::array<Tile,40> _tiles; //the board has 40 tiles
+    std::array<Property,40> _tiles; //the board has 40 tiles
 
 public:
-    Card getCard(int id);
-    Tile getTile(int id);
+    Board(){}
 
-    Board(const std::array<Card, 40> &cards, const std::array<Tile, 40> &tiles)
+    Board(const std::array<Card, 40> &cards, const std::array<Property, 40> &tiles)
         : _cards(cards),
           _tiles(tiles) {
     }
 
-    std::array<Card, 40> & cards() {
+    std::array<Card,40> & cards() {
         return _cards;
     }
 
-    std::array<Tile, 40> & tiles() {
+    std::array<Property,40> & tiles() {
         return _tiles;
     }
+
+
+    Property* getTile(int id);
+    Card drawCard(int id);
+
+
 
 };
 
