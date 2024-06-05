@@ -29,7 +29,7 @@ public:
 
 
 
-    Property(int type, std::string &name, int position, int price, std::string &group, int owned,
+    Property(int type, std::string name, int position, int price, std::string group, int owned,
         const std::array<int, 6> &rents)
         : _price(price),
           _group(group),
@@ -37,9 +37,8 @@ public:
           _rents(rents),
           _type(type),
           _name(name),
-          _position(position){
-          _id(position){}
-  }
+          _position(position),
+          _id(position){};
 
 
     int getId() const {
@@ -92,6 +91,8 @@ public:
     int id() {
         return _position;
     }
+
+
 };
 
 

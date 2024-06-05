@@ -15,6 +15,7 @@ add_library(
         src/Player.cpp
         include/Player.h
         src/Property.cpp
+        include/Game.cpp
 
 )
 

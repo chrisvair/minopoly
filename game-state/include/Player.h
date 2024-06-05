@@ -72,9 +72,6 @@ Player(int type, int id, string name, int money, int position, bool jail){
         return _id;
     };
 
-    void buyProperty(Property property){
-        _properties[property.id()] = 1;
-    };
 
     int getNumberOfGetOutOfJailCard() {
         return _getOutOfJailCards;
@@ -90,7 +87,7 @@ Player(int type, int id, string name, int money, int position, bool jail){
     
     bool sellPropertyToTheBank(Property property); //return true if the property has been sold, false otherwise
     void buyPropertyFromTheBank(Property property); //add the property to the player's properties
-
+    void buyProperty(int id);
 };
 
 
