@@ -11,9 +11,11 @@
 
 class Property {
 protected:
+
     int _type;
     std::string _name;
     int _position;
+    int _id;
     int _price;
     std::string _group;
     int _owned;
@@ -22,9 +24,12 @@ protected:
     int _hostel = 0;
 
 public:
+
     Property()= default;
 
-    Property(int type, std::string name, int position, int price, std::string group, int owned,
+
+
+    Property(int type, std::string &name, int position, int price, std::string &group, int owned,
         const std::array<int, 6> &rents)
         : _price(price),
           _group(group),
@@ -33,8 +38,13 @@ public:
           _type(type),
           _name(name),
           _position(position){
-    }
+          _id(position){}
+  }
 
+
+    int getId() const {
+        return _id;
+    }
     int price() const {
         return _price;
     }
