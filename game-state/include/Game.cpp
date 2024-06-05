@@ -197,7 +197,7 @@ void Game::onLand(Player player) {
             std::cin >> answer;
             if (answer == "yes") {
                 std::cout << "you buy the property" << std::endl;
-                player.buyProperty(*tile);
+                player.buyProperty(tile->getId());
                 std::cout<< "player id : " <<player.getId() << std::endl;
                 tile->setOwned(player.getId());
                 std::cout << "tile owner : " << tile->owned() << std::endl;
