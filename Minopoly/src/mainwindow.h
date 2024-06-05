@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "menudialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +18,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void InitialisePlay();
+
 private:
     Ui::MainWindow *ui;
+    MenuDialog menu;
 };
 #endif // MAINWINDOW_H
