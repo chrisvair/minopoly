@@ -8,6 +8,7 @@
 #include "Property.h"
 #include <string>
 #include <array>
+#include "Property.h"
 using namespace std;
 
 class Player {
@@ -21,11 +22,16 @@ private:
     bool _jail;
     //represents the current number of turns the player has been in jail
     //0 if is not, 1 if 1, 2 if 2, 3 if 3, 3-> he can get out of jail
+  
     int _getOutOfJailCards; // Number of get out of jail card the player has
     int _moneyWorth;
+  
+
+
 
 
 public:
+      Player(){}
 Player(int type, int id, string name, int money, int position, bool jail){
         _type = type;
         _id = id;
@@ -61,6 +67,15 @@ Player(int type, int id, string name, int money, int position, bool jail){
         _jail = jail;
     };
 
+
+    int getId() const{
+        return _id;
+    };
+
+    void buyProperty(Property property){
+        _properties[property.id()] = 1;
+    };
+
     int getNumberOfGetOutOfJailCard() {
         return _getOutOfJailCards;
     };
@@ -72,9 +87,10 @@ Player(int type, int id, string name, int money, int position, bool jail){
     std::array <int, 40> getProperties(){};
 
     bool sellProperty(Property property, Player buyer); //return true if the property has been sold, false otherwise
-    void buyProperty(int idProperty); //add the property to the player's properties
+    
     bool sellPropertyToTheBank(Property property); //return true if the property has been sold, false otherwise
     void buyPropertyFromTheBank(Property property); //add the property to the player's properties
+
 };
 
 
