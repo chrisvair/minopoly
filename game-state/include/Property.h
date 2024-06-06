@@ -52,8 +52,16 @@ public:
         return _house;
     }
 
+    void buyHouse() {
+        _house++;
+    }
+
     int hostel() const {
         return _hostel;
+    }
+
+    void buyHostel() {
+        _hostel++;
     }
 
     std::string group() const {
@@ -92,7 +100,15 @@ public:
         return _position;
     }
 
+    int costHouse() {
+        return _rents[4];
+    }
 
+    int costHostel() {
+        return _rents[5];
+    }
+
+    int rent();
 };
 
 

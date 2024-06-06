@@ -45,29 +45,26 @@ void Player::reset() {
 }
 
 
-bool Player::sellProperty(Property property, Player buyer) {
-    int price = property.price();
-    int id = property.getId();
-    for (int i = 0; i < 40; i++) {
-        if (_properties[i] == id) {
-            _properties[i] = 0; //We remove the property from the seller
-            giveMoney(price); // The seller gets the money
-            buyer.takeMoney(price); // The buyer loses the money
-            buyer.buyProperty(id); // The buyer gets the property
+// bool Player::sellProperty(Property* property, Player buyer) {
+//     int price = property->price();
+//     int id = property->getId();
+//     for (int i = 0; i < 40; i++) {
+//         if (_properties[i] == id) {
+//             _properties[i] = 0; //We remove the property from the seller
+//             giveMoney(price); // The seller gets the money
+//             buyer.takeMoney(price); // The buyer loses the money
+//             buyer.buyProperty(id); // The buyer gets the property
+//
+//             return true; //property sold
+//         }
+//     }
+//     return false; //Player does not own this property
+// }
 
-            return true; //property sold
-        }
-    }
-    return false; //Player does not own this property
-}
-
-void Player::buyProperty(int id) {
-    for (int i = 0; i < 40; i++) {
-        if (_properties[i] == 0) {
-            _properties[i] = id;
-            return;
-        }
-    }
+void Player::buyProperty(Property* tile) {
+    _properties[tile->getId()] = 1;
+    tile->setOwned(_id);
+    _money = _money - tile->price();
 }
 
 bool Player::sellPropertyToTheBank(Property property) {
@@ -93,5 +90,40 @@ void Player::buyPropertyFromTheBank(Property property) {
     }
 }
 
+void Player::buyHouse(Property& tile) {
+    tile.buyHouse();
+    takeMoney(tile.costHouse());
+}
+
+void Player::buyHostel(Property& tile) {
+    tile.buyHostel();
+    takeMoney(tile.costHostel());
+}
+
+void Player::payTax(int amount) {
+    if (_money < amount) {
+        std::cout << "You can't pay the tax" << std::endl;
+        if (_moneyWorth > amount) {
+            std::cout << "You can sell a property to pay the tax" << std::endl;
+        }
+    } else {
+        std::cout << "we take " << amount << " $$ from your account" << std::endl;
+        _money = _money - amount;
+        _moneyWorth = _moneyWorth - amount;
+    }
+}
+
+void Player::payRent(Player& player, Property& tile) {
+    if (_money < tile.rent()) {
+        std::cout << "You can't pay the rent" << std::endl;
+        if (_moneyWorth > tile.rent()) {
+            std::cout << "You can sell a property to pay the rent" << std::endl;
+        }
+    } else {
+        std::cout << "we take " << tile.rent() << " $$ from your account" << std::endl;
+        _money = _money - tile.rent();
+        _moneyWorth = _moneyWorth - tile.rent();
+    }
+}
 
 void reset();

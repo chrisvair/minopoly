@@ -8,6 +8,7 @@
 #include "Property.h"
 #include <string>
 #include <array>
+#include <iostream>
 #include "Property.h"
 using namespace std;
 
@@ -19,7 +20,7 @@ private:
     int _money;
     std::array<int, 40> _properties{}; //we stock the id of the properties the player owns, at most, he can have 40 properties
     int _position;
-    bool _jail;
+    int _jail;
     //represents the current number of turns the player has been in jail
     //0 if is not, 1 if 1, 2 if 2, 3 if 3, 3-> he can get out of jail
   
@@ -31,8 +32,8 @@ private:
 
 
 public:
-      Player(){}
-Player(int type, int id, string name, int money, int position, bool jail){
+    Player(){}
+    Player(int type, int id, string name, int money, int position, bool jail){
         _type = type;
         _id = id;
         _name = name;
@@ -40,6 +41,7 @@ Player(int type, int id, string name, int money, int position, bool jail){
         _position = position;
         _jail = jail;
         _getOutOfJailCards = 0;
+        _moneyWorth = money;
     };
 
 
@@ -67,6 +69,18 @@ Player(int type, int id, string name, int money, int position, bool jail){
         _jail = jail;
     };
 
+    void goToJail(){
+        _position = 10;
+        _jail = 1;
+    };
+
+    void getOutOfJail(){
+        _jail = 0;
+    };
+
+    void oneMoreTurnInJail(){
+        _jail++;
+    };
 
     int getId() const{
         return _id;
@@ -83,11 +97,18 @@ Player(int type, int id, string name, int money, int position, bool jail){
 
     std::array <int, 40> getProperties(){};
 
-    bool sellProperty(Property property, Player buyer); //return true if the property has been sold, false otherwise
+    bool sellProperty(Property* property, Player buyer); //return true if the property has been sold, false otherwise
     
     bool sellPropertyToTheBank(Property property); //return true if the property has been sold, false otherwise
     void buyPropertyFromTheBank(Property property); //add the property to the player's properties
-    void buyProperty(int id);
+    void buyProperty(Property* tile);
+
+
+    void buyHouse(Property& tile);
+    void buyHostel(Property& tile);
+
+    void payTax(int amount);
+    void payRent(Player& player, Property& tile);
 };
 
 

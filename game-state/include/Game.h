@@ -66,7 +66,7 @@ public:
         return _board;
     }
 
-    void onLand(Player player);
+    void onLand(Player &player);
 };
 
 

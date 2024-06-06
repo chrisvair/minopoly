@@ -19,37 +19,37 @@ void Game::start() {
     std::cin >> name2;
     auto player2 = Player(1, 2,name2, 1500, 0, false);
 
-    auto tile0 = Property(0,"start",0,200,"",false,std::array<int,6>{0,0,0,0,0,0});
-    auto tile1 = Property(1, "mines", 1, 150, "bleu", false, std::array<int, 6>{10, 20, 30, 40, 50, 60});
-    auto tile2 = Property(1, "forest", 2, 200, "vert", false, std::array<int, 6>{15, 25, 35, 45, 55, 65});
-    auto tile3 = Property(1, "desert", 3, 100, "jaune", false, std::array<int, 6>{5, 15, 25, 35, 45, 55});
-    auto tile4 = Property(1, "mountains", 4, 250, "rouge", false, std::array<int, 6>{20, 30, 40, 50, 60, 70});
-    auto tile5 = Property(1, "river", 5, 180, "bleu", false, std::array<int, 6>{12, 22, 32, 42, 52, 62});
-    auto tile6 = Property(1, "swamp", 6, 130, "vert", false, std::array<int, 6>{17, 27, 37, 47, 57, 67});
-    auto tile7 = Property(1, "plains", 7, 110, "jaune", false, std::array<int, 6>{7, 17, 27, 37, 47, 57});
-    auto tile8 = Property(1, "jungle", 8, 230, "rouge", false, std::array<int, 6>{18, 28, 38, 48, 58, 68});
-    auto tile9 = Property(1, "city", 9, 300, "bleu", false, std::array<int, 6>{25, 35, 45, 55, 65, 75});
-    auto tile10 = Property(1, "village", 10, 170, "vert", false, std::array<int, 6>{14, 24, 34, 44, 54, 64});
-    auto tile11 = Property(1, "canyon", 11, 140, "jaune", false, std::array<int, 6>{8, 18, 28, 38, 48, 58});
-    auto tile12 = Property(1, "lake", 12, 260, "rouge", false, std::array<int, 6>{21, 31, 41, 51, 61, 71});
-    auto tile13 = Property(1, "hill", 13, 190, "bleu", false, std::array<int, 6>{13, 23, 33, 43, 53, 63});
-    auto tile14 = Property(1, "savannah", 14, 220, "vert", false, std::array<int, 6>{16, 26, 36, 46, 56, 66});
-    auto tile15 = Property(1, "valley", 15, 160, "jaune", false, std::array<int, 6>{6, 16, 26, 36, 46, 56});
-    auto tile16 = Property(1, "cliff", 16, 240, "rouge", false, std::array<int, 6>{19, 29, 39, 49, 59, 69});
-    auto tile17 = Property(1, "volcano", 17, 280, "bleu", false, std::array<int, 6>{11, 21, 31, 41, 51, 61});
-    auto tile18 = Property(1, "glacier", 18, 210, "vert", false, std::array<int, 6>{14, 24, 34, 44, 54, 64});
-    auto tile19 = Property(1, "bog", 19, 120, "jaune", false, std::array<int, 6>{7, 17, 27, 37, 47, 57});
-    auto tile20 = Property(1, "tundra", 20, 270, "rouge", false, std::array<int, 6>{22, 32, 42, 52, 62, 72});
-    auto tile21 = Property(1, "cave", 21, 200, "bleu", false, std::array<int, 6>{15, 25, 35, 45, 55, 65});
-    auto tile22 = Property(1, "oasis", 22, 150, "vert", false, std::array<int, 6>{18, 28, 38, 48, 58, 68});
-    auto tile23 = Property(1, "reef", 23, 130, "jaune", false, std::array<int, 6>{9, 19, 29, 39, 49, 59});
-    auto tile24 = Property(1, "delta", 24, 250, "rouge", false, std::array<int, 6>{23, 33, 43, 53, 63, 73});
-    auto tile25 = Property(1, "marsh", 25, 180, "bleu", false, std::array<int, 6>{12, 22, 32, 42, 52, 62});
-    auto tile26 = Property(1, "steppe", 26, 230, "vert", false, std::array<int, 6>{16, 26, 36, 46, 56, 66});
-    auto tile27 = Property(1, "gorge", 27, 140, "jaune", false, std::array<int, 6>{8, 18, 28, 38, 48, 58});
-    auto tile28 = Property(1, "cove", 28, 290, "rouge", false, std::array<int, 6>{24, 34, 44, 54, 64, 74});
-    auto tile29 = Property(1, "mesa", 29, 170, "bleu", false, std::array<int, 6>{13, 23, 33, 43, 53, 63});
-    auto tile30 = Property(1, "prairie", 30, 240, "vert", false, std::array<int, 6>{17, 27, 37, 47, 57, 67});
+    auto tile0 = Property(0,"start",0,200,"",0,std::array<int,6>{0,0,0,0,0,0});
+    auto tile1 = Property(1, "mines", 1, 150, "bleu", 1, std::array<int, 6>{10, 20, 30, 40, 50, 60});
+    auto tile2 = Property(1, "forest", 2, 200, "vert", 2, std::array<int, 6>{15, 25, 35, 45, 55, 65});
+    auto tile3 = Property(1, "desert", 3, 100, "jaune", 2, std::array<int, 6>{5, 15, 25, 35, 45, 55});
+    auto tile4 = Property(1, "mountains", 4, 250, "rouge", 0, std::array<int, 6>{20, 30, 40, 50, 60, 70});
+    auto tile5 = Property(1, "river", 5, 180, "bleu", 0, std::array<int, 6>{12, 22, 32, 42, 52, 62});
+    auto tile6 = Property(1, "swamp", 6, 130, "vert", 1, std::array<int, 6>{17, 27, 37, 47, 57, 67});
+    auto tile7 = Property(1, "plains", 7, 110, "jaune", 0, std::array<int, 6>{7, 17, 27, 37, 47, 57});
+    auto tile8 = Property(1, "jungle", 8, 230, "rouge", 2, std::array<int, 6>{18, 28, 38, 48, 58, 68});
+    auto tile9 = Property(1, "city", 9, 300, "bleu", 2, std::array<int, 6>{25, 35, 45, 55, 65, 75});
+    auto tile10 = Property(1, "village", 10, 170, "vert", 1, std::array<int, 6>{14, 24, 34, 44, 54, 64});
+    auto tile11 = Property(1, "canyon", 11, 140, "jaune", 0, std::array<int, 6>{8, 18, 28, 38, 48, 58});
+    auto tile12 = Property(1, "lake", 12, 260, "rouge", 1, std::array<int, 6>{21, 31, 41, 51, 61, 71});
+    auto tile13 = Property(1, "hill", 13, 190, "bleu", 1, std::array<int, 6>{13, 23, 33, 43, 53, 63});
+    auto tile14 = Property(1, "savannah", 14, 220, "vert", 1, std::array<int, 6>{16, 26, 36, 46, 56, 66});
+    auto tile15 = Property(1, "valley", 15, 160, "jaune", 2, std::array<int, 6>{6, 16, 26, 36, 46, 56});
+    auto tile16 = Property(1, "cliff", 16, 240, "rouge", 2, std::array<int, 6>{19, 29, 39, 49, 59, 69});
+    auto tile17 = Property(1, "volcano", 17, 280, "bleu", 1, std::array<int, 6>{11, 21, 31, 41, 51, 61});
+    auto tile18 = Property(1, "glacier", 18, 210, "vert", 0, std::array<int, 6>{14, 24, 34, 44, 54, 64});
+    auto tile19 = Property(1, "bog", 19, 120, "jaune", 0, std::array<int, 6>{7, 17, 27, 37, 47, 57});
+    auto tile20 = Property(1, "tundra", 20, 270, "rouge", 0, std::array<int, 6>{22, 32, 42, 52, 62, 72});
+    auto tile21 = Property(1, "cave", 21, 200, "bleu", 1, std::array<int, 6>{15, 25, 35, 45, 55, 65});
+    auto tile22 = Property(1, "oasis", 22, 150, "vert", 1, std::array<int, 6>{18, 28, 38, 48, 58, 68});
+    auto tile23 = Property(1, "reef", 23, 130, "jaune", 1, std::array<int, 6>{9, 19, 29, 39, 49, 59});
+    auto tile24 = Property(1, "delta", 24, 250, "rouge", 2, std::array<int, 6>{23, 33, 43, 53, 63, 73});
+    auto tile25 = Property(1, "marsh", 25, 180, "bleu", 2, std::array<int, 6>{12, 22, 32, 42, 52, 62});
+    auto tile26 = Property(1, "steppe", 26, 230, "vert", 0, std::array<int, 6>{16, 26, 36, 46, 56, 66});
+    auto tile27 = Property(1, "gorge", 27, 140, "jaune", 0, std::array<int, 6>{8, 18, 28, 38, 48, 58});
+    auto tile28 = Property(1, "cove", 28, 290, "rouge", 0, std::array<int, 6>{24, 34, 44, 54, 64, 74});
+    auto tile29 = Property(1, "mesa", 29, 170, "bleu", 0, std::array<int, 6>{13, 23, 33, 43, 53, 63});
+    auto tile30 = Property(1, "prairie", 30, 240, "vert", 0, std::array<int, 6>{17, 27, 37, 47, 57, 67});
     auto tile31 = Property(2, "go to jail", 31, 0, "", false, std::array<int, 6>{});
     auto tile32 = Property(3, "tax", 32, 150, "", false, std::array<int, 6>{});
     auto tile33 = Property(4, "card", 33, 0, "", false, std::array<int, 6>{});
@@ -77,10 +77,11 @@ void Game::start() {
 }
 
 void Game::play() {
-    //play the game
     for (int i = 0; i < _nbTurns; i++) {
-    std::cout << "Turn number :  " << i+1 << std::endl;
+        std::cout << "" << std::endl;
+        std::cout << "Turn number :  " << i+1 << std::endl;
         for (int j = 0; j < _players.size(); j++) {
+            std::cout << "" << std::endl;
             std::cout << "It's "<< _players[j].getPlayerName() << " turn" << std::endl;
             this->nextTurn(_players[j]);
         }
@@ -92,10 +93,11 @@ void end() {
 }
 
 void Game::nextTurn(Player &player) {
+    srand(time(0));
     //if in jail we check if you can get out of it
     if (player.isInJail() == 3) {
         std::cout << "You were in jail for 3 turn, you can get out of jail" << std::endl;
-        player.setJail(0);
+        player.getOutOfJail();
         return;
     }
     else if (player.isInJail() != 0) {
@@ -107,7 +109,7 @@ void Game::nextTurn(Player &player) {
 
     int dice1 = rand() % 6 + 1;
     int dice2 = rand() % 6 + 1;
-    std::cout << "You are at position " << player.getPosition() << std::endl;
+    std::cout << "Position : " << player.getPosition() << " Money : "<< player.getMoneyAmount() << std::endl;
     std::cout << "You rolled a " << dice1 << " and a " << dice2 << std::endl;
 
     bool doubleDice = (dice1 == dice2);
@@ -117,102 +119,68 @@ void Game::nextTurn(Player &player) {
         // free if double
         if (doubleDice){
             std::cout << "You are in jail but you are freed by your double" << std::endl;
-            player.setJail(0);
-            //player.move(dice1 + dice2); //must check that after moving is not in jail again TO DO
+            player.getOutOfJail();
             return;
         }
-        //you stay at the same place
-        else {
-            std::cout << "You spend one more night in jail" << std::endl;
-            player.setJail(player.isInJail() + 1);
-            return;
-        }
+        std::cout << "You spend one more night in jail" << std::endl;
+        player.oneMoreTurnInJail();
+        return;
     }
-    else {
-        //if you dou a double you play again
-        if (doubleDice){
-            //you move and you play your turn according to where you land
-            player.move(dice1 + dice2);
-            this->onLand(player);
-
-            //if you're not in jail, you play again
-            if (player.isInJail() == 0){
-                std::cout << "you play again" << std::endl;
-                return this->nextTurn(player);
-            }
-        }
-        else {
-            //you move and you play your turn according to where you land
-            player.move(dice1 + dice2);
-            this->onLand(player);
-        }
+    player.move(dice1 + dice2);
+    this->onLand(player);
+    if (doubleDice) {
+        std::cout << "you play again" << std::endl;
+        return this->nextTurn(player);
     }
 }
 
-void Game::onLand(Player player) {
+void Game::onLand(Player &player) {
     std::string answer;
     auto tile = _board.getTile(player.getPosition());
 
     if (tile->type() == 1) {
-        std::cout << "you landed on a property" << std::endl;
+        std::cout << "You landed on a property" << std::endl;
         if (tile->owned() == player.getId() ) {
-            std::cout << "it's your property" << std::endl;
-            if (tile->house() == 0) {
-                std::cout << "you have no house, do you want to buy one ? (yes/no)" << std::endl;
+            std::cout << "It's your property" << std::endl;
+            if (tile->house() < 3 && tile->hostel() == 0 ){
+                std::cout << "you have " << tile->house() << " house(s), do you want to buy one ? (y/n)" << std::endl;
                 std::cin >> answer;
-                if (answer == "yes") {
+                if (answer == "y") {
                     std::cout << "you buy a house" << std::endl;
-                    // you buy a house
-                } else if (answer == "no"){
+                    player.buyHouse(*tile);
+                } else if (answer == "n") {
                     std::cout << "you don't buy a house" << std::endl;
-                    //do nothing
-                }
-            }
-            else if (tile->house() > 0 && tile->house() < 3 && tile->hostel() == 0 ){
-                std::cout << "you have" << tile->house() << "house(s), do you want to buy one ? (yes/no)" << std::endl;
-                std::cin >> answer;
-                if (answer == "yes") {
-                    std::cout << "you buy a house" << std::endl;
-                    // you buy a house
-                } else if (answer == "no") {
-                    std::cout << "you don't buy a house" << std::endl;
-                    //do nothing
                 }
             }
             else if (tile->house() == 3 && tile->hostel() == 0 ) {
-                std::cout << "you have" << tile->house() << "houses, do you want to buy a hostel ? (yes/no)" << std::endl;
+                std::cout << "you have " << tile->house() << " houses, do you want to buy a hostel ? (yes/no)" << std::endl;
                 std::cin >> answer;
                 if (answer == "yes") {
                     std::cout << "you buy a hostel" << std::endl;
-                    // you buy a hostel
+                    player.buyHostel(*tile);
                 } else if (answer == "no") {
                     std::cout << "you don't buy a hostel" << std::endl;
-                    //do nothing
                 }
             }
         }
         else if (tile->owned() == 0 ) {
             std::cout << "This property is not owned" << std::endl;
-            std::cout << "Do you want to buy the land, it costs " << tile->price() << " $$ ? (yes/no)" << std::endl;
+            std::cout << "Do you want to buy the land, it costs " << tile->price() << " $$ ? (y/n)" << std::endl;
             std::cin >> answer;
-            if (answer == "yes") {
+            if (answer == "y") {
                 std::cout << "you buy the property" << std::endl;
-                player.buyProperty(tile->getId());
-                std::cout<< "player id : " <<player.getId() << std::endl;
-                tile->setOwned(player.getId());
-                std::cout << "tile owner : " << tile->owned() << std::endl;
-                // you buy the property
-            } else if (answer == "no"){
+                player.buyProperty(tile);
+            } else if (answer == "n"){
                 std::cout << "you don't buy the property" << std::endl;
-                //do nothing
             }
-            //you can buy the property
         }
         else {
             std::cout << "This property is owned, you have to pay a rent" << std::endl;
             int amount = tile->rents()[tile->house()];
             std::cout << "the rent is " << amount << " $$" << std::endl;
             if (player.getMoneyAmount() < amount) {
+                player.payRent(_players[tile->owned()],*tile);
+                // TODO : moneyworth, you can sell to pay your rent
                 std::cout << "you can't pay the rent, you are bankrupt" << std::endl;
             } else {
                 std::cout << "you have enough money to pay" << std::endl;
@@ -226,12 +194,13 @@ void Game::onLand(Player player) {
     else if (tile->type() == 2) {
         std::cout << "you landed on a go to jail" << std::endl;
         std::cout << "you go to jail" << std::endl;
-        player.setJail(1);
+        player.goToJail();
     }
     else if (tile->type() == 3) {
         std::cout << "You landed on a tax, you have to pay " << tile->price() << " $$" << std::endl;
+        player.payTax(tile->price());
         if (player.getMoneyAmount() < tile->price()) {
-            std::cout << "you can't pay the tax, you are bankrupt" << std::endl;
+            std::cout << "You can't pay the tax, you are bankrupt" << std::endl;
         } else {
             std::cout << "we take " << tile->price() << " $$ from your account" << std::endl;
             player.takeMoney(tile->price());
