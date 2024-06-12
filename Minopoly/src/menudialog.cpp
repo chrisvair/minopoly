@@ -13,12 +13,12 @@ MenuDialog::MenuDialog(QWidget *parent)
         ui->nbPlayers->addItem(a);
     }
 
-    // QString path = QString(":/board/cards/Assets/menuBack.png");
-    // QPixmap image(path);
-    // QIcon icon = style()->standardIcon(QStyle::SP_DialogOkButton);
-    // icon = QIcon(path);
-    // QPixmap pixmap = icon.pixmap(QSize(300, 300));
-    // ui->back->setPixmap(pixmap);
+    QString path = QString("Assets/menu_background.png");
+    QPixmap image(path);
+    QIcon icon = style()->standardIcon(QStyle::SP_DialogOkButton);
+    icon = QIcon(path);
+    QPixmap pixmap = icon.pixmap(QSize(1000, 1000));
+    ui->back->setPixmap(pixmap);
     setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 }
 

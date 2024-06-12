@@ -18,6 +18,8 @@ set(PROJECT_SOURCES
 
         src/mainwindow.ui
         #src/menu.ui
+
+        # src/assets.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -54,6 +56,8 @@ set_target_properties(Minopoly PROPERTIES
 )
 
 include(GNUInstallDirs)
+
+# qt6_add_resources(RESOURCE_FILES src/assets.qrc)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 qt_finalize_executable(Minopoly)

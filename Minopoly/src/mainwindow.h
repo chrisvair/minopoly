@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "menudialog.h"
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,5 +25,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     MenuDialog menu;
+    QLabel* lbArr[4];  // hold QLabel pointers for player icons
+    std::pair<int, int> getPlayerPosition(int position);
 };
 #endif // MAINWINDOW_H
