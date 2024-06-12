@@ -6,7 +6,7 @@
 #define BOARD_H
 #include <array>
 #include "Card.h"
-#include "Tile.h"
+#include "Player.h"
 #include "Property.h"
 
 class Board {
@@ -31,9 +31,10 @@ public:
     }
 
 
-    Property* getTile(int id);
+    Property& getTile(int id);
     Card drawCard(int id);
 
+    void doAction(Card& card, Player& player);
 
 
 };
