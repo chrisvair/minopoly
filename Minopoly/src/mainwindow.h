@@ -27,5 +27,6 @@ private:
     MenuDialog menu;
     QLabel* lbArr[4];  // hold QLabel pointers for player icons
     std::pair<int, int> getPlayerPosition(int position);
+    void rollDie(int die1, int die2);
 };
 #endif // MAINWINDOW_H

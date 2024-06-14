@@ -42,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Initialize player widgets
     int playerCount = 1;
+    int position = 5;
     for (int i = 0; i < playerCount; ++i)
     {
         lbArr[i] = new QLabel(this);
@@ -49,11 +50,30 @@ MainWindow::MainWindow(QWidget *parent)
         QPixmap playerPixmap(playerIconPath);
         lbArr[i]->setPixmap(playerPixmap.scaled(35, 35, Qt::KeepAspectRatio));
         lbArr[i]->setFixedSize(35, 35);
-        auto [x, y] = getPlayerPosition(32);
+        auto [x, y] = getPlayerPosition(position);
         lbArr[i]->move(x, y);
         lbArr[i]->show();
     }
 
+    int die1 = 2;
+    int die2 = 1;
+    // Connect the roll button to the rollDie function
+    connect(ui->Roll, &QPushButton::released, [this, die1, die2]() { rollDie(die1, die2); });
+
+
+
+}
+
+void MainWindow::rollDie(int die1, int die2) {
+    // Display the dice images on the labels
+    QString die1Path = QString("Assets/die%1.png").arg(die1);
+    QString die2Path = QString("Assets/die%1.png").arg(die2);
+
+    QPixmap die1Pixmap(die1Path);
+    QPixmap die2Pixmap(die2Path);
+
+    ui->Die1->setPixmap(die1Pixmap.scaled(50, 50, Qt::KeepAspectRatio));
+    ui->Die2->setPixmap(die2Pixmap.scaled(50, 50, Qt::KeepAspectRatio));
 }
 
 std::pair<int, int> MainWindow::getPlayerPosition(int position) {
