@@ -11,3 +11,9 @@ int Property::rent() {
     }
     return _rents[_house];
 }
+
+void Property::isSell() {
+    _owned = 0;
+    _house = 0;
+    _hostel = 0;
+}

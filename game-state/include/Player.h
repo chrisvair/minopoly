@@ -113,7 +113,7 @@ public:
         _moneyWorth = _moneyWorth + 200;
     };
 
-    bool sellProperty(Property* property, Player buyer); //return true if the property has been sold, false otherwise
+    bool sellProperty(); //return true if the property has been sold, false otherwise
     
     bool sellPropertyToTheBank(Property property); //return true if the property has been sold, false otherwise
     void buyPropertyFromTheBank(Property& property); //add the property to the player's properties
@@ -124,7 +124,7 @@ public:
     void buyHostel(Property& tile);
 
     void payTax(int amount);
-    void payRent(Player& player, Property& tile);
+    void payRent(Player& owner, Property& tile);
 
     void showProperties();
 

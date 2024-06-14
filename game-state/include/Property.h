@@ -110,7 +110,7 @@ public:
 
     int rent();
 
-
+    void isSell();
 };
 
 

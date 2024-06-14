@@ -191,6 +191,11 @@ void Game::nextTurn(Player &player) {
     std::cout << "You rolled a " << dice1 << " and a " << dice2 << std::endl;
     std::cout << "Position : " << player.getPosition() << " Money : "<< player.getMoneyAmount() << std::endl;
     this->onLand(player);
+
+    if (player.isBankrupt()) {
+        return;
+    }
+
     if (doubleDice) {
         std::cout << "you play again" << std::endl;
         return this->nextTurn(player);
@@ -205,7 +210,7 @@ void Game::onLand(Player& player) {
         std::cout << "You landed on a property" << std::endl;
         if (tile.owned() == player.getId() ) {
             std::cout << "It's your property" << std::endl;
-            if (tile.house() < 3 && tile.hostel() == 0 ){
+            if (tile.house() < 3 && tile.hostel() == 0 && player.getMoneyAmount() >= tile.costHouse()){
                 std::cout << "You have " << tile.house() << " house(s), do you want to buy one ? (y/n)" << std::endl;
                 std::cin >> answer;
                 if (answer == "y") {
@@ -215,7 +220,7 @@ void Game::onLand(Player& player) {
                     std::cout << "You don't buy a house" << std::endl;
                 }
             }
-            else if (tile.house() == 3 && tile.hostel() == 0 ) {
+            else if (tile.house() == 3 && tile.hostel() == 0 && player.getMoneyAmount() >= tile.costHostel()){
                 std::cout << "You have " << tile.house() << " houses, do you want to buy a hostel ? (yes/no)" << std::endl;
                 std::cin >> answer;
                 if (answer == "yes") {
@@ -226,7 +231,7 @@ void Game::onLand(Player& player) {
                 }
             }
             else {
-                std::cout << "You have a hostel, you can't buy anything else" << std::endl;
+                std::cout << "You can't buy anything else" << std::endl;
             }
         }
         // if the property is not owned
@@ -237,22 +242,21 @@ void Game::onLand(Player& player) {
         // if the property is owned by the other player
         else {
             // you have to pay the rent
-            player.payRent(_players[tile.owned()],tile);
+            std::cout << "owner of the property :" << tile.owned() << std::endl;
+            player.payRent(_players[tile.owned()-1],tile);
         }
     }
-    // if you land on a go to jail
     else if (tile.type() == 2) {
         std::cout << "You landed on a go to jail" << std::endl;
         player.goToJail();
     }
-    // if you land on a tax
     else if (tile.type() == 3) {
         std::cout << "You landed on a tax, you have to pay " << tile.price() << " $$" << std::endl;
         player.payTax(tile.price());
         payToCommunityBank(tile.price());
     }
     else if (tile.type() == 4) {
-        std::cout << "you landed on a card" << std::endl;
+        std::cout << "You landed on a card" << std::endl;
         Card newCard = _board.drawCard(rand() % 40);
         _board.doAction(newCard, player);
     }
