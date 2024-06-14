@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/./Assets">
+        <file>Assets/menu_background.png</file>
+        <file>Assets/game_board.png</file>
+    </qresource>
+</RCC>
