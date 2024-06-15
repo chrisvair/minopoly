@@ -115,6 +115,29 @@
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="NameEnterQuestion">
+    <property name="geometry">
+     <rect>
+      <x>27</x>
+      <y>205</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Quel est ton nom?</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="NameEnterEdit">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>240</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

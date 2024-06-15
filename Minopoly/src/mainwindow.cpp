@@ -16,13 +16,23 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Transition with the menu window
     menu.setModal(true);// Makes the menu modal, meaning it blocks interaction with other windows until it's closed.
-    connect(menu.ui->startPlay,SIGNAL(released()), this, SLOT(InitialisePlay()));
+    connect(menu.ui->startPlay,SIGNAL(released()), this, SLOT(initializePlay()));
     menu.ui->nbPlayers->currentText().toInt();
     //int numberOfPlayers = menu.ui->nbPlayers->currentIndex();
     //std::cout << numberOfPlayers;
     menu.setWindowTitle("Minopoly Menu");
     setWindowTitle("Minopoly");
     menu.exec();
+
+    int die1 = 2;
+    int die2 = 1;
+    // Connect the roll button to the rollDie function
+    connect(ui->Roll, &QPushButton::released, [this, die1, die2]() { rollDie(die1, die2); });
+}
+
+void MainWindow::initializePlay()
+{
+    menu.hide(); // Hide the menu to go to the main window.
 
     // Load the Monopoly board image
     QString path = QString("Assets/game_board.png");
@@ -41,8 +51,7 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 
     // Initialize player widgets
-    int playerCount = 1;
-    int position = 5;
+    int playerCount = menu.ui->nbPlayers->currentText().toInt(); // Get the number of players from the menu
     for (int i = 0; i < playerCount; ++i)
     {
         lbArr[i] = new QLabel(this);
@@ -50,18 +59,11 @@ MainWindow::MainWindow(QWidget *parent)
         QPixmap playerPixmap(playerIconPath);
         lbArr[i]->setPixmap(playerPixmap.scaled(35, 35, Qt::KeepAspectRatio));
         lbArr[i]->setFixedSize(35, 35);
-        auto [x, y] = getPlayerPosition(position);
+        auto [x, y] = getPlayerPosition(0); // Initialize all players at position 0
         lbArr[i]->move(x, y);
         lbArr[i]->show();
     }
-
-    int die1 = 2;
-    int die2 = 1;
-    // Connect the roll button to the rollDie function
-    connect(ui->Roll, &QPushButton::released, [this, die1, die2]() { rollDie(die1, die2); });
-
-
-
+    rollDie(6, 6);
 }
 
 void MainWindow::rollDie(int die1, int die2) {
@@ -118,12 +120,6 @@ std::pair<int, int> MainWindow::getPlayerPosition(int position) {
     }
 
     return std::make_pair(x, y);
-}
-
-
-void MainWindow::InitialisePlay()
-{
-    menu.hide(); // Go to mainwindow.
 }
 
 MainWindow::~MainWindow()
