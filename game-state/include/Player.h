@@ -81,7 +81,7 @@ Player(int type, int id, string name, int money, int position, bool jail){
         return _moneyWorth;
     }
 
-    std::array <int, 40> getProperties(){};
+    //std::array <int, 40> getProperties(){};
 
     bool sellProperty(Property property, Player buyer); //return true if the property has been sold, false otherwise
     

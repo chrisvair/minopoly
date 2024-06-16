@@ -6,8 +6,15 @@
 #include <iostream>
 #include "Property.h"
 
+
+
 void Game::start() {
     //initialize the game
+
+    Board board = Board();
+    board.loadBoard("game-state/assets/monopoly.json");
+
+
     std::string name1;
     std::string name2;
 
@@ -69,11 +76,11 @@ void Game::start() {
 
     auto cards = std::array<Card,40>{} ;
 
-    Board board = Board(cards,tiles);
+    //Board board = Board(cards,tiles);
     //
     auto players = std::array<Player,2>{player1, player2};
     _players = players;
-    _board = board;
+    //_board = board;
 }
 
 void Game::play() {

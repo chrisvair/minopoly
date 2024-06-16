@@ -9,15 +9,16 @@
 #include <string>
 #include <nlohmann/json.hpp>
 #include "Game.h"
+#include "Property.h"
 
 class JsonSerializer {
 public:
-    static void serialize(const Game& game, const std::string& filename);
-    static void deserialize(Game& game, const std::string& filename);
+    static void serialize(const Board& board, const std::string& filename);
+    static void deserialize(Board& board, const std::string& filename);
 
 private:
-    static void from_json(const nlohmann::json& j, Game& game);
-    static void to_json(nlohmann::json& j, const Game& game);
+    static void from_json(const nlohmann::json& j, Board& board);
+    static void to_json(nlohmann::json& j, const Board& board);
 };
 
-#endif //MINOPOLY_JSONSERIALIZER_H
+#endif

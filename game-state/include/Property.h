@@ -8,6 +8,12 @@
 #include <string>
 #include <array>
 #include <utility>
+#include <iostream>
+#include <nlohmann/json.hpp>
+
+
+
+
 
 class Property {
 protected:
@@ -92,7 +98,13 @@ public:
         return _position;
     }
 
+    std::string name() {
+        return _name;
+    }
 
+    void from_json(const nlohmann::json& j, Property& property) {
+        j.at("id").get_to(property._name);
+    }
 };
 
 

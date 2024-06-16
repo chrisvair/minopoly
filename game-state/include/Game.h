@@ -67,6 +67,9 @@ public:
     }
 
     void onLand(Player player);
+
+    void loadBoard(const std::string& filename);
+    void saveBoard(const std::string& filename) const;
 };
 
 
