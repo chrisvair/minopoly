@@ -28,6 +28,8 @@ protected:
     std::array<int,6> _rents;
     int _house = 0;
     int _hostel = 0;
+    int _houseCost;
+    int _hotelCost;
 
 public:
 
@@ -110,15 +112,23 @@ public:
         return _name;
     }
     int costHouse() {
-        return _rents[4];
+        return _houseCost;
     }
 
     int costHostel() {
-        return _rents[5];
+        return _hotelCost;
     }
 
     void from_json(const nlohmann::json& j, Property& property) {
-        j.at("id").get_to(property._name);
+        j.at("type").get_to(property._type);
+        j.at("name").get_to(property._name);
+        j.at("position").get_to(property._position);
+        j.at("price").get_to(property._price);
+        j.at("group").get_to(property._group);
+        j.at("owned").get_to(property._owned);
+        j.at("rents").get_to(property._rents);
+        j.at("houseCost").get_to(property._houseCost);
+        j.at("hotelCost").get_to(property._hotelCost);
     }
     int rent();
 

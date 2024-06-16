@@ -1,1004 +1,690 @@
 {
   "properties": [
     {
-      "name": "Mediterranean Avenue",
-      "id": "mediterraneanave",
-      "posistion": 2,
+      "type": 0,
+      "name": "Rentrée scolaire",
+      "position": 0,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Le Garden",
+      "position": 1,
       "price": 60,
-      "rent": 2,
-      "multpliedrent": [
-        10,
-        30,
-        90,
-        160,
-        250
-      ],
-      "housecost": 50,
-      "group": "Purple",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "probability": 2.1314,
-      "rel": {
-        "Square": "Mediterranean Avenue",
-        "Probability % (Jail Short)": 2.1314,
-        "Rank": 36,
-        "Probability % (Jail Long)": 2.0073
-      },
-      "ohousecost": 50,
-      "oprice": 60,
-      "averageProbability": 2.06935
+      "group": "marron",
+      "owned": 0,
+      "rents": [2, 10, 30, 90, 160, 250],
+      "houseCost": 50,
+      "hotelCost": 50
     },
     {
-      "name": "Baltic Avenue",
-      "id": "balticave",
-      "posistion": 4,
+      "type": 5,
+      "name": "Caisses du BDE",
+      "position": 2,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Le Factory",
+      "position": 3,
       "price": 60,
-      "rent": 4,
-      "multpliedrent": [
-        20,
-        60,
-        180,
-        320,
-        450
-      ],
-      "housecost": 50,
-      "group": "Purple",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "probability": 2.1624,
-      "rel": {
-        "Square": "Baltic Avenue",
-        "Probability % (Jail Short)": 2.1624,
-        "Rank": 35,
-        "Probability % (Jail Long)": 2.0369
-      },
-      "ohousecost": 50,
-      "oprice": 60,
-      "averageProbability": 2.09965
+      "group": "marron",
+      "owned": 0,
+      "rents": [4, 20, 60, 180, 320, 450],
+      "houseCost": 50,
+      "hotelCost": 50
     },
     {
-      "name": "Oriental Avenue",
-      "id": "orientalave",
-      "posistion": 7,
+      "type": 3,
+      "name": "Frais de scolarité",
+      "position": 4,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Artem Blandan",
+      "position": 5,
+      "price": 200,
+      "group": "stan",
+      "owned": 0,
+      "rents": [25, 50, 100, 200, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Longeville-sur-Mer",
+      "position": 6,
       "price": 100,
-      "rent": 6,
-      "multpliedrent": [
-        30,
-        90,
-        270,
-        400,
-        550
-      ],
-      "housecost": 50,
-      "group": "lightgreen",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Oriental Avenue",
-        "Probability % (Jail Short)": 2.2621,
-        "Rank": 32,
-        "Probability % (Jail Long)": 2.1317
-      },
-      "ohousecost": 50,
-      "oprice": 100,
-      "averageProbability": 2.1969000000000003
+      "group": "bleu clair",
+      "owned": 0,
+      "rents": [6, 30, 90, 270, 400, 550],
+      "houseCost": 50,
+      "hotelCost": 50
     },
     {
-      "name": "Vermont Avenue",
-      "id": "vermontave",
-      "posistion": 9,
-      "price": 100,
-      "rent": 6,
-      "multpliedrent": [
-        30,
-        90,
-        270,
-        400,
-        550
-      ],
-      "housecost": 50,
-      "group": "lightgreen",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Vermont Avenue",
-        "Probability % (Jail Short)": 2.321,
-        "Rank": 28,
-        "Probability % (Jail Long)": 2.1874
-      },
-      "ohousecost": 50,
-      "oprice": 100,
-      "averageProbability": 2.2542
-    },
-    {
-      "name": "Connecticut Avenue",
-      "id": "connecticutave",
-      "posistion": 10,
-      "price": 120,
-      "rent": 8,
-      "multpliedrent": [
-        40,
-        100,
-        300,
-        450,
-        600
-      ],
-      "housecost": 50,
-      "group": "lightgreen",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Connecticut Avenue",
-        "Probability % (Jail Short)": 2.3003,
-        "Rank": 30,
-        "Probability % (Jail Long)": 2.168
-      },
-      "ohousecost": 50,
-      "oprice": 120,
-      "averageProbability": 2.23415
-    },
-    {
-      "name": "St. Charles Place",
-      "id": "stcharlesplace",
-      "posistion": 12,
-      "price": 140,
-      "rent": 10,
-      "multpliedrent": [
-        50,
-        150,
-        450,
-        625,
-        750
-      ],
-      "housecost": 100,
-      "group": "Violet",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "St. Charles Place",
-        "Probability % (Jail Short)": 2.7017,
-        "Rank": 15,
-        "Probability % (Jail Long)": 2.556
-      },
-      "ohousecost": 100,
-      "oprice": 140,
-      "averageProbability": 2.62885
-    },
-    {
-      "name": "States Avenue",
-      "id": "statesave",
-      "posistion": 14,
-      "price": 140,
-      "rent": 10,
-      "multpliedrent": [
-        50,
-        150,
-        450,
-        625,
-        750
-      ],
-      "housecost": 100,
-      "group": "Violet",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "States Avenue",
-        "Probability % (Jail Short)": 2.3721,
-        "Rank": 29,
-        "Probability % (Jail Long)": 2.1741
-      },
-      "ohousecost": 100,
-      "oprice": 140,
-      "averageProbability": 2.2731000000000003
-    },
-    {
-      "name": "Virginia Avenue",
-      "id": "virginiaave",
-      "posistion": 15,
-      "price": 160,
-      "rent": 12,
-      "multpliedrent": [
-        60,
-        180,
-        500,
-        700,
-        900
-      ],
-      "housecost": 100,
-      "group": "Violet",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Virginia Avenue",
-        "Probability % (Jail Short)": 2.4649,
-        "Rank": 22,
-        "Probability % (Jail Long)": 2.4255
-      },
-      "ohousecost": 100,
-      "oprice": 160,
-      "averageProbability": 2.4452
-    },
-    {
-      "name": "St. James Place",
-      "id": "stjamesplace",
-      "posistion": 17,
-      "price": 180,
-      "rent": 14,
-      "multpliedrent": [
-        70,
-        200,
-        550,
-        750,
-        950
-      ],
-      "housecost": 100,
-      "group": "Orange",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "St. James Place",
-        "Probability % (Jail Short)": 2.7924,
-        "Rank": 9,
-        "Probability % (Jail Long)": 2.6802
-      },
-      "ohousecost": 100,
-      "oprice": 180,
-      "averageProbability": 2.7363
-    },
-    {
-      "name": "Tennessee Avenue",
-      "id": "tennesseeave",
-      "posistion": 19,
-      "price": 180,
-      "rent": 14,
-      "multpliedrent": [
-        70,
-        200,
-        550,
-        750,
-        950
-      ],
-      "housecost": 100,
-      "group": "Orange",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Tennessee Avenue",
-        "Probability % (Jail Short)": 2.9356,
-        "Rank": 6,
-        "Probability % (Jail Long)": 2.821
-      },
-      "ohousecost": 100,
-      "oprice": 180,
-      "averageProbability": 2.8783000000000003
-    },
-    {
-      "name": "New York Avenue",
-      "id": "newyorkave",
-      "posistion": 20,
-      "price": 200,
-      "rent": 16,
-      "multpliedrent": [
-        80,
-        220,
-        600,
-        800,
-        1000
-      ],
-      "housecost": 100,
-      "group": "Orange",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "New York Avenue",
-        "Probability % (Jail Short)": 3.0852,
-        "Rank": 7,
-        "Probability % (Jail Long)": 2.8118
-      },
-      "ohousecost": 100,
-      "oprice": 200,
-      "averageProbability": 2.9485
-    },
-    {
-      "name": "Kentucky Avenue",
-      "id": "kentuckyave",
-      "posistion": 22,
-      "price": 220,
-      "rent": 18,
-      "multpliedrent": [
-        90,
-        250,
-        700,
-        875,
-        1050
-      ],
-      "housecost": 150,
-      "group": "Red",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Kentucky Avenue",
-        "Probability % (Jail Short)": 2.8358,
-        "Rank": 12,
-        "Probability % (Jail Long)": 2.6143
-      },
-      "ohousecost": 150,
-      "oprice": 220,
-      "averageProbability": 2.72505
-    },
-    {
-      "name": "Indiana Avenue",
-      "id": "indianaave",
-      "posistion": 24,
-      "price": 220,
-      "rent": 18,
-      "multpliedrent": [
-        90,
-        250,
-        700,
-        875,
-        1050
-      ],
-      "housecost": 150,
-      "group": "Red",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Indiana Avenue",
-        "Probability % (Jail Short)": 2.7357,
-        "Rank": 14,
-        "Probability % (Jail Long)": 2.5671
-      },
-      "ohousecost": 150,
-      "oprice": 220,
-      "averageProbability": 2.6513999999999998
-    },
-    {
-      "name": "Illinois Avenue",
-      "id": "illinoisave",
-      "posistion": 25,
-      "price": 240,
-      "rent": 20,
-      "multpliedrent": [
-        100,
-        300,
-        750,
-        925,
-        1100
-      ],
-      "housecost": 150,
-      "group": "Red",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Illinois Avenue",
-        "Probability % (Jail Short)": 3.1858,
-        "Rank": 2,
-        "Probability % (Jail Long)": 2.9929
-      },
-      "ohousecost": 150,
-      "oprice": 240,
-      "averageProbability": 3.08935
-    },
-    {
-      "name": "Atlantic Avenue",
-      "id": "atlanticave",
-      "posistion": 27,
-      "price": 260,
-      "rent": 22,
-      "multpliedrent": [
-        110,
-        330,
-        800,
-        975,
-        1150
-      ],
-      "housecost": 150,
-      "group": "Yellow",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Atlantic Avenue",
-        "Probability % (Jail Short)": 2.7072,
-        "Rank": 16,
-        "Probability % (Jail Long)": 2.537
-      },
-      "ohousecost": 150,
-      "oprice": 260,
-      "averageProbability": 2.6220999999999997
-    },
-    {
-      "name": "Ventnor Avenue",
-      "id": "ventnorave",
-      "posistion": 28,
-      "price": 260,
-      "rent": 22,
-      "multpliedrent": [
-        110,
-        330,
-        800,
-        975,
-        1150
-      ],
-      "housecost": 150,
-      "group": "Yellow",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Ventnor Avenue",
-        "Probability % (Jail Short)": 2.6789,
-        "Rank": 18,
-        "Probability % (Jail Long)": 2.5191
-      },
-      "ohousecost": 150,
-      "oprice": 260,
-      "averageProbability": 2.599
-    },
-    {
-      "name": "Marvin Gardens",
-      "id": "marvingardens",
-      "posistion": 30,
-      "price": 280,
-      "rent": 22,
-      "multpliedrent": [
-        120,
-        360,
-        850,
-        1025,
-        1200
-      ],
-      "housecost": 150,
-      "group": "Yellow",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Marvin Gardens",
-        "Probability % (Jail Short)": 2.5861,
-        "Rank": 21,
-        "Probability % (Jail Long)": 2.4381
-      },
-      "ohousecost": 150,
-      "oprice": 280,
-      "averageProbability": 2.5121
-    },
-    {
-      "name": "Pacific Avenue",
-      "id": "pacificave",
-      "posistion": 32,
-      "price": 300,
-      "rent": 26,
-      "multpliedrent": [
-        130,
-        390,
-        900,
-        1100,
-        1275
-      ],
-      "housecost": 200,
-      "group": "darkgreen",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Pacific Avenue",
-        "Probability % (Jail Short)": 2.6774,
-        "Rank": 17,
-        "Probability % (Jail Long)": 2.5236
-      },
-      "ohousecost": 200,
-      "oprice": 300,
-      "averageProbability": 2.6005000000000003
-    },
-    {
-      "name": "North Carolina Avenue",
-      "id": "northcarolinaave",
-      "posistion": 33,
-      "price": 300,
-      "rent": 26,
-      "multpliedrent": [
-        130,
-        390,
-        900,
-        1100,
-        1275
-      ],
-      "housecost": 200,
-      "group": "darkgreen",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "North Carolina Avenue",
-        "Probability % (Jail Short)": 2.6252,
-        "Rank": 20,
-        "Probability % (Jail Long)": 2.4721
-      },
-      "ohousecost": 200,
-      "oprice": 300,
-      "averageProbability": 2.5486500000000003
-    },
-    {
-      "name": "Pennsylvania Avenue",
-      "id": "pennsylvaniaave",
-      "posistion": 35,
-      "price": 320,
-      "rent": 28,
-      "multpliedrent": [
-        150,
-        450,
-        1000,
-        1200,
-        1400
-      ],
-      "housecost": 200,
-      "group": "darkgreen",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Pennsylvania Avenue",
-        "Probability % (Jail Short)": 2.5006,
-        "Rank": 23,
-        "Probability % (Jail Long)": 2.3531
-      },
-      "ohousecost": 200,
-      "oprice": 320,
-      "averageProbability": 2.42685
-    },
-    {
-      "name": "Park Place",
-      "id": "parkplace",
-      "posistion": 38,
-      "price": 350,
-      "rent": 35,
-      "multpliedrent": [
-        175,
-        500,
-        1100,
-        1300,
-        1500
-      ],
-      "housecost": 200,
-      "group": "darkblue",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Park Place",
-        "Probability % (Jail Short)": 2.1864,
-        "Rank": 33,
-        "Probability % (Jail Long)": 2.0595
-      },
-      "ohousecost": 200,
-      "oprice": 350,
-      "averageProbability": 2.12295
-    },
-    {
-      "name": "Boardwalk",
-      "id": "boardwalk",
-      "posistion": 40,
-      "price": 400,
-      "rent": 50,
-      "multpliedrent": [
-        200,
-        600,
-        1400,
-        1700,
-        2000
-      ],
-      "housecost": 200,
-      "group": "darkblue",
-      "ownedby": -1,
-      "buildings": 0,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Boardwalk",
-        "Probability % (Jail Short)": 2.626,
-        "Rank": 19,
-        "Probability % (Jail Long)": 2.4832
-      },
-      "ohousecost": 200,
-      "oprice": 400,
-      "averageProbability": 2.5545999999999998
-    },
-    {
-      "name": "Electric Company",
-      "id": "electriccompany",
-      "posistion": 13,
-      "price": 150,
-      "group": "Utilities",
-      "ownedby": -1,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Electric Company",
-        "Probability % (Jail Short)": 2.604,
-        "Rank": 13,
-        "Probability % (Jail Long)": 2.614
-      },
-      "oprice": 150,
-      "averageProbability": 2.609
-    },
-    {
-      "name": "Water Works",
-      "id": "waterworks",
-      "posistion": 29,
-      "price": 150,
-      "group": "Utilities",
-      "ownedby": -1,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Water Works",
-        "Probability % (Jail Short)": 2.8074,
-        "Rank": 10,
-        "Probability % (Jail Long)": 2.6507
-      },
-      "oprice": 150,
-      "averageProbability": 2.72905
-    },
-    {
-      "name": "Reading Railroad",
-      "id": "readingrailroad",
-      "posistion": 6,
-      "price": 200,
-      "group": "Railroad",
-      "ownedby": -1,
-      "mortgaged": false,
-      "probability": 2.1314,
-      "rel": {
-        "Square": "Reading Railroad",
-        "Probability % (Jail Short)": 2.9631,
-        "Rank": 8,
-        "Probability % (Jail Long)": 2.801
-      },
-      "oprice": 200,
-      "averageProbability": 2.88205
-    },
-    {
-      "name": "Pennsylvania Railroad",
-      "id": "pennsylvaniarailroad",
-      "posistion": 16,
-      "price": 200,
-      "group": "Railroad",
-      "ownedby": -1,
-      "mortgaged": false,
-      "rel": {
-        "Square": "Pennsylvania Railroad",
-        "Probability % (Jail Short)": 2.92,
-        "Rank": 11,
-        "Probability % (Jail Long)": 2.6354
-      },
-      "oprice": 200,
-      "averageProbability": 2.7777000000000003
-    },
-    {
-      "name": "B. & O. Railroad",
-      "id": "borailroad",
-      "posistion": 26,
-      "price": 200,
-      "group": "Railroad",
-      "ownedby": -1,
-      "mortgaged": false,
-      "oprice": 200,
-      "averageProbability": 2.975
-    },
-    {
-      "name": "Short Line Railroad",
-      "id": "shortlinerailroad",
-      "posistion": 36,
-      "price": 200,
-      "group": "Railroad",
-      "ownedby": -1,
-      "mortgaged": false,
-      "oprice": 200,
-      "averageProbability": 2.3609500000000002
-    },
-    {
-      "name": "Go",
-      "id": "go",
-      "posistion": 0,
-      "group": "Special",
-      "rel": {
-        "Square": "Go",
-        "Probability % (Jail Short)": 3.0961,
-        "Rank": 3,
-        "Probability % (Jail Long)": 2.9143
-      },
-      "averageProbability": 3.0052
-    },
-    {
-      "name": "Income Tax",
-      "id": "incometax",
-      "group": "Special",
-      "rel": {
-        "Square": "Income Tax",
-        "Probability % (Jail Short)": 2.3285,
-        "Rank": 27,
-        "Probability % (Jail Long)": 2.1934
-      },
-      "averageProbability": 2.2609500000000002
-    },
-    {
-      "name": "Jail / Just Visiting",
-      "id": "jail",
-      "posistion": 10,
-      "group": "Special",
-      "averageProbability": 8.897
-    },
-    {
+      "type": 4,
       "name": "Chance",
-      "id": "chance",
-      "group": "Special",
-      "rel": {
-        "Square": "Chance",
-        "Probability % (Jail Short)": 0.865,
-        "Rank": 40,
-        "Probability % (Jail Long)": 0.8152
-      },
-      "averageProbability": 0.8401000000000001
+      "position": 7,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
     },
     {
-      "name": "Free Parking",
-      "id": "freeparking",
-      "group": "Special",
-      "rel": {
-        "Square": "Free Parking",
-        "Probability % (Jail Short)": 2.8836,
-        "Rank": 5,
-        "Probability % (Jail Long)": 2.8253
-      },
-      "averageProbability": 2.85445
+      "type": 1,
+      "name": "La Plagne",
+      "position": 8,
+      "price": 100,
+      "group": "bleu clair",
+      "owned": 0,
+      "rents": [6, 30, 90, 270, 400, 550],
+      "houseCost": 50,
+      "hotelCost": 50
     },
     {
-      "name": "Community Chest",
-      "id": "communitychest",
-      "group": "Special",
-      "rel": {
-        "Square": "Community Chest",
-        "Probability % (Jail Short)": 1.8849,
-        "Rank": 37,
-        "Probability % (Jail Long)": 1.775
-      },
-      "averageProbability": 1.82995
+      "type": 1,
+      "name": "Abbaye des Prémontrés",
+      "position": 9,
+      "price": 120,
+      "group": "bleu clair",
+      "owned": 0,
+      "rents": [8, 40, 100, 300, 450, 600],
+      "houseCost": 50,
+      "hotelCost": 50
     },
     {
-      "name": "Go To Jail",
-      "id": "gotojail",
-      "group": "Special",
-      "rel": {
-        "Square": "Go To Jail",
-        "Probability % (Jail Short)": 0,
-        "Rank": 41,
-        "Probability % (Jail Long)": 0
-      },
-      "averageProbability": 0
+      "type": 2,
+      "name": "Simple Visite",
+      "position": 10,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
     },
     {
-      "name": "Luxury Tax",
-      "id": "luxerytax",
-      "group": "Special",
-      "averageProbability": 2.116
+      "type": 1,
+      "name": "MDE",
+      "position": 11,
+      "price": 140,
+      "group": "violet",
+      "owned": 0,
+      "rents": [10, 50, 150, 450, 625, 750],
+      "houseCost": 100,
+      "hotelCost": 100
+    },
+    {
+      "type": 1,
+      "name": "Meuh",
+      "position": 12,
+      "price": 150,
+      "group": "utility",
+      "owned": 0,
+      "rents": [4, 10, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Crous Artem",
+      "position": 13,
+      "price": 140,
+      "group": "violet",
+      "owned": 0,
+      "rents": [10, 50, 150, 450, 625, 750],
+      "houseCost": 100,
+      "hotelCost": 100
+    },
+    {
+      "type": 1,
+      "name": "Crous Vélodrome",
+      "position": 14,
+      "price": 160,
+      "group": "violet",
+      "owned": 0,
+      "rents": [12, 60, 180, 500, 700, 900],
+      "houseCost": 100,
+      "hotelCost": 100
+    },
+    {
+      "type": 1,
+      "name": "Place des Justes",
+      "position": 15,
+      "price": 200,
+      "group": "stan",
+      "owned": 0,
+      "rents": [25, 50, 100, 200, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "ICN",
+      "position": 16,
+      "price": 180,
+      "group": "orange",
+      "owned": 0,
+      "rents": [14, 70, 200, 550, 750, 950],
+      "houseCost": 100,
+      "hotelCost": 100
+    },
+    {
+      "type": 5,
+      "name": "Caisses du BDE",
+      "position": 17,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "BU Artem",
+      "position": 18,
+      "price": 180,
+      "group": "orange",
+      "owned": 0,
+      "rents": [14, 70, 200, 550, 750, 950],
+      "houseCost": 100,
+      "hotelCost": 100
+    },
+    {
+      "type": 1,
+      "name": "ENSAD",
+      "position": 19,
+      "price": 200,
+      "group": "orange",
+      "owned": 0,
+      "rents": [16, 80, 220, 600, 800, 1000],
+      "houseCost": 100,
+      "hotelCost": 100
+    },
+    {
+      "type": 2,
+      "name": "PAF Gratuit",
+      "position": 20,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Ruin Bar",
+      "position": 21,
+      "price": 220,
+      "group": "rouge",
+      "owned": 0,
+      "rents": [18, 90, 250, 700, 875, 1050],
+      "houseCost": 150,
+      "hotelCost": 150
+    },
+    {
+      "type": 4,
+      "name": "Chance",
+      "position": 22,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Délirium",
+      "position": 23,
+      "price": 220,
+      "group": "rouge",
+      "owned": 0,
+      "rents": [18, 90, 250, 700, 875, 1050],
+      "houseCost": 150,
+      "hotelCost": 150
+    },
+    {
+      "type": 1,
+      "name": "Café des Trolls",
+      "position": 24,
+      "price": 240,
+      "group": "rouge",
+      "owned": 0,
+      "rents": [20, 100, 300, 750, 925, 1100],
+      "houseCost": 150,
+      "hotelCost": 150
+    },
+    {
+      "type": 1,
+      "name": "Garenne",
+      "position": 25,
+      "price": 200,
+      "group": "stan",
+      "owned": 0,
+      "rents": [25, 50, 100, 200, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Hall de l'école",
+      "position": 26,
+      "price": 260,
+      "group": "jaune",
+      "owned": 0,
+      "rents": [22, 110, 330, 800, 975, 1150],
+      "houseCost": 150,
+      "hotelCost": 150
+    },
+    {
+      "type": 1,
+      "name": "La Mare",
+      "position": 27,
+      "price": 260,
+      "group": "jaune",
+      "owned": 0,
+      "rents": [22, 110, 330, 800, 975, 1150],
+      "houseCost": 150,
+      "hotelCost": 150
+    },
+    {
+      "type": 1,
+      "name": "Le Bar",
+      "position": 28,
+      "price": 150,
+      "group": "utility",
+      "owned": 0,
+      "rents": [4, 10, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Bureau BDE",
+      "position": 29,
+      "price": 280,
+      "group": "jaune",
+      "owned": 0,
+      "rents": [24, 120, 360, 850, 1025, 1200],
+      "houseCost": 150,
+      "hotelCost": 150
+    },
+    {
+      "type": 2,
+      "name": "Allez réviser !",
+      "position": 30,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "5 Pizza",
+      "position": 31,
+      "price": 300,
+      "group": "vert",
+      "owned": 0,
+      "rents": [26, 130, 390, 900, 1100, 1275],
+      "houseCost": 200,
+      "hotelCost": 200
+    },
+    {
+      "type": 1,
+      "name": "Authentik",
+      "position": 32,
+      "price": 300,
+      "group": "vert",
+      "owned": 0,
+      "rents": [26, 130, 390, 900, 1100, 1275],
+      "houseCost": 200,
+      "hotelCost": 200
+    },
+    {
+      "type": 5,
+      "name": "Caisses du BDE",
+      "position": 33,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Arzum",
+      "position": 34,
+      "price": 320,
+      "group": "vert",
+      "owned": 0,
+      "rents": [28, 150, 450, 1000, 1200, 1400],
+      "houseCost": 200,
+      "hotelCost": 200
+    },
+    {
+      "type": 1,
+      "name": "Gare de Nancy",
+      "position": 35,
+      "price": 200,
+      "group": "stan",
+      "owned": 0,
+      "rents": [25, 50, 100, 200, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 4,
+      "name": "Chance",
+      "position": 36,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Rue du Sergent Blandan",
+      "position": 37,
+      "price": 350,
+      "group": "bleu foncé",
+      "owned": 0,
+      "rents": [35, 175, 500, 1100, 1300, 1500],
+      "houseCost": 200,
+      "hotelCost": 200
+    },
+    {
+      "type": 3,
+      "name": "Cotisation BDE",
+      "position": 38,
+      "price": 0,
+      "group": "",
+      "owned": 0,
+      "rents": [0, 0, 0, 0, 0, 0],
+      "houseCost": 0,
+      "hotelCost": 0
+    },
+    {
+      "type": 1,
+      "name": "Rue des Ponts",
+      "position": 39,
+      "price": 400,
+      "group": "bleu foncé",
+      "owned": 0,
+      "rents": [50, 200, 600, 1400, 1700, 2000],
+      "houseCost": 200,
+      "hotelCost": 200
     }
   ],
-  "tiles": [
-    {"id": "go"},
-    {"id": "mediterraneanave"},
-    {"id": "communitychest"},
-    {"id": "balticave"},
-    {"id": "incometax"},
-    {"id": "readingrailroad"},
-    {"id": "orientalave"},
-    {"id": "chance"},
-    {"id": "vermontave"},
-    {"id": "connecticutave"},
-    {"id": "jail"},
-    {"id": "stcharlesplace"},
-    {"id": "electriccompany"},
-    {"id": "statesave"},
-    {"id": "virginiaave"},
-    {"id": "pennsylvaniarailroad"},
-    {"id": "stjamesplace"},
-    {"id": "communitychest"},
-    {"id": "tennesseeave"},
-    {"id": "newyorkave"},
-    {"id": "freeparking"},
-    {"id": "kentuckyave"},
-    {"id": "chance"},
-    {"id": "indianaave"},
-    {"id": "illinoisave"},
-    {"id": "borailroad"},
-    {"id": "atlanticave"},
-    {"id": "ventnorave"},
-    {"id": "waterworks"},
-    {"id": "marvingardens"},
-    {"id": "gotojail"},
-    {"id": "pacificave"},
-    {"id": "northcarolinaave"},
-    {"id": "communitychest"},
-    {"id": "pennsylvaniaave"},
-    {"id": "shortlinerailroad"},
-    {"id": "chance"},
-    {"id": "parkplace"},
-    {"id": "luxerytax"},
-    {"id": "boardwalk"}
-  ],
-  "chance": [
+  "cards": [
     {
-      "title": "Advance to Go (Collect $200)",
-      "action": "move",
-      "tileid": "go"
+      "id": 1,
+      "description": "Vous gagnez 50€ pour avoir résolu un problème d'inférence statistique !",
+      "type": 1,
+      "value": 50
     },
     {
-      "title": "Advance to Illinois Avenue - If you pass Go, collect $200",
-      "action": "move",
-      "tileid": "illinoiseave"
+      "id": 2,
+      "description": "Vous perdez 300€ en achetant un nouveau pc.",
+      "type": 2,
+      "value": 300
     },
     {
-      "title": "Advance to St. Charles Place - If you pass Go, collect $200",
-      "action": "move",
-      "tileid": "stcharlesplace"
+      "id": 3,
+      "description": "Avancez jusqu'à Artem Blandan. Si vous passez par la case départ, recevez 200€.",
+      "type": 3,
+      "value": 200,
+      "position": 5
     },
     {
-      "title": "Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.",
-      "action": "movenearest",
-      "groupid": "utility",
-      "rentmultiplier": 10
+      "id": 4,
+      "description": "Allez directement en prison. Ne passez pas par la case départ, ne recevez pas 200€.",
+      "type": 4,
+      "value": 0
     },
     {
-      "title": "Advance token to the nearest Railroad and pay owner twice the rental to which he/she is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.",
-      "action": "movenearest",
-      "groupid": "railroad",
-      "rentmultiplier": 2
+      "id": 5,
+      "description": "Partiels annulés. Sortez de prison gratuitement. Cette carte peut être conservée jusqu'à utilisation ou vendue.",
+      "type": 5,
+      "value": 0
     },
     {
-      "title": "Bank pays you dividend of $50",
-      "action": "addfunds",
-      "amount": 50
+      "id": 6,
+      "description": "Avancez jusqu'à la case Départ. Recevez 200€.",
+      "type": 6,
+      "value": 200,
+      "position": 0
     },
     {
-      "title": "Get out of Jail Free - This card may be kept until needed, or traded/sold",
-      "action": "jail",
-      "subaction": "getout"
+      "id": 7,
+      "description": "Vous remportez la compétition de c++ ! Recevez 100€.",
+      "type": 1,
+      "value": 100
     },
     {
-      "title": "Go Back 3 Spaces",
-      "action": "move",
-      "count": -3
+      "id": 8,
+      "description": "Payez une amende de 90€ pour avoir roulé à vélo sur le trottoir.",
+      "type": 2,
+      "value": 90
     },
     {
-      "title": "Go to Jail - Go directly to Jail - Do not pass Go, do not collect $200",
-      "action": "jail",
-      "subaction": "goto"
+      "id": 9,
+      "description": "Avancez de 3 cases.",
+      "type": 3,
+      "value": 0,
+      "steps": 3
     },
     {
-      "title": "Make general repairs on all your property - For each house pay $25 - For each hotel $100",
-      "action": "propertycharges",
-      "buildings": 25,
-      "hotels": 100
+      "id": 10,
+      "description": "Allez directement en prison pour réviser les partiels. Ne passez pas par la case départ, ne recevez pas 200€.",
+      "type": 4,
+      "value": 0
     },
     {
-      "title": "Pay poor tax of $15",
-      "action": "removefunds",
-      "amount": 15
+      "id": 11,
+      "description": "Vous avez terminé votre partiel en avance ! Sortez de prison gratuitement.",
+      "type": 5,
+      "value": 0
     },
     {
-      "title": "Take a trip to Reading Railroad - If you pass Go, collect $200",
-      "action": "move",
-      "tileid": "readingrailroad"
+      "id": 12,
+      "description": "C'est l'heure de surfer. Avancez jusqu'à Longeville-sur-Mer. Si vous passez par la case départ, recevez 200€.",
+      "type": 3,
+      "value": 200,
+      "position": 6
     },
     {
-      "title": "Take a walk on the Boardwalk - Advance token to Boardwalk",
-      "action": "move",
-      "tileid": "boardwalk"
+      "id": 13,
+      "description": "Amende de 50€ pour débordements au bar de l'école.",
+      "type": 2,
+      "value": 50
     },
     {
-      "title": "You have been elected Chairman of the Board - Pay each player $50",
-      "action": "removefundstoplayers",
-      "amount": 50
+      "id": 14,
+      "description": "Convocation dans le bureau du directeur François Rousseau. Payer une amende de 100€.",
+      "type": 2,
+      "value": 100
     },
     {
-      "title": "Your building loan matures - Collect $150",
-      "action": "addfunds",
-      "amount": 50
-    }
-  ],
-  "communitychest": [
-    {
-      "title": "Advance to Go (Collect $200)",
-      "action": "move",
-      "tileid": "go"
+      "id": 15,
+      "description": "Votre projet horrible de C++ échoue. Perdez 50€ en chocolats pour vous consoler.",
+      "type": 2,
+      "value": 50
     },
     {
-      "title": "Bank error in your favor - Collect $200 ",
-      "action": "addfunds",
-      "amount": 200
+      "id": 16,
+      "description": "Félicitations ! Vous avez gagné un hackathon. Recevez 125€ de prix.",
+      "type": 1,
+      "value": 125
     },
     {
-      "title": "Doctor fee - Pay $50",
-      "action": "removefunds",
-      "amount": 50
+      "id": 17,
+      "description": "Ne trouvez pas de stage cette année. Perdez 100€ pour le manque à gagner.",
+      "type": 2,
+      "value": 100
     },
     {
-      "title": "From sale of stock you get $50",
-      "action": "addfunds",
-      "amount": 50
+      "id": 18,
+      "description": "Vous avez gagné l'interdep ! Recevez 200€ de prix.",
+      "type": 1,
+      "value": 200
     },
     {
-      "title": "Get Out of Jail Free",
-      "action": "jail",
-      "subaction": "getout"
+      "id": 19,
+      "description": "Amende de 50€ pour accident au WEI.",
+      "type": 2,
+      "value": 50
     },
     {
-      "title": "Go to Jail - Go directly to jail - Do not pass Go - Do not collect $200",
-      "action": "jail",
-      "subaction": "goto"
+      "id": 20,
+      "description": "Tapage nocturne. Payer une amende de 68€.",
+      "type": 2,
+      "value": 68
     },
     {
-      "title": "Grand Opera Night - Collect $50 from every player for opening night seats",
-      "action": "addfundsfromplayers",
-      "amount": 50
+      "id": 21,
+      "description": "Vous avez gagné un lot lors des campagnes BDE. Recevez 50€.",
+      "type": 1,
+      "value": 50
     },
     {
-      "title": "Holiday Fund matures - Receive $100",
-      "action": "addfunds",
-      "amount": 100
+      "id": 22,
+      "description": "Christine de l'accueil vous aide à retrouver vos clés. Avancez de 3 cases.",
+      "type": 3,
+      "value": 3
     },
     {
-      "title": "Income tax refund - Collect $20",
-      "action": "addfunds",
-      "amount": 20
+      "id": 23,
+      "description": "Yves Meshaka, le directeur adjoint, est impressionné par votre projet. Recevez 100€ de bourse.",
+      "type": 1,
+      "value": 100
     },
     {
-      "title": "Life insurance matures - Collect $100",
-      "action": "addfunds",
-      "amount": 100
+      "id": 24,
+      "description": "Participez au voyage ski. Avancez jusqu'à la Plagne.",
+      "type": 3,
+      "value": 8
     },
     {
-      "title": "Pay hospital fees of $100",
-      "action": "removefunds",
-      "amount": 100
+      "id": 25,
+      "description": "Participez au voyage surf. Avancez jusqu'à Longeville-sur-Mer.",
+      "type": 3,
+      "value": 6
     },
     {
-      "title": "Pay school fees of $150",
-      "action": "removefunds",
-      "amount": 150
+      "id": 26,
+      "description": "Participez au WEI ! Avancez jusqu'à au Garden.",
+      "type": 3,
+      "value": 1
     },
     {
-      "title": "Receive $25 consultancy fee",
-      "action": "addfunds",
-      "amount": 25
+      "id": 27,
+      "description": "Passez une soirée trop animée au bar de l'école. Reculez de 2 cases.",
+      "type": 3,
+      "value": -2
     },
     {
-      "title": "You are assessed for street repairs - $40 per house - $115 per hotel",
-      "action": "propertycharges",
-      "buildings": 40,
-      "hotels": 115
+      "id": 28,
+      "description": "Entendez des cris dans la rue. Avancez de 1 case pour voir ce qui se passe.",
+      "type": 3,
+      "value": 1
     },
     {
-      "title": "You have won second prize in a beauty contest - Collect $10",
-      "action": "addfunds",
-      "amount": 10
+      "id": 29,
+      "description": "Explorez le local poubelle pour des matériaux de projet. Reculez de 1 case.",
+      "type": 3,
+      "value": -1
     },
     {
-      "title": "You inherit $100",
-      "action": "addfunds",
-      "amount": 100
+      "id": 30,
+      "description": "Faites un tour de la mare. Reculez de 3 cases pour nettoyer vos chaussures.",
+      "type": 3,
+      "value": -3
+    },
+    {
+      "id": 31,
+      "description": "Visitez le techlab et jouez avec les robots chiens. Avancez de 2 cases.",
+      "type": 3,
+      "value": 2
+    },
+    {
+      "id": 32,
+      "description": "Découvrez la verrière d'Artem. Avancez de 1 case pour admirer les fuites.",
+      "type": 3,
+      "value": 1
+    },
+    {
+      "id": 33,
+      "description": "Empruntez un vélo Stan Lib pour vous déplacer. Avancez de 3 cases.",
+      "type": 3,
+      "value": 3
+    },
+    {
+      "id": 34,
+      "description": "Prenez le tram mais il est en travaux. Reculez de 2 cases pour trouver un autre chemin.",
+      "type": 3,
+      "value": -2
+    },
+    {
+      "id": 35,
+      "description": "La ligne A du tram a changé de parcours. Reculez de 1 case pour ajuster votre trajet.",
+      "type": 3,
+      "value": -1
+    },
+    {
+      "id": 36,
+      "description": "Participez à une rave dans un parc. Allez à la case Départ pour rentrer chez vous.",
+      "type": 3,
+      "value": 0
+    },
+    {
+      "id": 37,
+      "description": "Arnaque au BDE ! Payez une amende de 50€ pour un achat non livré.",
+      "type": 2,
+      "value": 50
+    },
+    {
+      "id": 38,
+      "description": "Passez une soirée de Saint Valentin avec l'ICN. Avancez jusqu'à la MDE.",
+      "type": 3,
+      "value": 11
+    },
+    {
+      "id": 39,
+      "description": "Participez à l'open en colocs. Avancez jusqu'à la rue des Ponts.",
+      "type": 3,
+      "value": 39
+    },
+    {
+      "id": 40,
+      "description": "Vous croisez Laurent Kaltenecker. Reculez de 3 cases pour éviter de lui parler.",
+      "type": 3,
+      "value": -3
     }
   ]
 }

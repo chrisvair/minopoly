@@ -31,15 +31,23 @@ void JsonSerializer::deserialize(Board& board, const std::string& filename) {
     json data = json::parse(file);
     // Désérialiser les cases
     std::vector<Property> properties;
-    for (const auto& property_json : data["tiles"]) {
+    for (const auto& property_json : data["properties"]) {
         Property property;
         property.from_json(property_json, property);
         properties.push_back(property);
-        board._tiles[property.getId()] = property;
+        board._tiles[property.id()] = property;
     }
-    /*
+    // Désérialiser les cartes
+    std::vector<Card> cards;
+    for (const auto& card_json : data["cards"]) {
+        Card card;
+        card.from_json(card_json, card);
+        cards.push_back(card);
+        board._cards[card.getId()] = card;
+    }
+
     // Afficher les noms des propriétés
-    std::cout << "\nNoms des propriétés :" << std::endl;
+    /*std::cout << "\nNoms des propriétés :" << std::endl;
     for (auto& property : properties) {
         std::cout << "Property: " << property.name() << std::endl;
     }*/

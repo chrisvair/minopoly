@@ -14,7 +14,7 @@ using namespace std;
 
 class Player {
 private:
-    bool _type; // 0 for human, 1 for bot
+    bool _type; // 1 for human, 0 for bot
     int _id;
     string _name;
     int _money;
