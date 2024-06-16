@@ -27,26 +27,16 @@ public:
     std::array<Card,40> & cards() {
         return _cards;
     }
-
+    /*
     std::array<Property,40> & tiles() {
         return _tiles;
     }
+     */
     void loadBoard(const std::string& filename);
     void saveBoard(const std::string& filename) const;
 
-
     Property* getTile(int id);
     Card drawCard(int id);
-
-    std::array<Property ,40> gameTiles;
-
-    friend void from_json(const nlohmann::json& j, Board& board) {
-        // Désérialiser les tuiles
-        //std::vector<Property> tiles = j["tiles"].template get<std::vector<Property>>();
-
-        //j.at("tiles").get_to(board.gameTiles);
-        //j.at("players").get_to(board.players);
-    }
 
 
 private:
@@ -57,6 +47,7 @@ private:
     std::array<Card,40> gameCards;
     std::array<Card,15> chanceCards;
     std::array<Card,16> communityChestCards;
+
 
     friend class JsonSerializer;
 
