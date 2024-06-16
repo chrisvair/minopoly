@@ -766,5 +766,57 @@
       "type": 3,
       "value": -3
     }
+  ],
+  "players": [
+    {
+      "type": 1,
+      "id": 0,
+      "name": "Joueur Test",
+      "position": 0,
+      "money": 1500,
+      "jail": 0,
+      "properties": [
+        {
+          "type": 1,
+          "name": "Le Garden",
+          "position": 1,
+          "price": 60,
+          "group": "marron",
+          "owned": 0,
+          "rents": [2, 10, 30, 90, 160, 250],
+          "houseCost": 50,
+          "hotelCost": 50,
+          "house": 0,
+          "hotel": 0
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "id": 1,
+      "name": "Joueur Test 2",
+      "position": 0,
+      "money": 1500,
+      "jail": 0,
+      "properties": []
+    },
+    {
+      "type": 1,
+      "id": 2,
+      "name": "Joueur Test 3",
+      "position": 0,
+      "money": 1500,
+      "jail": 0,
+      "properties": []
+    },
+    {
+      "type": 1,
+      "id": 3,
+      "name": "Joueur Test 4",
+      "position": 0,
+      "money": 1500,
+      "jail": 0,
+      "properties": []
+    }
   ]
 }

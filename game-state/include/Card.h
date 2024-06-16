@@ -22,7 +22,7 @@ private:
     // 6 is for going to the start
     int _type=0;
     string _action;
-    int _value=13;
+    int _value=0;
 
 public:
     Card()= default; //default constructor
@@ -38,6 +38,10 @@ public:
 
     string action() {
         return _action;
+    }
+
+    int getType() {
+        return _type;
     }
 
     int value() {

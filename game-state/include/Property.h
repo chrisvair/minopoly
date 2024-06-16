@@ -129,6 +129,8 @@ public:
         j.at("rents").get_to(property._rents);
         j.at("houseCost").get_to(property._houseCost);
         j.at("hotelCost").get_to(property._hotelCost);
+        j.at("house").get_to(property._house);
+        j.at("hotel").get_to(property._hostel);
     }
     int rent();
 

@@ -10,15 +10,18 @@
 #include <array>
 #include <iostream>
 #include "Property.h"
+#include <nlohmann/json.hpp>
+
 using namespace std;
+using json = nlohmann::json;
 
 class Player {
 private:
-    bool _type; // 1 for human, 0 for bot
+    int _type; // 1 for human, 0 for bot
     int _id;
     string _name;
     int _money;
-    std::array<Property, 40> _properties{}; //we stock the id of the properties the player owns, at most, he can have 40 properties
+    std::array<Property, 40> _properties{}; //we stock the properties the player owns, at most, he can have 40 properties
     int _nbProperties = 0;
     int _position;
     int _jail;
@@ -32,10 +35,9 @@ private:
 
 
 
-
 public:
     Player(){}
-    Player(int type, int id, string name, int money, int position, bool jail){
+    Player(int type, int id, string name, int money, int position, int jail){
         _type = type;
         _id = id;
         _name = name;
@@ -135,6 +137,25 @@ public:
     void setBankrupt(){
         _issBankrupt = true;
     };
+
+    void from_json(const nlohmann::json& j, Player& player){
+        j.at("type").get_to(player._type);
+        j.at("id").get_to(player._id);
+        j.at("name").get_to(player._name);
+        j.at("money").get_to(player._money);
+        j.at("position").get_to(player._position);
+        j.at("jail").get_to(player._jail);
+
+        // Charger les propriétés (le tableau properties)
+        if (j.contains("properties")) {
+            auto json_properties = j.at("properties");
+            for (size_t i = 0; i < _properties.size() && i < json_properties.size(); ++i) {
+                Property property;
+                property.from_json(json_properties[i], property);
+                player._properties[i] = property;
+            }
+        }
+    }
 };
 
 

@@ -14,6 +14,7 @@ void Game::start() {
     Board board = Board();
     board.loadBoard("game-state/assets/monopoly.json");
     _board = board;
+    _players = board.players;
     // TODO: load the players from a file if they exist and if not, create them with the following code
     selectNumberOfPlayers();
 }
@@ -166,6 +167,13 @@ void Game::onLand(Player& player) {
 void Game::selectNumberOfPlayers() {
     int nbPlayers;
     int nbBots;
+    // if players have been loaded
+    if (_players[0].getPlayerName() != "") {
+        std::cout << "4 Players have been loaded" << std::endl;
+        return;
+    }
+
+    // if not, we ask the user to enter the number of players
     std::cout << "How many players ? (1-4)" << std::endl;
     std::cin >> nbPlayers;
     nbBots = 4 - nbPlayers;

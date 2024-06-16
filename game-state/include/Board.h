@@ -39,9 +39,10 @@ public:
     Card drawCard(int id);
 
     void doAction(Card& card, Player& player);
+    std::array<Player,4> players;  // Exemple
+
 
 private:
-    std::vector<Player> players;  // Exemple
     std::vector<Property> properties;  // Exemple
     void loadFromFile(const std::string& filename);
     void saveToFile(const std::string& filename) const;

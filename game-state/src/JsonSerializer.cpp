@@ -46,6 +46,13 @@ void JsonSerializer::deserialize(Board& board, const std::string& filename) {
         board._cards[card.getId()] = card;
     }
 
+    // Désérialiser les joueurs
+    for (const auto& player_json : data["players"]) {
+        Player player;
+        player.from_json(player_json, player);
+        board.players[player.getId()] = player;
+    }
+
     // Afficher les noms des propriétés
     /*std::cout << "\nNoms des propriétés :" << std::endl;
     for (auto& property : properties) {
