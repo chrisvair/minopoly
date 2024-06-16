@@ -7,7 +7,7 @@
 #include <array>
 #include <nlohmann/json.hpp>
 #include "Card.h"
-#include "Tile.h"
+#include "Player.h"
 #include "Property.h"
 #include "Player.h"
 
@@ -35,9 +35,10 @@ public:
     void loadBoard(const std::string& filename);
     void saveBoard(const std::string& filename) const;
 
-    Property* getTile(int id);
+    Property& getTile(int id);
     Card drawCard(int id);
 
+    void doAction(Card& card, Player& player);
 
 private:
     std::vector<Player> players;  // Exemple

@@ -58,8 +58,16 @@ public:
         return _house;
     }
 
+    void buyHouse() {
+        _house++;
+    }
+
     int hostel() const {
         return _hostel;
+    }
+
+    void buyHostel() {
+        _hostel++;
     }
 
     std::string group() const {
@@ -101,10 +109,20 @@ public:
     std::string name() {
         return _name;
     }
+    int costHouse() {
+        return _rents[4];
+    }
+
+    int costHostel() {
+        return _rents[5];
+    }
 
     void from_json(const nlohmann::json& j, Property& property) {
         j.at("id").get_to(property._name);
     }
+    int rent();
+
+    void isSell();
 };
 
 
