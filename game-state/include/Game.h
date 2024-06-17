@@ -15,8 +15,8 @@
 
 class Game {
 private:
-    std::array<Player,2> _players;
-    int _nbTurns = 6;
+    std::array<Player,4> _players;
+    int _nbTurns = 20;
     int _bank = 10000;
     int _communityBank = 0;
     Board _board{};
@@ -24,7 +24,7 @@ private:
 public:
     Game(){}
 
-    Game(const std::array<Player, 2> &players, int nb_turns, int bank, int community_bank, Board board)
+    Game(const std::array<Player, 4> &players, int nb_turns, int bank, int community_bank, Board board)
         : _players(players),
           _nbTurns(nb_turns),
           _bank(bank),
@@ -40,9 +40,7 @@ public:
 
     void nextTurn(Player &player);
 
-    void endTurn();
-
-    std::array<Player,2> & players() {
+    std::array<Player,4> & players() {
         return _players;
     }
 
@@ -62,11 +60,24 @@ public:
         return _communityBank;
     }
 
+    void payToCommunityBank(int amount) {
+        _communityBank += amount;
+    }
+
+    void emptyCommunityBank() {
+        _communityBank = 0;
+    }
+
     Board & board() {
         return _board;
     }
 
-    void onLand(Player player);
+
+
+    void loadBoard(const std::string& filename);
+    void saveBoard(const std::string& filename) const;
+    void onLand(Player &player);
+    void selectNumberOfPlayers();
 };
 
 
