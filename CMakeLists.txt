@@ -11,3 +11,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(Minopoly)
 add_subdirectory(game-state)
+add_subdirectory(third_party/nlohmann_json) # Librairie JSON

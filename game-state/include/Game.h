@@ -15,9 +15,6 @@
 
 
 class Game {
-
-    Game(int nbPlayers, int nbTurns, int bank, int communityBank, Board board);
-
 private:
     std::array<Player,4> _players;
     int _nbPlayers = 0;
@@ -28,28 +25,31 @@ private:
     int _currentPlayer = 1;
 
 public:
+    Game(){}
 
+    Game(int nbPlayer, const std::array<Player, 4> &players, int nb_turns, int bank, int community_bank, Board board)
+        : _nbPlayers(nbPlayer),
+          _players(players),
+          _nbTurns(nb_turns),
+          _bank(bank),
+          _communityBank(community_bank),
+          _board(board){
+    }
 
     void start();
 
-    void Play();
+    void play();
 
     void end();
 
-    void nextTurn(Player player);
+    void nextTurn();
 
-    void endTurn();
-
-    std::array<Player,2> & players() {
+    std::array<Player,4> & players() {
         return _players;
     }
 
-    int & currentPlayer() {
-        return _currentPlayer;
-    }
-
-    int & nbPlayers() {
-        return _nbPlayers;
+    int nbPlayers() {
+        return _players.size();
     }
 
     int & nbTurns() {
