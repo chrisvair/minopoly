@@ -17,13 +17,12 @@ void Game::start() {
     board.loadBoard("game-state/assets/monopoly.json");
 
   
-    auto players = std::array<Player,4>{player1, player2};
+    auto players = std::array<Player,4>{};
     _players = players;
     _board = board;
-    _players = board.players;
+    //_players = board.players;
     // TODO: load the players from a file if they exist and if not, create them with the following code
-    std::cout << "Welcome to Monopoly" << std::endl;
-    selectNumberOfPlayers();
+    //selectNumberOfPlayers();
 }
 
 void Game::play() {
@@ -48,7 +47,7 @@ void end() {
 
 void Game::nextTurn() {
     _currentPlayer++;
-    if (_currentPlayer == _players.size() + 1) {
+    if (_currentPlayer == _nbPlayers + 1) {
         _currentPlayer = 1;
     }
 
@@ -56,6 +55,10 @@ void Game::nextTurn() {
     //if in jail we check if you can get out of it
     if (player.isInJail() == 3) {
         player.getOutOfJail();
+        nextTurn();
+    }
+    else if(player.isInJail()!=0) {
+        player.oneMoreTurnInJail();
         nextTurn();
     }
 

@@ -17,12 +17,12 @@
 class Game {
 private:
     std::array<Player,4> _players;
-    int _nbPlayers;
+    int _nbPlayers = 0;
     int _nbTurns = 20;
     int _bank = 10000;
     int _communityBank = 0;
     Board _board{};
-    int _currentPlayer = 0;
+    int _currentPlayer = 1;
 
 public:
     Game(){}
@@ -98,13 +98,13 @@ public:
         return _players[id-1].getPosition();
     }
 
-    int movePlayer(int id, int amount) {
-        _players[id-1].move(amount);
-        return _players[id-1].getPosition();
+    int movePlayer(int amount) {
+        _players[_currentPlayer-1].move(amount);
+        return _players[_currentPlayer-1].getPosition();
     }
 
     void buyProperty() {
-        _players[_currentPlayer].buyProperty(_board.getTile(_players[_currentPlayer].getPosition()));
+        _players[_currentPlayer-1].buyProperty(_board.getTile(_players[_currentPlayer].getPosition()));
     }
 
     int getCurrentPlayer() {
@@ -123,6 +123,45 @@ public:
         _players[_currentPlayer-1].buyHostel(_board.getTile(id));
     }
 
+    int getOwnerProperty(int id) {
+        return _board.getTile(id).owned();
+    }
+
+    int getPriceProperty(int id) {
+        return _board.getTile(id).price();
+    }
+
+    int getHousePrice(int id) {
+        return _board.getTile(id).costHouse();
+    }
+
+    int getHostelPrice(int id) {
+        return _board.getTile(id).costHostel();
+    }
+
+    int getPlayerBalance(int id) {
+        return _players[id-1].getMoneyAmount();
+    }
+
+    std::string getPropertyName(int id) {
+        return _board.getTile(id).name();
+    }
+
+    std::array<int,6> getPropertyRents(int id) {
+        return _board.getTile(id).rents();
+    }
+
+    int getPropertyRent(int id) {
+        return _board.getTile(id).rent();
+    }
+
+    int getNumberhouse(int id) {
+        return _board.getTile(id).house();
+    }
+
+    int getNumberhostel(int id) {
+        return  _board.getTile(id).hostel();
+    }
 };
 
 
