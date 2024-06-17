@@ -64,3 +64,20 @@ void JsonSerializer::to_json(json& j, const Board& board) {
     //j["properties"] = board.properties;
     //j["players"] = board.players;
 }
+
+void JsonSerializer::loadBots(Board& board, const std::string& filename) {
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Impossible d'ouvrir le fichier " << filename << std::endl;
+        return;
+    }
+    json data = json::parse(file);
+    // Désérialiser les joueurs
+    int i = 0;
+    for (const auto& player_json : data["players"]) {
+        Player player;
+        player.from_json(player_json, player);
+        board.players[i] = player;
+        i++;
+    }
+}

@@ -15,6 +15,7 @@ class JsonSerializer {
 public:
     static void serialize(const Board& board, const std::string& filename);
     static void deserialize(Board& board, const std::string& filename);
+    static void loadBots(Board& board, const std::string& filename);
 
 private:
     static void from_json(const nlohmann::json& j, Board& board);

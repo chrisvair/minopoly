@@ -12,10 +12,12 @@ void Game::start() {
     //initialize the game
 
     Board board = Board();
+    // TODO: choisir le file qu'on importe (partie sauvegardée) ou celle par défaut (nouvelle partie)
     board.loadBoard("game-state/assets/monopoly.json");
     _board = board;
     _players = board.players;
     // TODO: load the players from a file if they exist and if not, create them with the following code
+    std::cout << "Welcome to Monopoly" << std::endl;
     selectNumberOfPlayers();
 }
 
@@ -36,6 +38,7 @@ void Game::play() {
 }
 
 void end() {
+    // TODO: save the game
     //end the game
 }
 
@@ -152,7 +155,7 @@ void Game::onLand(Player& player) {
         payToCommunityBank(tile.price());
     }
     else if (tile.type() == 4) {
-        std::cout << "You landed on a card" << std::endl;
+        std::cout << "You landed on a chance tile !" << std::endl;
         Card newCard = _board.drawCard(rand() % 40);
         _board.doAction(newCard, player);
     }
@@ -173,12 +176,13 @@ void Game::selectNumberOfPlayers() {
         return;
     }
 
-    // if not, we ask the user to enter the number of players
-    std::cout << "How many players ? (1-4)" << std::endl;
+    // if not, we ask the user to enter the number of real players
+    std::cout << "With how many real players do you want to play with ? (2-4)" << std::endl;
     std::cin >> nbPlayers;
     nbBots = 4 - nbPlayers;
     std::cout << "You will play with " << nbPlayers << " players and " << nbBots << " bots" << std::endl;
 
+    //Add the real players to the players array
     for (int i = 0; i < nbPlayers; i++) {
         std::string name;
         std::cout << "Player " << i+1 << " name : ";
@@ -186,9 +190,22 @@ void Game::selectNumberOfPlayers() {
         auto player = Player(1,i+1, name, 1500, 0, false);
         _players[i] = player;
     }
+    //Create a board of bots to import bots from a file
+    Board boardBots = Board();
+    boardBots.genBots("game-state/assets/bots.json");
+
+    //Add the bots to the players array
     for (int i = nbPlayers; i < 4; i++) {
-        auto player = Player(0,i+1, "bot", 1500, 0, false);
-        _players[i] = player;
+        _players[i] = boardBots.players[i-nbPlayers];
+    }
+
+    std:: cout << "The 4 players are : " << std::endl;
+    for (int i = 0; i < 4; i++) {
+        // Si c'est un bot, on lui donne un id
+        if (_players[i].type() == 0){
+            _players[i].setId(i+1);
+        }
+        std::cout << _players[i].getPlayerName() << std::endl;
     }
 
 }

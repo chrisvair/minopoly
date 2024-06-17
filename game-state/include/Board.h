@@ -34,6 +34,7 @@ public:
      */
     void loadBoard(const std::string& filename);
     void saveBoard(const std::string& filename) const;
+    void genBots(const std::string& filename);
 
     Property& getTile(int id);
     Card drawCard(int id);

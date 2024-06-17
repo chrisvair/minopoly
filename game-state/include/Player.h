@@ -31,6 +31,7 @@ private:
     int _getOutOfJailCards; // Number of get out of jail card the player has
     int _moneyWorth;
     bool _issBankrupt = false;
+    std::string strategy;
 
 
 
@@ -138,9 +139,19 @@ public:
         _issBankrupt = true;
     };
 
+    void setId(int id){
+        _id = id;
+    };
+
+    int type(){
+        return _type;
+    };
+
     void from_json(const nlohmann::json& j, Player& player){
         j.at("type").get_to(player._type);
-        j.at("id").get_to(player._id);
+        if (j.contains("id")){ //if the json contains the id, we get it
+            j.at("id").get_to(player._id);
+        }
         j.at("name").get_to(player._name);
         j.at("money").get_to(player._money);
         j.at("position").get_to(player._position);

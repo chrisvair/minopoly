@@ -26,6 +26,9 @@ void Board::saveToFile(const std::string& filename) const {
     JsonSerializer::serialize(*this, filename);
 }
 
+void Board::genBots(const std::string& filename) {
+    JsonSerializer::loadBots(*this, filename);
+}
 
 Card Board::drawCard(int id) {
     return _cards[id];
