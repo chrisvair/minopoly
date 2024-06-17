@@ -23,7 +23,7 @@ private:
     int _money;
     std::array<Property, 40> _properties{}; //we stock the properties the player owns, at most, he can have 40 properties
     int _nbProperties = 0;
-    int _position = 0;
+    int _position;
     int _jail;
     //represents the current number of turns the player has been in jail
     //0 if is not, 1 if 1, 2 if 2, 3 if 3, 3-> he can get out of jail

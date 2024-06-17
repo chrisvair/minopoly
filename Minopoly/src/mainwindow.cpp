@@ -138,12 +138,12 @@ void MainWindow::initializePlay()
         paintPlayer(i, 0);
     }
     paintDice(6, 6);
-    _game.start();
 }
 
 void MainWindow::rollDice() {
     // Call backend to get current player (TODO?)
-    int player_number = _game.getCurrentPlayer();
+    static int player_number = _game.getCurrentPlayer();
+
     std::array<int,2> dices = _game.rollDice();
     int die1 = dices[0];
     int die2 = dices[1];
@@ -156,33 +156,21 @@ void MainWindow::rollDice() {
     // Update player position according to dice
 
     // 1. New position due to dice
-    int position = _game.movePlayer(die1+die2);
+    int position = _game.movePlayer(player_number, die1+die2);
+
     // 3. Paint player at new position
-    paintPlayer(player_number-1, position);
+    paintPlayer(player_number, position);
 
     // Show card in display area
     int typeCard = _game.getTypeProperty(position);
     if (typeCard == 1) {
-        if (_game.getOwnerProperty(position) == 0) {
-            paintProperty(position);
-            // Print card value in text field
-            int card_value = _game.getPriceProperty(position);
-            ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
-        }
-        else if (_game.getOwnerProperty(position) == player_number) {
-            paintProperty(position);
-            // Print card value in text field
-            int card_value = _game.getHousePrice(position);// TODO: Get from backend
-            ui->BuyButton->setText(QString("Buy house $%1").arg(card_value));
-        }
-        else {
-            paintProperty(position);
-        }
         paintProperty(position);
-    }else if (typeCard == 2) {
+    }
+    else if (typeCard == 2) {
         //paintStation(position);
         //TODO : paint jail card
-    }else if (typeCard == 3) {
+    }
+    else if (typeCard == 3) {
         //TODO : paint tax card
     } else if (typeCard == 4) {
         //TODO : paint chance card
@@ -196,7 +184,6 @@ void MainWindow::rollDice() {
     bool card_status = true; // TODO (Backend): set the status of the card
     int card_owner = 0; // TODO (Backend): set the card owner
     int card_type = 1; // TODO (Backend): set the type of cards, int or str but change types everywhere in code
-
 
     // Show buttons
     if (card_status == false){
@@ -218,6 +205,11 @@ void MainWindow::rollDice() {
         ui->PassButton->setText(QString("Tour Suivant"));
     }
 
+    player_number += 1;
+    player_number %= 4;
+    if (player_number == 0) {
+        player_number = 1;
+    }
 }
 
 void MainWindow::paintDice(int die1, int die2) {
@@ -265,17 +257,16 @@ void MainWindow::paintProperty(int position) { // Get the colour and all the det
     ui->InfoBackground->setScaledContents(true);
 
     //Set card
-    QString name = QString::fromStdString(_game.getPropertyName(position)); // TODO(backend)
-    QString hotelPrice = QString::number(_game.getHostelPrice(position)); // TODO(backend)
-    QString housePrice = QString::number(_game.getHousePrice(position)); // TODO(backend)
-    QString price = QString::number(_game.getPriceProperty(position)); // TODO(backend)
-    std::array<int,6> rents = _game.getPropertyRents(position); // TODO(backend)
-    QString rent0H = QString::number(rents[0]); // TODO(backend)
-    QString rent1H = QString::number(rents[1]); // TODO(backend)
-    QString rent2H = QString::number(rents[2]); // TODO(backend)
-    QString rent3H = QString::number(rents[3]); // TODO(backend)
-    QString rent4H = QString::number(rents[4]); // TODO(backend)
-    QString rentHotel = QString::number(rents[5]); // TODO(backend)
+    QString name = "LE GARDEN"; // TODO(backend)
+    QString hotelPrice = "$200"; // TODO(backend)
+    QString housePrice = "$100"; // TODO(backend)
+    QString price = "$2000"; // TODO(backend)
+    QString rent0H = "10"; // TODO(backend)
+    QString rent1H = "100"; // TODO(backend)
+    QString rent2H = "1000"; // TODO(backend)
+    QString rent3H = "10000"; // TODO(backend)
+    QString rent4H = "100000"; // TODO(backend)
+    QString rentHotel = "10000000"; // TODO(backend)
     ui->NameLabel->setText(name);
     ui->PriceHotelLabel->setText(hotelPrice);
     ui->PriceHouseLabel->setText(housePrice);
@@ -289,10 +280,10 @@ void MainWindow::paintProperty(int position) { // Get the colour and all the det
 
 
     // Set card details based on position (replace with actual game logic)
-    QString owner = QString::number(_game.getOwnerProperty(position)); // TODO(backend)
-    QString rent = QString::number(_game.getPropertyRent(position)); // TODO(backend)
-    QString houses = QString::number(_game.getNumberhouse(position)); // TODO(backend)
-    QString hotels = QString::number(_game.getNumberhostel(position)); // TODO(backend)
+    QString owner = "Player 1"; // TODO(backend)
+    QString rent = "$200"; // TODO(backend)
+    QString houses = "2"; // TODO(backend)
+    QString hotels = "1"; // TODO(backend)
     ui->OwnerLabel->setText(owner);
     ui->RentLabel->setText(rent);
     ui->HousesLabel->setText(houses);
@@ -397,7 +388,6 @@ void MainWindow::nextMove() {
     ui->Roll->setDisabled(false);
 
 
-
     // TODO(backend): Retrieve all player balances from the backend
     std::vector<int> balances = {10, 20};
     // Update the display for each player
@@ -413,10 +403,9 @@ void MainWindow::nextMove() {
     _game.nextTurn();
 
     static int currently_active_player = _game.getCurrentPlayer();
-    paintInactivePlayer(currently_active_player-1);
-    _game.nextTurn();
-    currently_active_player = _game.getCurrentPlayer();
-    paintActivePlayer(currently_active_player-1);
+    paintInactivePlayer(currently_active_player);
+    currently_active_player = (currently_active_player + 1) % 2;
+    paintActivePlayer(currently_active_player);
 
     // Now we wait for a dice roll
 }
