@@ -115,12 +115,13 @@ public:
         return _board.getTile(position).getType();
     }
 
-    void buyHouse(int id) {
-        _players[_currentPlayer-1].buyHouse(_board.getTile(id));
-    }
-
-    void buyHostel(int id) {
-        _players[_currentPlayer-1].buyHostel(_board.getTile(id));
+    void build(int id) {
+        if (_board.getTile(id).house() == 4) {
+            _players[_currentPlayer-1].buyHostel(_board.getTile(id));
+        }
+        else {
+            _players[_currentPlayer-1].buyHouse(_board.getTile(id));
+        }
     }
 
     int getOwnerProperty(int id) {

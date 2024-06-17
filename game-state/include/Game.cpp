@@ -52,12 +52,15 @@ void Game::nextTurn() {
     }
 
     Player player = _players[_currentPlayer-1];
+    std::cout << player.isInJail() << std::endl;
     //if in jail we check if you can get out of it
     if (player.isInJail() == 3) {
+        std::cout << player.isInJail() << std::endl;
         player.getOutOfJail();
         nextTurn();
     }
     else if(player.isInJail()!=0) {
+        std::cout << player.isInJail() << std::endl;
         player.oneMoreTurnInJail();
         nextTurn();
     }

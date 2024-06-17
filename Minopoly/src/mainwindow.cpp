@@ -60,12 +60,13 @@ MainWindow::MainWindow(QWidget *parent)
         int initial_balance = 0; // TODO(backend): update balance
 
         // Create new list item for player and add it so new player is displayed in UI
-        int current_player_number = ui->PlayerList->count();
-        QString player_icon_path = QString("Minopoly/Assets/Player%1.png").arg(current_player_number + 1);
-        // TODO(UI): Show balance next to name, or show it somewhere else?
-        QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(initial_balance);
-        QListWidgetItem* new_player_item = new QListWidgetItem(QIcon(QPixmap(player_icon_path)), player_display_text);
-        ui->PlayerList->addItem(new_player_item);
+        {
+            int current_player_number = ui->PlayerList->count();
+            QString player_icon_path = QString("Minopoly/Assets/Player%1.png").arg(current_player_number + 1);
+            QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(initial_balance);
+            QListWidgetItem* new_player_item = new QListWidgetItem(QIcon(QPixmap(player_icon_path)), player_display_text);
+            ui->PlayerList->addItem(new_player_item);
+        }
 
         // Mark whose player's turn it is
         if (ui->PlayerList->count() == 1) {
@@ -105,7 +106,7 @@ MainWindow::MainWindow(QWidget *parent)
     // Building
     connect(ui->BuildButton, &QPushButton::clicked, this, [&]() {
         int position = _game.getPlayerPosition(_game.getCurrentPlayer());
-        _game.buyHouse(position);
+        _game.build(position);
         ui->BuildButton->hide();
         nextMove();
     });
@@ -139,19 +140,15 @@ void MainWindow::initializePlay()
 }
 
 void MainWindow::rollDice() {
-    // Call backend to get current player (TODO?)
+    // Call backend to get current player
     int player_number = _game.getCurrentPlayer();
     std::array<int,2> dices = _game.rollDice();
     int die1 = dices[0];
     int die2 = dices[1];
 
-    // qInfo() << die1;
-    // qInfo() << die2;
-
     paintDice(die1, die2);
 
     // Update player position according to dice
-
     // 1. New position due to dice
     int position = _game.movePlayer(die1+die2);
     // 3. Paint player at new position
@@ -161,23 +158,26 @@ void MainWindow::rollDice() {
     int typeCard = _game.getTypeProperty(position);
     if (typeCard == 1) { //if property
         paintProperty(position);
-        if (_game.getOwnerProperty(position) == 0) {
+        if (_game.getOwnerProperty(position) == 0) { //if property is not owned
             ui->PassButton->show();
-            // Print card value in text field
+            // player can buy it, if enough money
             if (_game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getPriceProperty(position)) {
                 int card_value = _game.getPriceProperty(position);
                 ui->BuyButton->show();
                 ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
             }
-
         }
         else if (_game.getOwnerProperty(position) == player_number) {
             ui->PassButton->show();
             ui->BuildButton->show();
             // Print card value in text field
             // TODO : change value if buy house or buy hostel
-            int card_value = _game.getHousePrice(position);// TODO: Get from backend
-            ui->BuyButton->setText(QString("Buy house $%1").arg(card_value));
+            if (_game.getNumberhouse(position) == 4) {
+                ui->BuildButton->setText(QString("Buy hostel $%1").arg(_game.getHostelPrice(position)));
+            }
+            else {
+                ui->BuildButton->setText(QString("Buy house $%1").arg(_game.getHostelPrice(position)));
+            }
         }
         else {
             // Print rent value in text field
@@ -403,6 +403,8 @@ void MainWindow::paintInactivePlayer(int player_number) {
 }
 
 void MainWindow::nextMove() {
+    ui->PayRentButton->hide();
+    ui->BuildButton->hide();
     ui->BuyButton->hide();
     ui->PassButton->hide();
     ui->CardBackground->clear();
