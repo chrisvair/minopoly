@@ -389,19 +389,19 @@
      <rect>
       <x>1200</x>
       <y>200</y>
-      <width>160</width>
+      <width>184</width>
       <height>251</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="PropertyInfo">
-     <item row="2" column="1">
+     <item row="3" column="1">
       <widget class="QLabel" name="HousesLabel">
        <property name="text">
         <string>None</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="2" column="0">
       <widget class="QLabel" name="Rent">
        <property name="font">
         <font>
@@ -413,21 +413,33 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
+     <item row="4" column="0">
+      <widget class="QLabel" name="Hotels">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Hôtel:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
       <widget class="QLabel" name="RentLabel">
        <property name="text">
         <string>None</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
+     <item row="1" column="1">
       <widget class="QLabel" name="OwnerLabel">
        <property name="text">
         <string>None</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="Houses">
        <property name="font">
         <font>
@@ -439,7 +451,14 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
+     <item row="4" column="1">
+      <widget class="QLabel" name="HotelsLabel">
+       <property name="text">
+        <string>None</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
       <widget class="QLabel" name="Owner">
        <property name="font">
         <font>
@@ -454,22 +473,16 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="Hotels">
+     <item row="0" column="0" colspan="2">
+      <widget class="QLabel" name="Title">
        <property name="font">
         <font>
          <bold>true</bold>
+         <underline>true</underline>
         </font>
        </property>
        <property name="text">
-        <string>Hôtel:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QLabel" name="HotelsLabel">
-       <property name="text">
-        <string>None</string>
+        <string>Informations de la propriété</string>
        </property>
       </widget>
      </item>
@@ -480,7 +493,7 @@
      <rect>
       <x>1190</x>
       <y>190</y>
-      <width>191</width>
+      <width>201</width>
       <height>271</height>
      </rect>
     </property>
@@ -492,9 +505,9 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>70</y>
+      <y>60</y>
       <width>271</width>
-      <height>51</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="text">
@@ -659,7 +672,7 @@
      <rect>
       <x>1199</x>
       <y>200</y>
-      <width>169</width>
+      <width>174</width>
       <height>251</height>
      </rect>
     </property>
@@ -709,6 +722,19 @@
        </property>
       </widget>
      </item>
+     <item row="0" column="0" colspan="2">
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>Appartenance des stations</string>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="1">
       <widget class="QLabel" name="Station2OwnerLabel">
        <property name="font">
@@ -740,14 +766,72 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0" colspan="2">
-      <widget class="QLabel" name="label">
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="PayRentButton">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>490</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_6">
+    <property name="geometry">
+     <rect>
+      <x>920</x>
+      <y>100</y>
+      <width>251</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="ChanceCard">
+     <item row="0" column="0">
+      <widget class="QLabel" name="ChanceLogo">
        <property name="text">
-        <string>Appartenance des stations:</string>
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="ChanceAction">
+       <property name="text">
+        <string>TextLabel</string>
        </property>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="BuildButton">
+    <property name="geometry">
+     <rect>
+      <x>1050</x>
+      <y>460</y>
+      <width>121</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Construire</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="CardsQLabel">
+    <property name="geometry">
+     <rect>
+      <x>919</x>
+      <y>130</y>
+      <width>251</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
    <zorder>Background</zorder>
    <zorder>CardBackground</zorder>
@@ -764,6 +848,10 @@
    <zorder>PassButton</zorder>
    <zorder>BuyButton</zorder>
    <zorder>gridLayoutWidget_5</zorder>
+   <zorder>PayRentButton</zorder>
+   <zorder>gridLayoutWidget_6</zorder>
+   <zorder>BuildButton</zorder>
+   <zorder>CardsQLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
