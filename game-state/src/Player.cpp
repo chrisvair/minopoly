@@ -50,7 +50,7 @@ bool Player::sellProperty() {
     std::cout << "Which property do you want to sell ?" << std::endl;
     int idProperty;
     std::cin >> idProperty;
-    if (_properties[idProperty].getId() == _id) {
+    if (_properties[idProperty].id() == _id) {
         _properties[idProperty].isSell();
         _money = _money + _properties[idProperty].price() + _properties[idProperty].house() * _properties[idProperty].costHouse() + _properties[idProperty].hostel() * _properties[idProperty].costHostel();
         _properties[idProperty] = Property{};
@@ -67,9 +67,12 @@ void Player::buyProperty(Property& property) {
         std::cin >> answer;
         if (answer == "y") {
             std::cout << "You buy the property" << std::endl;
-            _properties[property.getId()] = property;
+            _properties[property.id()] = property;
+            std::cout << "Property id : " << property.id() << std::endl;
             property.setOwned(_id);
+            std::cout << "Property owner : " << property.owned() << std::endl;
             takeMoney(property.price());
+            std::cout << "Your money : " << _money << std::endl;
         } else if (answer == "n"){
             std::cout << "You don't buy the property" << std::endl;
         }
@@ -79,7 +82,7 @@ void Player::buyProperty(Property& property) {
 }
 
 void Player::buyPropertyFromTheBank(Property& property) {
-    _properties[property.getId()] = property;
+    _properties[property.id()] = property;
     property.setOwned(_id);
     takeMoney(property.price());
 }
@@ -93,7 +96,7 @@ bool Player::sellPropertyToTheBank(Property property) {
 
 
     // for (int i = 0; i < 40; i++) {
-    //     if (_properties[i].getId() == property.getId()) {
+    //     if (_properties[i].id() == property.id()) {
     //         _properties[i] = 0; //We remove the property from the seller
     //         giveMoney(property.price()); // The seller gets the money
     //         return true; //property sold
@@ -153,7 +156,7 @@ void reset();
 void Player::showProperties() {
     std::cout << "Your properties are : " << std::endl;
     for (int i = 0; i < 40; i++) {
-        if (_properties[i].getId() == _id) {
+        if (_properties[i].id() == _id) {
             std::cout << " property number : " << i << " price : " << _properties[i].price() << std::endl;
         }
     }
