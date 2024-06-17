@@ -76,7 +76,12 @@ public:
         return _board;
     }
 
+
+
+    void loadBoard(const std::string& filename);
+    void saveBoard(const std::string& filename) const;
     void onLand(Player &player);
+    void selectNumberOfPlayers();
 
     std::array<int,2> rollDice() {
         srand(time(0));
@@ -117,7 +122,6 @@ public:
     void buyHostel(int id) {
         _players[_currentPlayer-1].buyHostel(_board.getTile(id));
     }
-
 
 };
 
