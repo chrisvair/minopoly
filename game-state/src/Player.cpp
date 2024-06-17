@@ -60,15 +60,14 @@ bool Player::sellProperty() {
 }
 
 void Player::buyProperty(Property& property) {
-    if (_money >= property.price()) {
-        _properties[property.getId()] = property;
-        property.setOwned(_id);
-        takeMoney(property.price());
-    }
+    std::cout << _id << _name << " buys " << property.name() << std::endl;
+    _properties[property.getPosition()] = property;
+    property.setOwned(_id);
+    takeMoney(property.price());
 }
 
 void Player::buyPropertyFromTheBank(Property& property) {
-    _properties[property.id()] = property;
+    _properties[property.getPosition()] = property;
     property.setOwned(_id);
     takeMoney(property.price());
 }

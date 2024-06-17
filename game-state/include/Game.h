@@ -104,7 +104,7 @@ public:
     }
 
     void buyProperty() {
-        _players[_currentPlayer-1].buyProperty(_board.getTile(_players[_currentPlayer].getPosition()));
+        _players[_currentPlayer-1].buyProperty(_board.getTile(_players[_currentPlayer-1].getPosition()));
     }
 
     int getCurrentPlayer() {
@@ -162,6 +162,45 @@ public:
     int getNumberhostel(int id) {
         return  _board.getTile(id).hostel();
     }
+
+    int getNumberPlayer() {
+        return _nbPlayers;
+    }
+
+    void payRent(){
+        int position = _players[_currentPlayer-1].getPosition();
+        _players[_currentPlayer-1].payRent(_players[_board.getTile(position).owned()-1],_board.getTile(position));
+    }
+
+    void goToJail() {
+        _players[_currentPlayer-1].goToJail();
+    }
+
+    void payTax() {
+        _players[_currentPlayer-1].payTax(_board.getTile(_players[_currentPlayer-1].getPosition()).price());
+    }
+
+    void winCommunityChest() {
+        _players[_currentPlayer-1].giveMoney(_communityBank);
+        emptyCommunityBank();
+    }
+
+    std::string getColor(int position) {
+        return _board.getTile(position).group();
+    }
+
+    void doActionCard() {
+        Card newCard = _board.drawCard(rand() % 40);
+        _board.doAction(newCard, _players[_currentPlayer-1]);
+    }
+    std::string getPlayerName(int id) {
+        return _players[id-1].getPlayerName();
+    }
+
+    std::string owner(int position){
+        return _players[_board.getTile(position).owned()-1].getPlayerName();
+    }
+
 };
 
 

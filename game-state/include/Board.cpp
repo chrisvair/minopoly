@@ -49,6 +49,7 @@ void Board::doAction(Card& card, Player& player) {
     }
     else if (card.getType() == 3) {
         std::cout << card.action() << std::endl;
+        player.goToStart();
         player.move(card.value());
     }
     else if (card.getType() == 4) {

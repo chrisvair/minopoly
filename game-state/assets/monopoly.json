@@ -66,7 +66,7 @@
       "hotel": 0
     },
     {
-      "type": 1,
+      "type": 6,
       "name": "Artem Blandan",
       "position": 5,
       "price": 200,
@@ -196,7 +196,7 @@
       "hotel": 0
     },
     {
-      "type": 1,
+      "type": 6,
       "name": "Place des Justes",
       "position": 15,
       "price": 200,
@@ -261,7 +261,7 @@
       "hotel": 0
     },
     {
-      "type": 2,
+      "type": 5,
       "name": "PAF Gratuit",
       "position": 20,
       "price": 0,
@@ -326,7 +326,7 @@
       "hotel": 0
     },
     {
-      "type": 1,
+      "type": 6,
       "name": "Garenne",
       "position": 25,
       "price": 200,
@@ -456,7 +456,7 @@
       "hotel": 0
     },
     {
-      "type": 1,
+      "type": 6,
       "name": "Gare de Nancy",
       "position": 35,
       "price": 200,

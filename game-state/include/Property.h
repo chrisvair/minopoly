@@ -139,6 +139,10 @@ public:
     int getType() {
         return _type;
     }
+
+    int getPosition() {
+        return _position;
+    }
 };
 
 
