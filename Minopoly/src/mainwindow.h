@@ -20,7 +20,15 @@ public:
 
 private slots:
     void initializePlay();
-    void rollDie(int die1, int die2);
+    void rollDice();
+    void paintDice(int die1, int die2);
+    void paintPlayer(int player_number, int position);
+    void paintCard(int position);
+    void paintActivePlayer(int player_number);
+    void paintInactivePlayer(int player_number);
+    void nextMove();
+    void paintProperty(int position);
+    void paintStation(int position);
 
 private:
     Ui::MainWindow *ui;

@@ -659,7 +659,7 @@
      <rect>
       <x>1199</x>
       <y>200</y>
-      <width>169</width>
+      <width>174</width>
       <height>251</height>
      </rect>
     </property>
@@ -742,8 +742,13 @@
      </item>
      <item row="0" column="0" colspan="2">
       <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
-        <string>Appartenance des stations:</string>
+        <string>Appartenance des stations</string>
        </property>
       </widget>
      </item>

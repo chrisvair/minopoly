@@ -13,7 +13,7 @@ MenuDialog::MenuDialog(QWidget *parent)
         ui->nbPlayers->addItem(a);
     }
 
-    QString path = QString("Assets/menu_background.png");
+    QString path = QString("Minopoly/Assets/menu_background.png");
     QPixmap image(path);
     QIcon icon = style()->standardIcon(QStyle::SP_DialogOkButton);
     icon = QIcon(path);
