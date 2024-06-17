@@ -17,6 +17,7 @@ protected:
     std::array<Card,40> _cards; //the board has 40 cards
     std::array<Property,40> _tiles; //the board has 40 tiles
     int gameNumber;
+    int turn;
 
 public:
     Board(){
@@ -43,13 +44,19 @@ public:
     }
     int findFirstGameNumberAvailable();
     int getNumberOfSavedGames();
+    int getTurn(){
+        return turn;
+    }
+    int setTurn(int turn){
+        this->turn = turn;
+    }
 
 
 
 private:
     std::vector<Property> properties;  // Exemple
     void loadFromFile(const std::string& filename);
-    void saveToFile(const std::string& filename, int gameNumber) const;
+    void saveToFile(const std::string& filename, int gameNumber, int turn) const;
     std::array<Card,40> gameCards;
     std::array<Card,15> chanceCards;
     std::array<Card,16> communityChestCards;

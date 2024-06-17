@@ -241,15 +241,1635 @@
             "value": 39
         }
     ],
-    "date": "2024-06-17 12:44:50",
-    "gameNumber": 0,
+    "date": "2024-06-17 15:59:57",
+    "gameNumber": 1,
     "players": [
         {
-            "id": 0,
+            "id": 1,
             "jail": 0,
-            "money": 0,
-            "name": "",
-            "position": 0,
+            "money": 780,
+            "name": "Lise",
+            "position": 27,
+            "properties": [
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "bleu clair",
+                    "hotel": 0,
+                    "hotelCost": 50,
+                    "house": 0,
+                    "houseCost": 50,
+                    "name": "Abbaye des Prémontrés",
+                    "owned": 0,
+                    "position": 9,
+                    "price": 120,
+                    "rents": [
+                        8,
+                        40,
+                        100,
+                        300,
+                        450,
+                        600
+                    ],
+                    "type": 1
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "violet",
+                    "hotel": 0,
+                    "hotelCost": 100,
+                    "house": 0,
+                    "houseCost": 100,
+                    "name": "Crous Artem",
+                    "owned": 0,
+                    "position": 13,
+                    "price": 140,
+                    "rents": [
+                        10,
+                        50,
+                        150,
+                        450,
+                        625,
+                        750
+                    ],
+                    "type": 1
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "orange",
+                    "hotel": 0,
+                    "hotelCost": 100,
+                    "house": 0,
+                    "houseCost": 100,
+                    "name": "ENSAD",
+                    "owned": 0,
+                    "position": 19,
+                    "price": 200,
+                    "rents": [
+                        16,
+                        80,
+                        220,
+                        600,
+                        800,
+                        1000
+                    ],
+                    "type": 1
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "jaune",
+                    "hotel": 0,
+                    "hotelCost": 150,
+                    "house": 0,
+                    "houseCost": 150,
+                    "name": "La Mare",
+                    "owned": 0,
+                    "position": 27,
+                    "price": 260,
+                    "rents": [
+                        22,
+                        110,
+                        330,
+                        800,
+                        975,
+                        1150
+                    ],
+                    "type": 1
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                }
+            ],
+            "type": 1
+        },
+        {
+            "id": 2,
+            "jail": 0,
+            "money": 956,
+            "name": "CHris",
+            "position": 28,
+            "properties": [
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "bleu clair",
+                    "hotel": 0,
+                    "hotelCost": 50,
+                    "house": 0,
+                    "houseCost": 50,
+                    "name": "La Plagne",
+                    "owned": 0,
+                    "position": 8,
+                    "price": 100,
+                    "rents": [
+                        6,
+                        30,
+                        90,
+                        270,
+                        400,
+                        550
+                    ],
+                    "type": 1
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "utility",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "Meuh",
+                    "owned": 0,
+                    "position": 12,
+                    "price": 150,
+                    "rents": [
+                        4,
+                        10,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 1
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "orange",
+                    "hotel": 0,
+                    "hotelCost": 100,
+                    "house": 0,
+                    "houseCost": 100,
+                    "name": "BU Artem",
+                    "owned": 0,
+                    "position": 18,
+                    "price": 180,
+                    "rents": [
+                        14,
+                        70,
+                        200,
+                        550,
+                        750,
+                        950
+                    ],
+                    "type": 1
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "utility",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "Le Bar",
+                    "owned": 0,
+                    "position": 28,
+                    "price": 150,
+                    "rents": [
+                        4,
+                        10,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 1
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                },
+                {
+                    "group": "",
+                    "hotel": 0,
+                    "hotelCost": 0,
+                    "house": 0,
+                    "houseCost": 0,
+                    "name": "",
+                    "owned": 0,
+                    "position": 0,
+                    "price": 0,
+                    "rents": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 0
+                }
+            ],
+            "type": 1
+        },
+        {
+            "id": 3,
+            "jail": 0,
+            "money": 1282,
+            "name": "Aymeri",
+            "position": 28,
             "properties": [
                 {
                     "group": "",
@@ -1052,1654 +2672,34 @@
                     "type": 0
                 }
             ],
-            "type": 0
+            "type": 1
         },
         {
-            "id": 0,
+            "id": 4,
             "jail": 0,
-            "money": 0,
-            "name": "",
-            "position": 0,
+            "money": 1282,
+            "name": "Alice (bot)",
+            "position": 28,
             "properties": [
                 {
-                    "group": "",
+                    "group": "marron",
                     "hotel": 0,
-                    "hotelCost": 0,
+                    "hotelCost": 50,
                     "house": 0,
-                    "houseCost": 0,
-                    "name": "",
+                    "houseCost": 50,
+                    "name": "Le Garden",
                     "owned": 0,
-                    "position": 0,
-                    "price": 0,
+                    "position": 1,
+                    "price": 60,
                     "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
+                        2,
+                        10,
+                        30,
+                        90,
+                        160,
+                        250
                     ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                }
-            ],
-            "type": 0
-        },
-        {
-            "id": 0,
-            "jail": 0,
-            "money": 0,
-            "name": "",
-            "position": 0,
-            "properties": [
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                },
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
-                }
-            ],
-            "type": 0
-        },
-        {
-            "id": 0,
-            "jail": 0,
-            "money": 0,
-            "name": "",
-            "position": 0,
-            "properties": [
-                {
-                    "group": "",
-                    "hotel": 0,
-                    "hotelCost": 0,
-                    "house": 0,
-                    "houseCost": 0,
-                    "name": "",
-                    "owned": 0,
-                    "position": 0,
-                    "price": 0,
-                    "rents": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
-                    ],
-                    "type": 0
+                    "type": 1
                 },
                 {
                     "group": "",
@@ -3653,7 +3653,7 @@
             "house": 0,
             "houseCost": 50,
             "name": "La Plagne",
-            "owned": 0,
+            "owned": 2,
             "position": 8,
             "price": 100,
             "rents": [
@@ -3673,7 +3673,7 @@
             "house": 0,
             "houseCost": 50,
             "name": "Abbaye des Prémontrés",
-            "owned": 0,
+            "owned": 1,
             "position": 9,
             "price": 120,
             "rents": [
@@ -3733,7 +3733,7 @@
             "house": 0,
             "houseCost": 0,
             "name": "Meuh",
-            "owned": 0,
+            "owned": 2,
             "position": 12,
             "price": 150,
             "rents": [
@@ -3753,7 +3753,7 @@
             "house": 0,
             "houseCost": 100,
             "name": "Crous Artem",
-            "owned": 0,
+            "owned": 1,
             "position": 13,
             "price": 140,
             "rents": [
@@ -3853,7 +3853,7 @@
             "house": 0,
             "houseCost": 100,
             "name": "BU Artem",
-            "owned": 0,
+            "owned": 2,
             "position": 18,
             "price": 180,
             "rents": [
@@ -3873,7 +3873,7 @@
             "house": 0,
             "houseCost": 100,
             "name": "ENSAD",
-            "owned": 0,
+            "owned": 1,
             "position": 19,
             "price": 200,
             "rents": [
@@ -4033,7 +4033,7 @@
             "house": 0,
             "houseCost": 150,
             "name": "La Mare",
-            "owned": 0,
+            "owned": 1,
             "position": 27,
             "price": 260,
             "rents": [
@@ -4053,7 +4053,7 @@
             "house": 0,
             "houseCost": 0,
             "name": "Le Bar",
-            "owned": 0,
+            "owned": 2,
             "position": 28,
             "price": 150,
             "rents": [
@@ -4286,5 +4286,6 @@
             ],
             "type": 1
         }
-    ]
+    ],
+    "turn": 4
 }

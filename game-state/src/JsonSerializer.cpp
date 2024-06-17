@@ -10,7 +10,7 @@
 using json = nlohmann::json;
 
 
-void JsonSerializer::serialize(const Board& board, const std::string& filename, int gameNumber) {
+void JsonSerializer::serialize(const Board& board, const std::string& filename, int gameNumber, int turn) {
     json data;
     // Sérialiser les cases
 
@@ -49,6 +49,7 @@ void JsonSerializer::serialize(const Board& board, const std::string& filename, 
         data["date"] = date_str;
     }
     data["gameNumber"] = gameNumber;
+    data["turn"] = turn;
 
     // Écrire le fichier
     std::cout << filename << std::endl;
@@ -64,6 +65,9 @@ void JsonSerializer::deserialize(Board& board, const std::string& filename) {
         return;
     }
     json data = json::parse(file);
+    //Fermer le fichier
+    file.close();
+
     // Désérialiser les cases
     std::vector<Property> properties;
     for (const auto& property_json : data["properties"]) {
@@ -72,6 +76,7 @@ void JsonSerializer::deserialize(Board& board, const std::string& filename) {
         properties.push_back(property);
         board._tiles[property.id()] = property;
     }
+
     // Désérialiser les cartes
     std::vector<Card> cards;
     for (const auto& card_json : data["cards"]) {
@@ -80,19 +85,35 @@ void JsonSerializer::deserialize(Board& board, const std::string& filename) {
         cards.push_back(card);
         board._cards[card.getId()] = card;
     }
+    //Déserialiser le numéro de la partie et le tour
+    if (data.contains("gameNumber") && data.contains("turn")) {
+        board.gameNumber = data["gameNumber"];
+        board.turn = data["turn"];
+    }
 
     // Désérialiser les joueurs
     for (const auto& player_json : data["players"]) {
         Player player;
         player.from_json(player_json, player);
-        board.players[player.getId()] = player;
+        //std::cout << "Deserialising player " << player.getId() << std::endl;
+        //std::cout << "named " << player.getPlayerName() << std::endl;
+        //std::cout << player._properties[0].name() << std::endl;
+        board.players[player.getId()-1] = player;
     }
+
+    //std::cout << board.players[0].getPlayerName() << std::endl;
 
     // Afficher les noms des propriétés
     /*std::cout << "\nNoms des propriétés :" << std::endl;
     for (auto& property : properties) {
         std::cout << "Property: " << property.name() << std::endl;
+    }
+    // Afficher les noms des joueurs chargés
+    std::cout << "\nNoms des joueurs chargés :" << std::endl;
+    for (auto& player : board.players) {
+        std::cout << "Player: " << player.getPlayerName() << std::endl;
     }*/
+
 }
 
 void JsonSerializer::to_json(json& j, const Board& board) {

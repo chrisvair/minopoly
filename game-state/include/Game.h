@@ -20,6 +20,7 @@ private:
     int _bank = 10000;
     int _communityBank = 0;
     Board _board{};
+    int _turn = 0;
 
 public:
     Game(){}
