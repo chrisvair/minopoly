@@ -31,10 +31,13 @@ MainWindow::MainWindow(QWidget *parent)
     // By default the buttons for the card display are hidden
     ui->BuyButton->hide();
     ui->PassButton->hide();
+    ui->PayRentButton->hide();
+    ui->BuildButton->hide();
     ui->gridLayoutWidget_2->hide();
     ui->gridLayoutWidget_3->hide();
     ui->gridLayoutWidget_4->hide();
     ui->gridLayoutWidget_5->hide();
+    ui->gridLayoutWidget_6->hide();
 
     // Initially, we disable the roll button until the player has entered the players' names
     ui->Roll->setDisabled(true);
@@ -52,11 +55,14 @@ MainWindow::MainWindow(QWidget *parent)
         // Backend only supports std::string, not QString
         // TODO(backend): Call addPlayer(player_name.toStdString())
 
+        int initial_balance = 0; // TODO(backend): update balance
+
         // Create new list item for player and add it so new player is displayed in UI
         int current_player_number = ui->PlayerList->count();
         QString player_icon_path = QString("Minopoly/Assets/Player%1.png").arg(current_player_number + 1);
         // TODO(UI): Show balance next to name, or show it somewhere else?
-        QListWidgetItem* new_player_item = new QListWidgetItem(QIcon(QPixmap(player_icon_path)), player_name);
+        QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(initial_balance);
+        QListWidgetItem* new_player_item = new QListWidgetItem(QIcon(QPixmap(player_icon_path)), player_display_text);
         ui->PlayerList->addItem(new_player_item);
 
         // Mark whose player's turn it is
@@ -71,9 +77,9 @@ MainWindow::MainWindow(QWidget *parent)
         if (menu.ui->nbPlayers->currentText().toInt() == ui->PlayerList->count()) {
             ui->NameEnterEdit->setDisabled(true);
             ui->Roll->setDisabled(false);
-            // // Hide the name entry related UI elements: hiding also the cards, but why?
-            // ui->NameEnterEdit->hide();
-            // ui->NameEnterQuestion->hide();
+            // // Hide the name entry related UI elements:
+            ui->NameEnterEdit->hide();
+            ui->NameEnterQuestion->hide();
         }
     });
 
@@ -87,11 +93,24 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     connect(ui->PassButton, &QPushButton::clicked, this, [&](){
-
-
         nextMove();
     });
 
+    // Paying rent action
+    connect(ui->PayRentButton, &QPushButton::clicked, this, [&]() {
+        // TODO(backend): Reduce player money
+        // TODO(backend): Increase oponents money
+        ui->PayRentButton->hide();
+        nextMove();
+    });
+
+    // Building
+    connect(ui->BuildButton, &QPushButton::clicked, this, [&]() {
+        // TODO(backend): Handle the building action
+
+        ui->BuildButton->hide();
+        nextMove();
+    });
 }
 
 void MainWindow::initializePlay()
@@ -146,13 +165,29 @@ void MainWindow::rollDice() {
     // Show card in display area
     paintCard(position);
 
-    // Show buttons
-    ui->BuyButton->show();
-    ui->PassButton->show();
+    bool card_status = true; // TODO (Backend): set the status of the card
+    int card_owner = 0; // TODO (Backend): set the card owner
+    int card_type = 1; // TODO (Backend): set the type of cards, int or str but change types everywhere in code
 
-    // Print card value in text field
-    int card_value = 100;// TODO: Get from backend
-    ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
+    // Show buttons
+    if (card_status == false){
+        ui->PassButton->show();
+        ui->BuyButton->show();
+        // Print card value in text field
+        int card_value = 100;// TODO: Get from backend
+        ui->BuyButton->setText(QString("Acheter $%1").arg(card_value));
+    }else if (card_status == true && player_number == card_owner && card_type == 1) {
+        ui->PassButton->show();
+        ui->BuildButton->show();
+    } else if (card_status == true && player_number != card_owner && (card_type == 1 or card_type == 1)) { // 1=property 2=station
+        ui->PayRentButton->show();
+        // Print rent value in text field
+        int rent_value = 100;// TODO: Get from backend
+        ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
+    } else{
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
+    }
 
     player_number += 1;
     player_number %= 2;
@@ -177,11 +212,13 @@ void MainWindow::paintPlayer(int i, int position) {
 }
 
 void MainWindow::paintCard(int position) {
-    int card_type = 2;
+    int card_type = 1; //TO DO: backend : choose type of card
     if(card_type == 1){
         paintProperty(position);
     }else if (card_type == 2){
         paintStation(position);
+    }else if (card_type == 3){
+        paintChance();
     }
 }
 
@@ -281,6 +318,33 @@ void MainWindow::paintStation(int position) { // Get the details of the card thr
     ui->gridLayoutWidget_5->show();
 }
 
+void MainWindow::paintChance() { // Get the details of the card through position
+    auto card_pixmap = QPixmap(QString("Minopoly/Assets/card_background.png"));
+    ui->CardBackground->setPixmap(card_pixmap);
+    ui->CardBackground->setScaledContents(true);
+
+    auto logo_pixmap = QPixmap(QString("Minopoly/Assets/chance_logo.png"));
+    ui->ChanceLogo->setPixmap(logo_pixmap);
+    ui->ChanceLogo->setScaledContents(true);
+
+    //Set card
+    QString ChanceAction = "Fait ca!"; // TODO(backend): description
+    ui->ChanceAction->setText(ChanceAction);
+
+    // Show the vertical layout widget with the card details
+    ui->gridLayoutWidget_6->show();
+
+    int chance_type = 1; //TODO: (1 money ++, 2 money --, 3 chance player position)
+    if (chance_type == 1){
+        //TODO: 1 money ++
+    } else if (chance_type == 2){
+        //TODO: 2 money --
+    } else{
+        int player = 0; //TODO: find player and update potition of backend
+        paintPlayer(player, 0);
+    }
+}
+
 void MainWindow::paintActivePlayer(int player_number) {
     ui->PlayerList->item(player_number)->setBackground(Qt::lightGray);
 }
@@ -299,9 +363,19 @@ void MainWindow::nextMove() {
     ui->gridLayoutWidget_3->hide();
     ui->gridLayoutWidget_4->hide();
     ui->gridLayoutWidget_5->hide();
+    ui->gridLayoutWidget_6->hide();
 
 
     ui->Roll->setDisabled(false);
+
+    // TODO(backend): Retrieve all player balances from the backend
+    std::vector<int> balances = {10, 20};
+    // Update the display for each player
+    for (int i = 0; i < balances.size(); ++i) {
+        QString player_name = ui->PlayerList->item(i)->text().split(" - ")[0];
+        QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(balances[i]);
+        ui->PlayerList->item(i)->setText(player_display_text);
+    }
 
     // TODO(backend): Switch active player
     static int currently_active_player = 0;
