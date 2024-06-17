@@ -60,25 +60,11 @@ bool Player::sellProperty() {
 }
 
 void Player::buyProperty(Property& property) {
-    std::string answer;
-    std::cout << "This property is not owned" << std::endl;
     if (_money >= property.price()) {
-        std::cout << "Do you want to buy the property, it costs " << property.price() << " $$ ? (y/n)" << std::endl;
-        std::cin >> answer;
-        if (answer == "y") {
-            std::cout << "You buy the property" << std::endl;
-            _properties[property.id()] = property;
-            std::cout << "Property id : " << property.id() << std::endl;
-            property.setOwned(_id);
-            std::cout << "Property owner : " << property.owned() << std::endl;
-            takeMoney(property.price());
-            std::cout << "Your money : " << _money << std::endl;
-        } else if (answer == "n"){
-            std::cout << "You don't buy the property" << std::endl;
-        }
-        return;
+        _properties[property.getId()] = property;
+        property.setOwned(_id);
+        takeMoney(property.price());
     }
-    std::cout << "You don't have enough money to buy the property" << std::endl;
 }
 
 void Player::buyPropertyFromTheBank(Property& property) {

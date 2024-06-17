@@ -135,6 +135,10 @@ public:
     int rent();
 
     void isSell();
+
+    int getType() {
+        return _type;
+    }
 };
 
 
