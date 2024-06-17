@@ -14,8 +14,9 @@
 
 class Board {
 protected:
+
+    std::array<Property,40> _tiles;
     std::array<Card,40> _cards; //the board has 40 cards
-    std::array<Property,40> _tiles; //the board has 40 tiles
 
 public:
     Board(){}

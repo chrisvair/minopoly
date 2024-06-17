@@ -11,14 +11,18 @@
 void Game::start() {
     //initialize the game
 
+
     Board board = Board();
     // TODO: choisir le file qu'on importe (partie sauvegardée) ou celle par défaut (nouvelle partie)
     board.loadBoard("game-state/assets/monopoly.json");
+
+  
+    auto players = std::array<Player,4>{};
+    _players = players;
     _board = board;
-    _players = board.players;
+    //_players = board.players;
     // TODO: load the players from a file if they exist and if not, create them with the following code
-    std::cout << "Welcome to Monopoly" << std::endl;
-    selectNumberOfPlayers();
+    //selectNumberOfPlayers();
 }
 
 void Game::play() {
@@ -27,10 +31,9 @@ void Game::play() {
         std::cout << "Turn number :  " << i+1 << std::endl;
         for (int j = 0; j < _players.size(); j++) {
             std::cout << "" << std::endl;
-            std::cout << "It's "<< _players[j].getPlayerName() << "'s turn" << std::endl;
-            this->nextTurn(_players[j]);
+            std::cout << "It's "<< _players[j].getPlayerName() << " turn" << std::endl;
+            // this->nextTurn(_players[j]);
             if (_players[j].isBankrupt()) {
-                std::cout << "You are bankrupt, you lose" << std::endl;
                 return;
             }
         }
@@ -42,63 +45,51 @@ void end() {
     //end the game
 }
 
-void Game::nextTurn(Player &player) {
-    srand(time(0));
-    std::string answer;
+void Game::nextTurn() {
+    _currentPlayer++;
+    if (_currentPlayer == _nbPlayers + 1) {
+        _currentPlayer = 1;
+    }
 
-
+    Player player = _players[_currentPlayer-1];
     //if in jail we check if you can get out of it
     if (player.isInJail() == 3) {
-        std::cout << "You were in jail for 3 turn, you can get out of jail" << std::endl;
         player.getOutOfJail();
-        return;
+        nextTurn();
     }
-    if (player.isInJail() != 0) {
-        std::cout << "You are in jail, you have " << 3-player.isInJail() << " turns left" << std::endl;
-        //check if the player can get out of jail with a card
-        if (player.getNumberOfGetOutOfJailCard() > 0) {
-            std::cout << "You can get out of jail with a card, do you want to use it ? (y/n)" << std::endl;
-            std::cin >> answer;
-            if (answer == "y") {
-                std::cout << "You use a card to get out of jail" << std::endl;
-                player.useOutOfJailCard();
-                return;
-            }
-        }
-    }
-
-    // if you can't get out with a card, you roll the dices
-    int dice1 = rand() % 6 + 1;
-    int dice2 = rand() % 6 + 1;
-    // check if you have a double
-    bool doubleDice = (dice1 == dice2);
-
-    // if in jail
-    if (player.isInJail() != 0){
-        // free if double
-        if (doubleDice){
-            std::cout << "You rolled a " << dice1 << " and a " << dice2 << std::endl;
-            std::cout << "You are in jail but you are freed by your double" << std::endl;
-            player.getOutOfJail();
-            return;
-        }
+    else if(player.isInJail()!=0) {
         player.oneMoreTurnInJail();
-        return;
+        nextTurn();
     }
 
-    player.move(dice1 + dice2);
-    std::cout << "You rolled a " << dice1 << " and a " << dice2 << std::endl;
-    std::cout << "Position : " << player.getPosition() << " Money : "<< player.getMoneyAmount() << std::endl;
-    this->onLand(player);
 
-    if (player.isBankrupt()) {
-        return;
-    }
 
-    if (doubleDice) {
-        std::cout << "you play again" << std::endl;
-        return this->nextTurn(player);
-    }
+    // // if in jail
+    // if (player.isInJail() != 0){
+    //     // free if double
+    //     if (doubleDice){
+    //         std::cout << "You rolled a " << dice1 << " and a " << dice2 << std::endl;
+    //         std::cout << "You are in jail but you are freed by your double" << std::endl;
+    //         player.getOutOfJail();
+    //         return;
+    //     }
+    //     player.oneMoreTurnInJail();
+    //     return;
+    // }
+    //
+    // player.move(dice1 + dice2);
+    // std::cout << "You rolled a " << dice1 << " and a " << dice2 << std::endl;
+    // std::cout << "Position : " << player.getPosition() << " Money : "<< player.getMoneyAmount() << std::endl;
+    // this->onLand(player);
+    //
+    // if (player.isBankrupt()) {
+    //     return;
+    // }
+    //
+    // if (doubleDice) {
+    //     std::cout << "you play again" << std::endl;
+    //     return this->nextTurn(player);
+    // }
 }
 
 void Game::onLand(Player& player) {

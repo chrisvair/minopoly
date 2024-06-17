@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 13.0.1, 2024-05-26T18:18:06. -->
+<!-- Written by QtCreator 13.0.1, 2024-06-16T19:56:18. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -234,10 +234,11 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Minopoly</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.Minopoly</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">Minopoly</value>
-    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">true</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory">/Users/christinavairelles/Desktop/mines/Mines_S8/C++/project/minopoly</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/Users/christinavairelles/Desktop/mines/Mines_S8/C++/project/minopoly/build/Qt_6_7_1_for_macOS-Debug/Minopoly/Minopoly.app/Contents/MacOS</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
