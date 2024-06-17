@@ -10,15 +10,50 @@
 using json = nlohmann::json;
 
 
-void JsonSerializer::serialize(const Board& board, const std::string& filename) {
-    std::ofstream file(filename);
-    if (!file.is_open()) {
-        std::cerr << "Impossible d'ouvrir le fichier " << filename << std::endl;
-        return;
+void JsonSerializer::serialize(const Board& board, const std::string& filename, int gameNumber) {
+    json data;
+    // Sérialiser les cases
+
+    std::cout << "Serializing properties" << std::endl;
+    for (const auto& property : board._tiles) {
+        json property_json;
+        property.to_json(property_json, property);
+        data["properties"].push_back(property_json);
     }
-    nlohmann::json jsonData;
-    to_json(jsonData, board);
-    file << jsonData.dump(4);
+
+    // Sérialiser les cartes
+    std::cout << "Serializing cards" << std::endl;
+    for (const auto& card : board._cards) {
+        json card_json;
+        card.to_json(card_json, card);
+        data["cards"].push_back(card_json);
+    }
+
+
+    // Sérialiser les joueurs
+    std::cout << "Serializing players" << std::endl;
+    for (const auto& player : board.players) {
+        json player_json;
+        std::cout << player.getId() << std::endl;
+        std::cout << player._money << std::endl;
+        player.to_json(player_json, player);
+        std::cout << player_json << std::endl;
+        data["players"].push_back(player_json);
+    }
+
+    // Ajouter la date et le numéro de la partie
+    // Obtenir la date courante
+    std::time_t t = std::time(nullptr);
+    char date_str[100];
+    if (std::strftime(date_str, sizeof(date_str), "%Y-%m-%d %H:%M:%S", std::localtime(&t))) {
+        data["date"] = date_str;
+    }
+    data["gameNumber"] = gameNumber;
+
+    // Écrire le fichier
+    std::cout << filename << std::endl;
+    std::ofstream file(filename);
+    file << data.dump(4);
     file.close();
 }
 

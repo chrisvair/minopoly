@@ -33,6 +33,8 @@ private:
     bool _issBankrupt = false;
     std::string strategy;
 
+    friend class JsonSerializer;
+
 
 
 
@@ -166,6 +168,21 @@ public:
                 player._properties[i] = property;
             }
         }
+    }
+    void to_json(json& j, const Player& player) const {
+        j = json{{"type", player._type},
+                 {"id", player._id},
+                 {"name", player._name},
+                 {"money", player._money},
+                 {"position", player._position},
+                 {"jail", player._jail}};
+        json properties;
+        for (const auto& property : player._properties) {
+            json property_json;
+            property.to_json(property_json, property);
+            properties.push_back(property_json);
+        }
+        j["properties"] = properties;
     }
 };
 

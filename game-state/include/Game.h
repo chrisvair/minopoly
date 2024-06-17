@@ -78,6 +78,7 @@ public:
     void saveBoard(const std::string& filename) const;
     void onLand(Player &player);
     void selectNumberOfPlayers();
+    void chooseGame();
 };
 
 

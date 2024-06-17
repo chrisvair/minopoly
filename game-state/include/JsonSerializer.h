@@ -13,7 +13,7 @@
 
 class JsonSerializer {
 public:
-    static void serialize(const Board& board, const std::string& filename);
+    static void serialize(const Board& board, const std::string& filename, int gameNumber);
     static void deserialize(Board& board, const std::string& filename);
     static void loadBots(Board& board, const std::string& filename);
 
