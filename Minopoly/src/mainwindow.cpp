@@ -2,6 +2,8 @@
 #include "./ui_mainwindow.h"
 #include "game-state/GameState.h"
 #include "Property.h"
+#include "Player.h"
+#include <array>
 
 #include "menudialog.h"
 #include "ui_menudialog.h"
@@ -50,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->NameEnterEdit, &QLineEdit::returnPressed, this, [&]() {
         QString player_name = ui->NameEnterEdit->text();
         // Backend only supports std::string, not QString
-        // TODO(backend): Call addPlayer(player_name.toStdString())
+        _game.addPlayer(player_name.toStdString());
 
         // Create new list item for player and add it so new player is displayed in UI
         int current_player_number = ui->PlayerList->count();
@@ -80,15 +82,13 @@ MainWindow::MainWindow(QWidget *parent)
     // Buying action
     connect(ui->BuyButton, &QPushButton::clicked, this, [&]() {
         // TODO(backend): Reduce player money
-
+        _game.buyProperty(); // TODO: Get price from backend
         // TODO(UI): Somehow mark field as bought on the map (?)
 
         nextMove();
     });
 
     connect(ui->PassButton, &QPushButton::clicked, this, [&](){
-
-
         nextMove();
     });
 
@@ -121,30 +121,44 @@ void MainWindow::initializePlay()
 
 void MainWindow::rollDice() {
     // Call backend to get current player (TODO?)
-    static int player_number = 0;
+    static int player_number = _game.getCurrentPlayer();
 
-    int die1 = QRandomGenerator::global()->bounded(1, 7);
-    int die2 = QRandomGenerator::global()->bounded(1, 7);
+    std::array<int,2> dices = _game.rollDice();
+    int die1 = dices[0];
+    int die2 = dices[1];
 
-    qInfo() << die1;
-    qInfo() << die2;
+    // qInfo() << die1;
+    // qInfo() << die2;
 
     paintDice(die1, die2);
 
     // Update player position according to dice
-    // 1. Get player position from backend
-    int position = 0;
 
-    // 2. New position due to dice
-    position += die1 + die2;
+    // 1. New position due to dice
+    int position = _game.movePlayer(player_number, die1+die2);
 
     // 3. Paint player at new position
     paintPlayer(player_number, position);
 
-    // 4. Send updated position to backend (TODO?)
-
     // Show card in display area
-    paintCard(position);
+    int typeCard = _game.getTypeProperty(position);
+    if (typeCard == 1) {
+        paintProperty(position);
+    }
+    else if (typeCard == 2) {
+        //paintStation(position);
+        //TODO : paint jail card
+    }
+    else if (typeCard == 3) {
+        //TODO : paint tax card
+    } else if (typeCard == 4) {
+        //TODO : paint chance card
+    } else if (typeCard == 5) {
+        //TODO : paint community chest card
+    } else if (typeCard == 0) {
+        //TODO : paint start card
+    }
+    //paintCard(position);
 
     // Show buttons
     ui->BuyButton->show();
@@ -155,7 +169,10 @@ void MainWindow::rollDice() {
     ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
 
     player_number += 1;
-    player_number %= 2;
+    player_number %= 4;
+    if (player_number == 0) {
+        player_number = 1;
+    }
 }
 
 void MainWindow::paintDice(int die1, int die2) {
@@ -177,7 +194,7 @@ void MainWindow::paintPlayer(int i, int position) {
 }
 
 void MainWindow::paintCard(int position) {
-    int card_type = 2;
+    int card_type = _game.getTypeProperty(position); // TODO : Get card type from backend
     if(card_type == 1){
         paintProperty(position);
     }else if (card_type == 2){
@@ -303,8 +320,10 @@ void MainWindow::nextMove() {
 
     ui->Roll->setDisabled(false);
 
-    // TODO(backend): Switch active player
-    static int currently_active_player = 0;
+
+    _game.nextTurn();
+
+    static int currently_active_player = _game.getCurrentPlayer();
     paintInactivePlayer(currently_active_player);
     currently_active_player = (currently_active_player + 1) % 2;
     paintActivePlayer(currently_active_player);

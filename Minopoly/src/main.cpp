@@ -7,11 +7,11 @@
 
 int main(int argc, char *argv[])
 {
-    auto game = Game();
+    // auto game = Game();
+    //
+    // game.start();
 
-    game.start();
-
-    game.play();
+    //game.play();
 
     QApplication a(argc, argv);
     MainWindow w;
