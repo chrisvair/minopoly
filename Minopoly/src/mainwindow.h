@@ -5,7 +5,6 @@
 #include <QLabel>
 #include <QRandomGenerator>
 #include "menudialog.h"
-#include "Game.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,12 +30,14 @@ private slots:
     void paintProperty(int position);
     void paintStation(int position);
     void paintChance();
+    void paintTreasure();
+    void paintCardByPosition(int position);
 
 private:
     Ui::MainWindow *ui;
     MenuDialog menu;
     QLabel* lbArr[6]; // Adjust the size according to the maximum number of players
-    Game _game{0,std::array<Player,4>(), 20, 10000, 0, Board()};
+
     std::pair<int, int> getPlayerPosition(int position);
     std::map<std::string, int> dictionnaire = {{"marron", 1}, {"bleu clair", 2}, {"violet", 3},{"orange", 4}, {"rouge", 5}, {"jaune", 6},{"vert", 7}, {"bleu foncé", 8}};
 

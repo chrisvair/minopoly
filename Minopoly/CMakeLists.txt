@@ -17,7 +17,6 @@ set(PROJECT_SOURCES
         #src/menu.h
 
         src/mainwindow.ui
-        src/menudialog.cpp
         #src/menu.ui
 
         # src/assets.qrc
