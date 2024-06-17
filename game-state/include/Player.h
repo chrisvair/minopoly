@@ -34,6 +34,8 @@ private:
     std::string strategy;
 
 
+
+
 public:
     Player(){}
     Player(int type, int id, string name, int money, int position, int jail){
