@@ -30,6 +30,7 @@ private slots:
     void nextMove();
     void paintProperty(int position);
     void paintStation(int position);
+    void paintChance();
 
 private:
     Ui::MainWindow *ui;
