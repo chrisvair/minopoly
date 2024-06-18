@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QLabel>
-#include <QRandomGenerator>
 #include "menudialog.h"
 #include "Game.h"
 
