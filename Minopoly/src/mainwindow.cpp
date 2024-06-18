@@ -57,11 +57,11 @@ MainWindow::MainWindow(QWidget *parent)
         // Backend only supports std::string, not QString
         _game.addPlayer(player_name.toStdString());
 
-        int initial_balance = 0; // TODO(backend): update balance
 
         // Create new list item for player and add it so new player is displayed in UI
         {
             int current_player_number = ui->PlayerList->count();
+            int initial_balance = _game.getPlayerBalance(current_player_number+1); // TODO(backend): update balanc
             QString player_icon_path = QString("Minopoly/Assets/Player%1.png").arg(current_player_number + 1);
             QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(initial_balance);
             QListWidgetItem* new_player_item = new QListWidgetItem(QIcon(QPixmap(player_icon_path)), player_display_text);
@@ -190,7 +190,6 @@ void MainWindow::rollDice() {
         paintPlayer(player_number-1, _game.getPlayerPosition(_game.getCurrentPlayer()));
         ui->PassButton->show();
         paintCardByPosition(position);
-        //TODO : paint jail card
     } else if (typeCard == 6) {
         paintStation(position);
         ui->PassButton->show();
@@ -204,7 +203,7 @@ void MainWindow::rollDice() {
             }
         } else {
             // Print rent value in text field
-            int rent_value = _game.getPropertyRent(position);// TODO: Get from backend
+            int rent_value = _game.getPropertyRent(position);
             ui->PayRentButton->show();
             ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
         }
@@ -268,7 +267,7 @@ void MainWindow::paintProperty(int position){ // Get the colour and all the deta
     ui->CardBackground->setPixmap(card_pixmap);
     ui->CardBackground->setScaledContents(true);
 
-    int colour = dictionnaire[_game.getColor(position)]; // TODO(backend): choode colour
+    int colour = dictionnaire[_game.getColor(position)];
     auto colour_pixmap = QPixmap(QString("Minopoly/Assets/colour%1.png").arg(colour));
     ui->Colour->setPixmap(colour_pixmap);
     ui->Colour->setScaledContents(true);
@@ -279,17 +278,17 @@ void MainWindow::paintProperty(int position){ // Get the colour and all the deta
     ui->InfoBackground->setScaledContents(true);
 
     //Set card
-    QString name = QString::fromStdString(_game.getPropertyName(position)); // TODO(backend)
-    QString hotelPrice = QString::number(_game.getHostelPrice(position)); // TODO(backend)
-    QString housePrice = QString::number(_game.getHousePrice(position)); // TODO(backend)
-    QString price = QString::number(_game.getPriceProperty(position)); // TODO(backend)
-    std::array<int,6> rents = _game.getPropertyRents(position); // TODO(backend)
-    QString rent0H = QString::number(rents[0]); // TODO(backend)
-    QString rent1H = QString::number(rents[1]); // TODO(backend)
-    QString rent2H = QString::number(rents[2]); // TODO(backend)
-    QString rent3H = QString::number(rents[3]); // TODO(backend)
-    QString rent4H = QString::number(rents[4]); // TODO(backend)
-    QString rentHotel = QString::number(rents[5]); // TODO(backend)
+    QString name = QString::fromStdString(_game.getPropertyName(position));
+    QString hotelPrice = QString::number(_game.getHostelPrice(position));
+    QString housePrice = QString::number(_game.getHousePrice(position));
+    QString price = QString::number(_game.getPriceProperty(position));
+    std::array<int,6> rents = _game.getPropertyRents(position);
+    QString rent0H = QString::number(rents[0]);
+    QString rent1H = QString::number(rents[1]);
+    QString rent2H = QString::number(rents[2]);
+    QString rent3H = QString::number(rents[3]);
+    QString rent4H = QString::number(rents[4]);
+    QString rentHotel = QString::number(rents[5]);
     ui->NameLabel->setText(name);
     ui->PriceHotelLabel->setText(hotelPrice);
     ui->PriceHouseLabel->setText(housePrice);
@@ -304,9 +303,9 @@ void MainWindow::paintProperty(int position){ // Get the colour and all the deta
 
     // Set card details based on position (replace with actual game logic)
     QString owner = QString::fromStdString(_game.getPlayerName(_game.getOwnerProperty(position))); // TODO(backend)
-    QString rent = QString::number(_game.getPropertyRent(position)); // TODO(backend)
-    QString houses = QString::number(_game.getNumberhouse(position)); // TODO(backend)
-    QString hotels = QString::number(_game.getNumberhostel(position)); // TODO(backend)
+    QString rent = QString::number(_game.getPropertyRent(position));
+    QString houses = QString::number(_game.getNumberhouse(position));
+    QString hotels = QString::number(_game.getNumberhostel(position));
     ui->OwnerLabel->setText(owner);
     ui->RentLabel->setText(rent);
     ui->HousesLabel->setText(houses);
@@ -346,10 +345,10 @@ void MainWindow::paintStation(int position) { // Get the details of the card thr
 
 
     // Set Stations Details
-    QString owner1 = QString::fromStdString(_game.owner(5)); // TODO(backend)
-    QString owner2 = QString::fromStdString(_game.owner(15)); // TODO(backend)
-    QString owner3 = QString::fromStdString(_game.owner(25)); // TODO(backend)
-    QString owner4 = QString::fromStdString(_game.owner(35)); // TODO(backend)
+    QString owner1 = QString::fromStdString(_game.owner(5));
+    QString owner2 = QString::fromStdString(_game.owner(15));
+    QString owner3 = QString::fromStdString(_game.owner(25));
+    QString owner4 = QString::fromStdString(_game.owner(35));
     ui->Station1OwnerLabel->setText(owner1);
     ui->Station2OwnerLabel->setText(owner2);
     ui->Station3OwnerLabel->setText(owner3);
@@ -371,19 +370,6 @@ void MainWindow::paintCardByPosition(int position) { // Get the details of the c
     auto card_pixmap = QPixmap(QString("Minopoly/Assets/card%1.png").arg(position));
     ui->CardsQLabel->setPixmap(card_pixmap);
     ui->CardsQLabel->setScaledContents(true);
-    int player = 0; // TODO: Backend get player
-    // if (position == 4){
-    //     //TODO: Backend - 200 Frais scol
-    // } else if (position == 12){
-    //     //TODO: Backend  - 150 MEUH
-    // } else if (position == 28){
-    //     //TODO: Backend  - 150 BAR
-    // } else if (position == 30){
-    //     //TODO: Backend  change position to 10 //meshaka aller en prison
-    //     paintPlayer(player, 10);
-    // } else if (position == 38){
-    //     //TODO: Backend  - 100 cotise BDE
-    // }
 }
 
 void MainWindow::paintChance() { // Get the details of the card through position
