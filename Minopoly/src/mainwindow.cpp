@@ -476,8 +476,6 @@ void MainWindow::setPlayerList() {
     _game.addPlayer(player_name.toStdString());
 
     int current_player_number = ui->PlayerList->count();
-    std::cout << "Player " << current_player_number + 1 << " is " << player_name.toStdString() << std::endl;
-    std::cout << "They are currently " << _game.getNumberPlayer() << " players." << std::endl;
 
     // Create new list item for player and add it so new player is displayed in UI
     {
