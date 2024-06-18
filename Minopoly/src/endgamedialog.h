@@ -2,6 +2,7 @@
 #define ENDGAMEDIALOG_H
 
 #include <QDialog>
+#include "ui_endgamedialog.h"
 
 namespace Ui {
 class EndGameDialog;

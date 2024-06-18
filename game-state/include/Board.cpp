@@ -1,7 +1,3 @@
-//
-// Created by lise babé on 22/05/2024.
-//
-
 #include "Board.h"
 #include "JsonSerializer.h"
 #include "nlohmann/json.hpp"
@@ -16,7 +12,6 @@ void Board::loadBoard(const std::string& filename) {
 void Board::saveBoard(const std::string& filename) const {
     saveToFile(filename);
 }
-
 
 void Board::loadFromFile(const std::string& filename) {
     JsonSerializer::deserialize(*this, filename);

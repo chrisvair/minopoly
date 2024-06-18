@@ -1,23 +1,14 @@
-//
-// Created by lise babé on 22/05/2024.
-//
-
 #ifndef PROPERTY_H
 #define PROPERTY_H
-#include "Tile.h"
+
 #include <string>
 #include <array>
 #include <utility>
 #include <iostream>
 #include <nlohmann/json.hpp>
 
-
-
-
-
 class Property {
 protected:
-
     int _type;
     std::string _name;
     int _position;
@@ -32,11 +23,7 @@ protected:
     int _hotelCost;
 
 public:
-
     Property()= default;
-
-
-
     Property(int type, std::string name, int position, int price, std::string group, int owned,
         const std::array<int, 6> &rents)
         : _price(price),
@@ -48,10 +35,16 @@ public:
           _position(position),
           _id(position){};
 
+    void from_json(const nlohmann::json& j, Property& property);
+
+    int rent();
+
+    void isSell();
 
     int getId() const {
         return _id;
     }
+
     int price() const {
         return _price;
     }
@@ -111,6 +104,7 @@ public:
     std::string name() {
         return _name;
     }
+
     int costHouse() {
         return _houseCost;
     }
@@ -118,23 +112,6 @@ public:
     int costHostel() {
         return _hotelCost;
     }
-
-    void from_json(const nlohmann::json& j, Property& property) {
-        j.at("type").get_to(property._type);
-        j.at("name").get_to(property._name);
-        j.at("position").get_to(property._position);
-        j.at("price").get_to(property._price);
-        j.at("group").get_to(property._group);
-        j.at("owned").get_to(property._owned);
-        j.at("rents").get_to(property._rents);
-        j.at("houseCost").get_to(property._houseCost);
-        j.at("hotelCost").get_to(property._hotelCost);
-        j.at("house").get_to(property._house);
-        j.at("hotel").get_to(property._hostel);
-    }
-    int rent();
-
-    void isSell();
 
     int getType() {
         return _type;
@@ -144,8 +121,5 @@ public:
         return _position;
     }
 };
-
-
-
 
 #endif //PROPERTY_H

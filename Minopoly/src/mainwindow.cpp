@@ -1,27 +1,10 @@
 #include "mainwindow.h"
-#include "./ui_mainwindow.h"
-#include "game-state/GameState.h"
-#include "Property.h"
-#include "Player.h"
-#include <array>
-
-#include "menudialog.h"
-#include "ui_menudialog.h"
-
-#include "endgamedialog.h"
-
-
-#include <QStyle>
-#include <utility>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    std::string s = ""; //ex of calling backend
-    Property p(1, s, 1, 1, s, 5, {1, 1, 1, 1, 1, 1}); //ex of calling backend
 
     // Transition with the menu window
     menu.setModal(true);// Makes the menu modal, meaning it blocks interaction with other windows until it's closed.

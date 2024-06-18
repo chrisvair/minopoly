@@ -4,8 +4,14 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QRandomGenerator>
+#include <array>
+#include <utility>
 #include "menudialog.h"
+#include "ui_menudialog.h"
+#include "endgamedialog.h"
 #include "Game.h"
+#include "./ui_mainwindow.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

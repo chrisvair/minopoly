@@ -1,12 +1,4 @@
-//
-// Created by lise babé on 22/05/2024.
-//
-
 #include "Game.h"
-#include <iostream>
-#include "Property.h"
-
-
 
 void Game::start() {
     //initialize the game
@@ -34,11 +26,6 @@ void Game::play() {
             }
         }
     }
-}
-
-void end() {
-    // TODO: save the game
-    //end the game
 }
 
 void Game::nextTurn() {
@@ -176,6 +163,7 @@ void Game::selectNumberOfPlayers() {
         std::cout << _players[i].getPlayerName() << std::endl;
     }
 }
+
 int Game::playersBankrupt(){
     int nbPlayerBanrkurpt = 0;
     for (int i = 0; i < _players.size(); i++) {
@@ -193,4 +181,50 @@ std::string Game::getWinner() {
         }
     }
     return "Personne n'";
+}
+
+std::array<int,2> Game::rollDice() {
+    srand(time(0));
+    return {rand() % 6 + 1, rand() % 6 + 1};
+}
+
+void Game::addPlayer(std::string playerName) {
+    Player player = Player(1,_nbPlayers+1,playerName,1500,0,0);
+    _players[_nbPlayers] = player;
+    _nbPlayers++;
+}
+
+int Game::movePlayer(int amount) {
+    _players[_currentPlayer-1].move(amount);
+    return _players[_currentPlayer-1].getPosition();
+}
+
+void Game::build(int id) {
+    if (_board.getTile(id).house() == 4) {
+        _players[_currentPlayer-1].buyHostel(_board.getTile(id));
+    }
+    else {
+        _players[_currentPlayer-1].buyHouse(_board.getTile(id));
+    }
+}
+
+void Game::payRent(){
+    int position = _players[_currentPlayer-1].getPosition();
+    _players[_currentPlayer-1].payRent(_players[_board.getTile(position).owned()-1],_board.getTile(position));
+}
+
+void Game::payTax() {
+    _players[_currentPlayer-1].payTax(_board.getTile(_players[_currentPlayer-1].getPosition()).price());
+    _communityBank += _board.getTile(_players[_currentPlayer-1].getPosition()).price();
+}
+
+void Game::winCommunityChest() {
+    _players[_currentPlayer-1].giveMoney(_communityBank);
+    emptyCommunityBank();
+}
+
+std::string Game::doActionCard() {
+    Card newCard = _board.drawCard(rand() % 40);
+    _board.doAction(newCard, _players[_currentPlayer-1]);
+    return newCard.action();
 }

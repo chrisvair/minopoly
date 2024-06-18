@@ -19,6 +19,7 @@ add_library(
         include/Game.cpp
         include/JsonSerializer.h
         src/JsonSerializer.cpp
+        include/Card.cpp
 
 )
 
