@@ -1,5 +1,7 @@
 #include "menudialog.h"
 #include "ui_menudialog.h"
+#include "Game.h"
+
 MenuDialog::MenuDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::MenuDialog)
@@ -10,9 +12,13 @@ MenuDialog::MenuDialog(QWidget *parent)
     //TODO (Backend): be able to pass the different games: mechanique des parties
     //ex:
     ui->gameSelection->addItem("Nouvelle Partie");
-    ui->gameSelection->addItem("Partie 1");
-    ui->gameSelection->addItem("Partie 2");
-    //TODO: Faire une boucle sur les parties stockees??
+    Game game = Game();
+    int numberOfSavedGames = game.getNumberOfSavedGames();
+    for(int i = 1; i <= numberOfSavedGames; i++)
+    {
+        QString a = QString::number(i);
+        ui->gameSelection->addItem("Partie " + a);
+    }
 
     for(int i = 2; i <= 4; i++)
     {
