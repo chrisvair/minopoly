@@ -38,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->gridLayoutWidget_4->hide();
     ui->gridLayoutWidget_5->hide();
     ui->gridLayoutWidget_6->hide();
+    ui->CardsQLabel->hide();
 
     // Initially, we disable the roll button until the player has entered the players' names
     ui->Roll->setDisabled(true);
@@ -212,7 +213,7 @@ void MainWindow::paintPlayer(int i, int position) {
 }
 
 void MainWindow::paintCard(int position) {
-    int card_type = 5; //TO DO: backend : choose type of card
+    int card_type = 4; //TO DO: backend : choose type of card
     if(card_type == 1){
         paintProperty(position);
     }else if (card_type == 2){
@@ -354,6 +355,7 @@ void MainWindow::paintTreasure() {
     ui->CardsQLabel->setPixmap(card_pixmap);
     ui->CardsQLabel->setScaledContents(true);
     //TODO (backend): add the money to the player
+    ui->CardsQLabel->show();
 }
 
 void MainWindow::paintCardByPosition(int position) { // Get the details of the card through position
@@ -373,6 +375,7 @@ void MainWindow::paintCardByPosition(int position) { // Get the details of the c
     } else if (position == 38){
         //TODO: Backend  - 100 cotise BDE
     }
+    ui->CardsQLabel->show();
 }
 
 void MainWindow::paintActivePlayer(int player_number) {
@@ -394,6 +397,7 @@ void MainWindow::nextMove() {
     ui->gridLayoutWidget_4->hide();
     ui->gridLayoutWidget_5->hide();
     ui->gridLayoutWidget_6->hide();
+    ui->CardsQLabel->hide();
 
 
     ui->Roll->setDisabled(false);
