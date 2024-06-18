@@ -19,7 +19,7 @@ private:
     // 3 is for moving
     // 4 is for going to jail
     // 5 is for getting out of jail
-    // 6 is for going to the start
+    // 6 is for moving according to a number
     int _type=0;
     string _action;
     int _value=0;

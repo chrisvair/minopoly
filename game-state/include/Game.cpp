@@ -45,47 +45,28 @@ void Game::nextTurn() {
     _currentPlayer++;
     if (_currentPlayer == _nbPlayers + 1) {
         _currentPlayer = 1;
+        _nbTurns--;
     }
-
-    Player player = _players[_currentPlayer-1];
+    if (_nbTurns == 0) {
+        _currentPlayer = -1;
+        return;
+    }
+    if (playersBankrupt() == _nbPlayers - 1) {
+        _currentPlayer = -2;
+        return;
+    }
+    Player& player = _players[_currentPlayer-1];
     //if in jail we check if you can get out of it
+    if (player.isBankrupt()) {
+        nextTurn();
+    }
     if (player.isInJail() == 3) {
         player.getOutOfJail();
         nextTurn();
-    }
-    else if(player.isInJail()!=0) {
+    } else if(player.isInJail()!=0) {
         player.oneMoreTurnInJail();
         nextTurn();
     }
-
-
-
-    // // if in jail
-    // if (player.isInJail() != 0){
-    //     // free if double
-    //     if (doubleDice){
-    //         std::cout << "You rolled a " << dice1 << " and a " << dice2 << std::endl;
-    //         std::cout << "You are in jail but you are freed by your double" << std::endl;
-    //         player.getOutOfJail();
-    //         return;
-    //     }
-    //     player.oneMoreTurnInJail();
-    //     return;
-    // }
-    //
-    // player.move(dice1 + dice2);
-    // std::cout << "You rolled a " << dice1 << " and a " << dice2 << std::endl;
-    // std::cout << "Position : " << player.getPosition() << " Money : "<< player.getMoneyAmount() << std::endl;
-    // this->onLand(player);
-    //
-    // if (player.isBankrupt()) {
-    //     return;
-    // }
-    //
-    // if (doubleDice) {
-    //     std::cout << "you play again" << std::endl;
-    //     return this->nextTurn(player);
-    // }
 }
 
 void Game::onLand(Player& player) {
@@ -194,5 +175,22 @@ void Game::selectNumberOfPlayers() {
         }
         std::cout << _players[i].getPlayerName() << std::endl;
     }
+}
+int Game::playersBankrupt(){
+    int nbPlayerBanrkurpt = 0;
+    for (int i = 0; i < _players.size(); i++) {
+        if (_players[i].isBankrupt()) {
+            nbPlayerBanrkurpt++;
+        }
+    }
+    return nbPlayerBanrkurpt;
+}
 
+std::string Game::getWinner() {
+    for (int i = 0; i < _players.size(); i++) {
+        if (!_players[i].isBankrupt()) {
+            return _players[i].getPlayerName();
+        }
+    }
+    return "Personne n'";
 }

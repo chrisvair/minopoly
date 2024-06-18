@@ -538,8 +538,7 @@
       "id": 3,
       "description": "Avancez jusqu'à Artem Blandan. Si vous passez par la case départ, recevez 200€.",
       "type": 3,
-      "value": 200,
-      "position": 5
+      "value": 5
     },
     {
       "id": 4,
@@ -556,9 +555,8 @@
     {
       "id": 6,
       "description": "Avancez jusqu'à la case Départ. Recevez 200€.",
-      "type": 6,
-      "value": 200,
-      "position": 0
+      "type": 3,
+      "value": 0
     },
     {
       "id": 7,
@@ -576,8 +574,7 @@
       "id": 9,
       "description": "Avancez de 3 cases.",
       "type": 3,
-      "value": 0,
-      "steps": 3
+      "value": 3
     },
     {
       "id": 10,
@@ -595,8 +592,7 @@
       "id": 12,
       "description": "C'est l'heure de surfer. Avancez jusqu'à Longeville-sur-Mer. Si vous passez par la case départ, recevez 200€.",
       "type": 3,
-      "value": 200,
-      "position": 6
+      "value": 6
     },
     {
       "id": 13,
@@ -655,7 +651,7 @@
     {
       "id": 22,
       "description": "Christine de l'accueil vous aide à retrouver vos clés. Avancez de 3 cases.",
-      "type": 3,
+      "type": 6,
       "value": 3
     },
     {
@@ -690,8 +686,8 @@
     },
     {
       "id": 28,
-      "description": "Entendez des cris dans la rue. Avancez de 1 case pour voir ce qui se passe.",
-      "type": 3,
+      "description": "Vous entendez des cris dans la rue. Avancez de 1 case pour voir ce qui se passe.",
+      "type": 6,
       "value": 1
     },
     {
@@ -709,19 +705,19 @@
     {
       "id": 31,
       "description": "Visitez le techlab et jouez avec les robots chiens. Avancez de 2 cases.",
-      "type": 3,
+      "type": 6,
       "value": 2
     },
     {
       "id": 32,
       "description": "Découvrez la verrière d'Artem. Avancez de 1 case pour admirer les fuites.",
-      "type": 3,
+      "type": 6,
       "value": 1
     },
     {
       "id": 33,
       "description": "Empruntez un vélo Stan Lib pour vous déplacer. Avancez de 3 cases.",
-      "type": 3,
+      "type": 6,
       "value": 3
     },
     {
@@ -763,7 +759,7 @@
     {
       "id": 40,
       "description": "Vous croisez Laurent Kaltenecker. Reculez de 3 cases pour éviter de lui parler.",
-      "type": 3,
+      "type": 6,
       "value": -3
     }
   ]
