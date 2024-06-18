@@ -86,8 +86,9 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     // Save game action
-    // TODO(save the game) replace &MainWindow::close with you function
-    connect(ui->saveButton, &QPushButton::clicked, this, &MainWindow::close);
+    connect(ui->saveButton, &QPushButton::clicked, this, [&]() {
+        saveAndClose();
+    });
 
 }
 
@@ -549,23 +550,6 @@ void MainWindow::updateDisplay(){
         QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(_game.getPlayerBalance(i + 1));
         ui->PlayerList->item(i)->setText(player_display_text);
     }
-
-    /*
-    //Update the position of each player
-    for (int i = 0; i < _game.getNumberPlayer(); ++i) {
-        int position = _game.getPlayerPosition(i + 1);
-        std::cout << "Player " << i + 1 << " is at position " << position << std::endl;
-        paintPlayer(0, position);
-    }*/
-}
-
-void MainWindow::updatePosition(){
-    //Update the position of each player
-    for (int i = 0; i < _game.getNumberPlayer(); ++i) {
-        int position = _game.getPlayerPosition(i + 1);
-        std::cout << "Player " << i + 1 << " is at position " << position << std::endl;
-        paintPlayer(i, position);
-    }
 }
 
 std::pair<int, int> MainWindow::getPlayerPosition(int position) {
@@ -647,6 +631,11 @@ void MainWindow::updatePlayersPosition() {
     }
 }
 
+void MainWindow::saveAndClose() {
+    // Save the game
+    _game.saveGame();
+    close();
+}
 
 MainWindow::~MainWindow()
     {

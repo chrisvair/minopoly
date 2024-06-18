@@ -194,9 +194,8 @@ public:
     void loadGame(int gameNumber) {
         _board.loadBoard("game-state/assets/partie" + std::to_string(gameNumber) + ".json");
         _players = _board.players;
-        _nbPlayers = _players.size();
+        _nbPlayers = _board.getNbPlayers();
         _turn = _board.getTurn();
-
     }
 
     void loadNewGame(){
@@ -204,6 +203,14 @@ public:
         _players = _board.players;
         _turn = 0;
     }
+
+    void saveGame() {
+        _board.players = _players;
+        _board.setNbPlayers(_nbPlayers);
+        _board.setTurn(_turn);
+        _board.saveBoard();
+    }
+
 
     int getNumberOfSavedGames(){
         return _board.getNumberOfSavedGames();

@@ -9,8 +9,6 @@ MenuDialog::MenuDialog(QWidget *parent)
     ui->setupUi(this);
 
 
-    //TODO (Backend): be able to pass the different games: mechanique des parties
-    //ex:
     ui->gameSelection->addItem("Nouvelle Partie");
     Game game = Game();
     int numberOfSavedGames = game.getNumberOfSavedGames();
@@ -24,7 +22,6 @@ MenuDialog::MenuDialog(QWidget *parent)
     {
         QString a = QString::number(i);
         ui->nbPlayers->addItem(a);
-        //TODO(backend): pass the number of players
     }
 
     QString path = QString("Minopoly/Assets/menu_background.png");

@@ -18,6 +18,7 @@ protected:
     std::array<Property,40> _tiles; //the board has 40 tiles
     int gameNumber;
     int turn;
+    int nbPlayers;
 
 public:
     Board(){
@@ -48,9 +49,17 @@ public:
     int getTurn(){
         return turn;
     }
-    int setTurn(int turn){
+    void setTurn(int turn){
         this->turn = turn;
     }
+    int getNbPlayers(){
+        return nbPlayers;
+    }
+    void setNbPlayers(int nbPlayers){
+        this->nbPlayers = nbPlayers;
+    };
+
+    void savePlayers();
 
 
 

@@ -10,7 +10,7 @@
 using json = nlohmann::json;
 
 
-void JsonSerializer::serialize(const Board& board, const std::string& filename, int gameNumber, int turn) {
+void JsonSerializer::serialize(Board board, const std::string& filename, int gameNumber, int turn) {
     json data;
     // Sérialiser les cases
 
@@ -32,13 +32,17 @@ void JsonSerializer::serialize(const Board& board, const std::string& filename, 
 
     // Sérialiser les joueurs
     std::cout << "Serializing players" << std::endl;
+    int i;
     for (const auto& player : board.players) {
-        json player_json;
-        std::cout << player.getId() << std::endl;
-        std::cout << player._money << std::endl;
-        player.to_json(player_json, player);
-        std::cout << player_json << std::endl;
-        data["players"].push_back(player_json);
+        if (i<board.getNbPlayers() && player.getId() != 0) {
+            i++;
+            json player_json;
+            std::cout << player.getId() << std::endl;
+            std::cout << player._money << std::endl;
+            player.to_json(player_json, player);
+            std::cout << player_json << std::endl;
+            data["players"].push_back(player_json);
+        }
     }
 
     // Ajouter la date et le numéro de la partie
@@ -95,24 +99,9 @@ void JsonSerializer::deserialize(Board& board, const std::string& filename) {
     for (const auto& player_json : data["players"]) {
         Player player;
         player.from_json(player_json, player);
-        //std::cout << "Deserialising player " << player.getId() << std::endl;
-        //std::cout << "named " << player.getPlayerName() << std::endl;
-        //std::cout << player._properties[0].name() << std::endl;
         board.players[player.getId()-1] = player;
+        board.setNbPlayers(board.getNbPlayers()+1);
     }
-
-    //std::cout << board.players[0].getPlayerName() << std::endl;
-
-    // Afficher les noms des propriétés
-    /*std::cout << "\nNoms des propriétés :" << std::endl;
-    for (auto& property : properties) {
-        std::cout << "Property: " << property.name() << std::endl;
-    }
-    // Afficher les noms des joueurs chargés
-    std::cout << "\nNoms des joueurs chargés :" << std::endl;
-    for (auto& player : board.players) {
-        std::cout << "Player: " << player.getPlayerName() << std::endl;
-    }*/
 
 }
 

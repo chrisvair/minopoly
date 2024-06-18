@@ -22,6 +22,7 @@ void Board::saveBoard() const {
 }
 
 
+
 void Board::loadFromFile(const std::string& filename) {
     JsonSerializer::deserialize(*this, filename);
 }
