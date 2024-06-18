@@ -190,9 +190,10 @@ public:
         return _board.getTile(position).group();
     }
 
-    void doActionCard() {
+    std::string doActionCard() {
         Card newCard = _board.drawCard(rand() % 40);
         _board.doAction(newCard, _players[_currentPlayer-1]);
+        return newCard.action();
     }
     std::string getPlayerName(int id) {
         return _players[id-1].getPlayerName();

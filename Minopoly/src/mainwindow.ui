@@ -791,17 +791,17 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="ChanceCard">
-     <item row="1" column="0">
-      <widget class="QLabel" name="ChanceAction">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="ChanceLogo">
        <property name="text">
         <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="ChanceAction">
+       <property name="text">
+        <string>TextLabel</string>
        </property>
       </widget>
      </item>
@@ -818,6 +818,19 @@
     </property>
     <property name="text">
      <string>Construire</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="CardsQLabel">
+    <property name="geometry">
+     <rect>
+      <x>919</x>
+      <y>130</y>
+      <width>251</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
    <zorder>Background</zorder>
@@ -838,6 +851,7 @@
    <zorder>PayRentButton</zorder>
    <zorder>gridLayoutWidget_6</zorder>
    <zorder>BuildButton</zorder>
+   <zorder>CardsQLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

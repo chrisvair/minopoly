@@ -170,8 +170,6 @@ void MainWindow::rollDice() {
         else if (_game.getOwnerProperty(position) == player_number) {
             ui->PassButton->show();
             ui->BuildButton->show();
-            // Print card value in text field
-            // TODO : change value if buy house or buy hostel
             if (_game.getNumberhouse(position) == 4) {
                 ui->BuildButton->setText(QString("Buy hostel $%1").arg(_game.getHostelPrice(position)));
             }
@@ -191,6 +189,7 @@ void MainWindow::rollDice() {
         _game.goToJail();
         paintPlayer(player_number-1, _game.getPlayerPosition(_game.getCurrentPlayer()));
         ui->PassButton->show();
+        paintCardByPosition(position);
         //TODO : paint jail card
     } else if (typeCard == 6) {
         paintStation(position);
@@ -203,27 +202,17 @@ void MainWindow::rollDice() {
                 ui->BuyButton->show();
                 ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
             }
-        }
-        else if (_game.getOwnerProperty(position) == player_number) {
-            ui->PassButton->show();
-            ui->BuildButton->show();
-            // Print card value in text field
-            // TODO : change value if buy house or buy hostel
-            int card_value = _game.getHousePrice(position);// TODO: Get from backend
-            ui->BuyButton->setText(QString("Buy house $%1").arg(card_value));
-        }
-        else {
+        } else {
             // Print rent value in text field
             int rent_value = _game.getPropertyRent(position);// TODO: Get from backend
             ui->PayRentButton->show();
             ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
         }
-        //TODO : paint jail card
     } else if (typeCard == 3) {
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
         _game.payTax();
-        //TODO : paint tax card
+        paintCardByPosition(position);
     } else if (typeCard == 4) {
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
@@ -233,11 +222,11 @@ void MainWindow::rollDice() {
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
         _game.winCommunityChest();
-        //TODO : paint community chest card
+        paintTreasure();
     } else if (typeCard == 0) {
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
-        //TODO : paint start card
+        paintCardByPosition(position);
     }
 }
 
@@ -261,16 +250,20 @@ void MainWindow::paintPlayer(int i, int position) {
 
 void MainWindow::paintCard(int position) {
     int card_type = _game.getTypeProperty(position); // TODO : Get card type from backend
-    if(card_type == 1){
+    if (card_type == 1) {
         paintProperty(position);
-    }else if (card_type == 2){
+    }else if (card_type == 2) {
         paintStation(position);
-    }else if (card_type == 3){
+    }else if (card_type == 3) {
         paintChance();
+    }else if (card_type == 5) {
+        paintTreasure();
+    }else if (card_type == 7) {
+        paintTreasure();
     }
 }
 
-void MainWindow::paintProperty(int position) { // Get the colour and all the details of the card through position
+void MainWindow::paintProperty(int position){ // Get the colour and all the details of the card through position
     auto card_pixmap = QPixmap(QString("Minopoly/Assets/card_background.png"));
     ui->CardBackground->setPixmap(card_pixmap);
     ui->CardBackground->setScaledContents(true);
@@ -367,6 +360,32 @@ void MainWindow::paintStation(int position) { // Get the details of the card thr
     ui->gridLayoutWidget_5->show();
 }
 
+void MainWindow::paintTreasure() {
+    auto card_pixmap = QPixmap(QString("Minopoly/Assets/caisseBDE.png"));
+    ui->CardsQLabel->setPixmap(card_pixmap);
+    ui->CardsQLabel->setScaledContents(true);
+    _game.winCommunityChest();
+}
+
+void MainWindow::paintCardByPosition(int position) { // Get the details of the card through position
+    auto card_pixmap = QPixmap(QString("Minopoly/Assets/card%1.png").arg(position));
+    ui->CardsQLabel->setPixmap(card_pixmap);
+    ui->CardsQLabel->setScaledContents(true);
+    int player = 0; // TODO: Backend get player
+    // if (position == 4){
+    //     //TODO: Backend - 200 Frais scol
+    // } else if (position == 12){
+    //     //TODO: Backend  - 150 MEUH
+    // } else if (position == 28){
+    //     //TODO: Backend  - 150 BAR
+    // } else if (position == 30){
+    //     //TODO: Backend  change position to 10 //meshaka aller en prison
+    //     paintPlayer(player, 10);
+    // } else if (position == 38){
+    //     //TODO: Backend  - 100 cotise BDE
+    // }
+}
+
 void MainWindow::paintChance() { // Get the details of the card through position
     auto card_pixmap = QPixmap(QString("Minopoly/Assets/card_background.png"));
     ui->CardBackground->setPixmap(card_pixmap);
@@ -377,21 +396,11 @@ void MainWindow::paintChance() { // Get the details of the card through position
     ui->ChanceLogo->setScaledContents(true);
 
     //Set card
-    QString ChanceAction = "Fait ca!"; // TODO(backend): description
+    QString ChanceAction =QString::fromStdString(_game.doActionCard());
     ui->ChanceAction->setText(ChanceAction);
 
     // Show the vertical layout widget with the card details
     ui->gridLayoutWidget_6->show();
-
-    int chance_type = 1; //TODO: (1 money ++, 2 money --, 3 chance player position)
-    if (chance_type == 1){
-        //TODO: 1 money ++
-    } else if (chance_type == 2){
-        //TODO: 2 money --
-    } else{
-        int player = 0; //TODO: find player and update potition of backend
-        paintPlayer(player, 0);
-    }
 }
 
 void MainWindow::paintActivePlayer(int player_number) {

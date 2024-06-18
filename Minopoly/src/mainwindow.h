@@ -31,6 +31,8 @@ private slots:
     void paintProperty(int position);
     void paintStation(int position);
     void paintChance();
+    void paintTreasure();
+    void paintCardByPosition(int position);
 
 private:
     Ui::MainWindow *ui;
