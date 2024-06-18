@@ -41,8 +41,6 @@ public:
 
     void play();
 
-    void end();
-
     void nextTurn();
 
     std::array<Player,4> & players() {
@@ -185,6 +183,7 @@ public:
 
     void payTax() {
         _players[_currentPlayer-1].payTax(_board.getTile(_players[_currentPlayer-1].getPosition()).price());
+        _communityBank += _board.getTile(_players[_currentPlayer-1].getPosition()).price();
     }
 
     void winCommunityChest() {
@@ -227,6 +226,9 @@ public:
         return _players[_board.getTile(position).owned()-1].getPlayerName();
     }
 
+    int playersBankrupt();
+
+    std::string getWinner();
 };
 
 

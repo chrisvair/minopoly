@@ -36,6 +36,8 @@ private slots:
     void setPlayerListFromALoadedGame();
     void updateDisplay();
     void updatePosition();
+    void checkEndGame();
+    void updatePlayersPosition();
 
 private:
     Ui::MainWindow *ui;

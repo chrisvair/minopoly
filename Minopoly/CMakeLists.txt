@@ -18,9 +18,8 @@ set(PROJECT_SOURCES
 
         src/mainwindow.ui
         src/menudialog.cpp
+        src/endgamedialog.cpp
         #src/menu.ui
-
-        # src/assets.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -28,6 +27,7 @@ qt_add_executable(Minopoly
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         src/menudialog.h src/menudialog.cpp src/menudialog.ui
+        src/endgamedialog.h src/endgamedialog.cpp src/endgamedialog.ui
 
 )
 else()
