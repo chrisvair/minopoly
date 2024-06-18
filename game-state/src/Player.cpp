@@ -27,6 +27,10 @@ void Player::giveMoney(int amount) {
 }
 
 void Player::takeMoney(int amount) {
+    if (_money <= amount) {
+        setBankrupt();
+        return;
+    }
     _money = _money - amount;
     _moneyWorth = _moneyWorth - amount;
 }

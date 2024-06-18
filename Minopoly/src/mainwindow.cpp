@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent)
         // Create new list item for player and add it so new player is displayed in UI
         {
             int current_player_number = ui->PlayerList->count();
-            int initial_balance = _game.getPlayerBalance(current_player_number+1); // TODO(backend): update balanc
+            int initial_balance = _game.getPlayerBalance(current_player_number+1);
             QString player_icon_path = QString("Minopoly/Assets/Player%1.png").arg(current_player_number + 1);
             QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(initial_balance);
             QListWidgetItem* new_player_item = new QListWidgetItem(QIcon(QPixmap(player_icon_path)), player_display_text);
@@ -155,6 +155,8 @@ void MainWindow::rollDice() {
     // 3. Paint player at new position
     paintPlayer(player_number-1, position);
 
+    //TODO : update moneay players
+
     // Show card in display area
     int typeCard = _game.getTypeProperty(position);
     paintCard(position);
@@ -164,6 +166,7 @@ void MainWindow::rollDice() {
     } else if (typeCard == 1) { //if property
         if (_game.getOwnerProperty(position) == 0) { //if property is not owned
             ui->PassButton->show();
+            ui->PassButton->setText(QString("Tour Suivant"));
             // player can buy it, if enough money
             if (_game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getPriceProperty(position)) {
                 int card_value = _game.getPriceProperty(position);
@@ -172,16 +175,18 @@ void MainWindow::rollDice() {
             }
         } else if (_game.getOwnerProperty(position) == player_number) {
             ui->PassButton->show();
-            ui->BuildButton->show();
+            ui->PassButton->setText(QString("Tour Suivant"));
             if (_game.getNumberhouse(position) == 4 and _game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getHostelPrice(position)) {
+                ui->BuildButton->show();
                 ui->BuildButton->setText(QString("Buy hostel $%1").arg(_game.getHostelPrice(position)));
             }
             else if (_game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getHousePrice(position)) {
+                ui->BuildButton->show();
                 ui->BuildButton->setText(QString("Buy house $%1").arg(_game.getHostelPrice(position)));
             }
         } else {
             // Print rent value in text field
-            int rent_value = _game.getPropertyRent(position);// TODO: Get from backend
+            int rent_value = _game.getPropertyRent(position);
             ui->PayRentButton->show();
             ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
 
@@ -190,21 +195,24 @@ void MainWindow::rollDice() {
         _game.goToJail();
         paintPlayer(player_number-1, _game.getPlayerPosition(_game.getCurrentPlayer()));
         ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
     } else if (typeCard == 3) {
-        ui->PassButton->show();
-        ui->PassButton->setText(QString("Tour Suivant"));
         _game.payTax();
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
     } else if (typeCard == 4) {
-        ui->PassButton->show();
-        ui->PassButton->setText(QString("Tour Suivant"));
         _game.doActionCard();
-    } else if (typeCard == 5) {
+        paintPlayer(player_number-1, _game.getPlayerPosition(_game.getCurrentPlayer()));
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
+    } else if (typeCard == 5) {
         _game.winCommunityChest();
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
     } else if (typeCard == 6) {
         if (_game.getOwnerProperty(position) == 0) {
             ui->PassButton->show();
+            ui->PassButton->setText(QString("Tour Suivant"));
             // Print card value in text field
             if (_game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getPriceProperty(position)) {
                 int card_value = _game.getPriceProperty(position);
@@ -218,9 +226,9 @@ void MainWindow::rollDice() {
             ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
         }
     } else if (typeCard == 7) {
+        _game.winCommunityChest();
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
-        _game.winCommunityChest();
     }
 }
 
@@ -244,14 +252,16 @@ void MainWindow::paintPlayer(int i, int position) {
 
 void MainWindow::paintCard(int position) {
     int card_type = _game.getTypeProperty(position);
-    if (card_type == 1) {
+    if (card_type == 0) {
+        paintCardByPosition(position);
+    } else if (card_type == 1) {
         if (_game.getColor(position) == "utility") {
             paintCardByPosition(position);
         }else {
             paintProperty(position);
         }
     }else if (card_type == 2) {
-        paintStation(position);
+        paintCardByPosition(position);
     }else if (card_type == 3) {
         paintTreasure();
     } else if (card_type == 4) {
@@ -305,7 +315,7 @@ void MainWindow::paintProperty(int position){ // Get the colour and all the deta
 
 
     // Set card details based on position (replace with actual game logic)
-    QString owner = QString::fromStdString(_game.getPlayerName(_game.getOwnerProperty(position))); // TODO(backend)
+    QString owner = QString::fromStdString(_game.getPlayerName(_game.getOwnerProperty(position)));
     QString rent = QString::number(_game.getPropertyRent(position));
     QString houses = QString::number(_game.getNumberhouse(position));
     QString hotels = QString::number(_game.getNumberhostel(position));
@@ -333,13 +343,13 @@ void MainWindow::paintStation(int position) { // Get the details of the card thr
     ui->StationLogo->setScaledContents(true);
 
     //Set card
-    QString stationName = QString::fromStdString(_game.getPropertyName(position)); // TODO(backend)
+    QString stationName = QString::fromStdString(_game.getPropertyName(position));
     std::array<int,6> rents = _game.getPropertyRents(position);
-    QString stationPrice = QString::number(_game.getPriceProperty(position)); // TODO(backend)
-    QString stationRent1 = QString::number(rents[0]); // TODO(backend)
-    QString stationRent2 = QString::number(rents[1]); // TODO(backend)
-    QString stationRent3 = QString::number(rents[2]); // TODO(backend)
-    QString stationRent4 = QString::number(rents[3]); // TODO(backend)
+    QString stationPrice = QString::number(_game.getPriceProperty(position));
+    QString stationRent1 = QString::number(rents[0]);
+    QString stationRent2 = QString::number(rents[1]);
+    QString stationRent3 = QString::number(rents[2]);
+    QString stationRent4 = QString::number(rents[3]);
     ui->StationNameLabel->setText(stationName);
     ui->StationPriceLabel->setText(stationPrice);
     ui->StationRent1Label->setText(stationRent1);
@@ -432,6 +442,9 @@ void MainWindow::nextMove() {
     paintInactivePlayer(currently_active_player-1);
     _game.nextTurn();
     currently_active_player = _game.getCurrentPlayer();
+    if (currently_active_player == -1) {
+        close();
+    }
     paintActivePlayer(currently_active_player-1);
 
     // Now we wait for a dice roll
