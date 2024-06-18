@@ -40,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->gridLayoutWidget_4->hide();
     ui->gridLayoutWidget_5->hide();
     ui->gridLayoutWidget_6->hide();
+    ui->CardsQLabel->hide();
 
     // Initially, we disable the roll button until the player has entered the players' names
     ui->Roll->setDisabled(true);
@@ -387,6 +388,43 @@ void MainWindow::paintChance() { // Get the details of the card through position
 
     // Show the vertical layout widget with the card details
     ui->gridLayoutWidget_6->show();
+    int chance_type = 1; //TODO: (1 money ++, 2 money --, 3 chance player position)
+    if (chance_type == 1){
+        //TODO: 1 money ++
+    } else if (chance_type == 2){
+        //TODO: 2 money --
+    } else{
+        int player = 0; //TODO: find player and update potition of backend
+        paintPlayer(player, 0);
+    }
+}
+
+void MainWindow::paintTreasure() {
+    auto card_pixmap = QPixmap(QString("Minopoly/Assets/card_treasure.png"));
+    ui->CardsQLabel->setPixmap(card_pixmap);
+    ui->CardsQLabel->setScaledContents(true);
+    //TODO (backend): add the money to the player
+    ui->CardsQLabel->show();
+}
+
+void MainWindow::paintCardByPosition(int position) { // Get the details of the card through position
+    auto card_pixmap = QPixmap(QString("Minopoly/Assets/card%1.png").arg(position));
+    ui->CardsQLabel->setPixmap(card_pixmap);
+    ui->CardsQLabel->setScaledContents(true);
+    int player = 0; // TODO: Backend get player
+    if (position == 4){
+        //TODO: Backend - 200 Frais scol
+    } else if (position == 12){
+        //TODO: Backend  - 150 MEUH
+    } else if (position == 28){
+        //TODO: Backend  - 150 BAR
+    } else if (position == 30){
+        //TODO: Backend  change position to 10 //meshaka aller en prison
+        paintPlayer(player, 10);
+    } else if (position == 38){
+        //TODO: Backend  - 100 cotise BDE
+    }
+    ui->CardsQLabel->show();
 }
 
 void MainWindow::paintActivePlayer(int player_number) {
@@ -410,6 +448,7 @@ void MainWindow::nextMove() {
     ui->gridLayoutWidget_4->hide();
     ui->gridLayoutWidget_5->hide();
     ui->gridLayoutWidget_6->hide();
+    ui->CardsQLabel->hide();
 
 
     ui->Roll->setDisabled(false);
