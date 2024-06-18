@@ -188,6 +188,24 @@ public:
         emptyCommunityBank();
     }
 
+    void loadGame(int gameNumber) {
+        _board.loadBoard("game-state/assets/partie" + std::to_string(gameNumber) + ".json");
+        _players = _board.players;
+        _nbPlayers = _players.size();
+        _turn = _board.getTurn();
+
+    }
+
+    void loadNewGame(){
+        _board.loadBoard("game-state/assets/board.json");
+        _players = _board.players;
+        _turn = 0;
+    }
+
+    int getNumberOfSavedGames(){
+        return _board.getNumberOfSavedGames();
+    }
+
     std::string getColor(int position) {
         return _board.getTile(position).group();
     }

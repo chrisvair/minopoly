@@ -32,6 +32,10 @@ private slots:
     void paintChance();
     void paintTreasure();
     void paintCardByPosition(int position);
+    void setPlayerList();
+    void setPlayerListFromALoadedGame();
+    void updateDisplay();
+    void updatePosition();
 
 private:
     Ui::MainWindow *ui;

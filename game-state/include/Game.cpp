@@ -11,8 +11,8 @@
 void Game::start() {
     //initialize the game
 
-    std::cout << "Welcome to Monopoly" << std::endl;
-    chooseGame();
+    //std::cout << "Welcome to Monopoly" << std::endl;
+    //chooseGame();
     //Board board = Board();
     // TODO: choisir le file qu'on importe (partie sauvegardée) ou celle par défaut (nouvelle partie)
     //board.loadBoard("game-state/assets/monopoly.json");
@@ -30,7 +30,7 @@ void Game::play() {
         for (int j = 0; j < _players.size(); j++) {
             std::cout << "" << std::endl;
             std::cout << "It's "<< _players[j].getPlayerName() << "'s turn" << std::endl;
-            this->nextTurn(_players[j]);
+            this->nextTurn();
             if (_players[j].isBankrupt()) {
                 std::cout << "You are bankrupt, you lose" << std::endl;
                 return;

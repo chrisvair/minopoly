@@ -12,7 +12,7 @@ MenuDialog::MenuDialog(QWidget *parent)
     ui->gameSelection->addItem("Nouvelle Partie");
     ui->gameSelection->addItem("Partie 1");
     ui->gameSelection->addItem("Partie 2");
-    // Faire une boucle sur les parties stockees??
+    //TODO: Faire une boucle sur les parties stockees??
 
     for(int i = 2; i <= 4; i++)
     {
