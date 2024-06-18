@@ -2,6 +2,8 @@
 #include "./ui_mainwindow.h"
 #include "game-state/GameState.h"
 #include "Property.h"
+#include "Player.h"
+#include <array>
 
 #include "menudialog.h"
 #include "ui_menudialog.h"
@@ -54,17 +56,18 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->NameEnterEdit, &QLineEdit::returnPressed, this, [&]() {
         QString player_name = ui->NameEnterEdit->text();
         // Backend only supports std::string, not QString
-        // TODO(backend): Call addPlayer(player_name.toStdString())
+        _game.addPlayer(player_name.toStdString());
 
-        int initial_balance = 0; // TODO(backend): update balance
 
         // Create new list item for player and add it so new player is displayed in UI
-        int current_player_number = ui->PlayerList->count();
-        QString player_icon_path = QString("Minopoly/Assets/Player%1.png").arg(current_player_number + 1);
-        // TODO(UI): Show balance next to name, or show it somewhere else?
-        QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(initial_balance);
-        QListWidgetItem* new_player_item = new QListWidgetItem(QIcon(QPixmap(player_icon_path)), player_display_text);
-        ui->PlayerList->addItem(new_player_item);
+        {
+            int current_player_number = ui->PlayerList->count();
+            int initial_balance = _game.getPlayerBalance(current_player_number+1); // TODO(backend): update balanc
+            QString player_icon_path = QString("Minopoly/Assets/Player%1.png").arg(current_player_number + 1);
+            QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(initial_balance);
+            QListWidgetItem* new_player_item = new QListWidgetItem(QIcon(QPixmap(player_icon_path)), player_display_text);
+            ui->PlayerList->addItem(new_player_item);
+        }
 
         // Mark whose player's turn it is
         if (ui->PlayerList->count() == 1) {
@@ -86,10 +89,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Buying action
     connect(ui->BuyButton, &QPushButton::clicked, this, [&]() {
-        // TODO(backend): Reduce player money
-
-        // TODO(UI): Somehow mark field as bought on the map (?)
-
+        _game.buyProperty();
         nextMove();
     });
 
@@ -99,19 +99,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Paying rent action
     connect(ui->PayRentButton, &QPushButton::clicked, this, [&]() {
-        // TODO(backend): Reduce player money
-        // TODO(backend): Increase oponents money
+        _game.payRent();
         ui->PayRentButton->hide();
         nextMove();
     });
 
     // Building
     connect(ui->BuildButton, &QPushButton::clicked, this, [&]() {
-        // TODO(backend): Handle the building action
-
+        int position = _game.getPlayerPosition(_game.getCurrentPlayer());
+        _game.build(position);
         ui->BuildButton->hide();
         nextMove();
     });
+
 }
 
 void MainWindow::initializePlay()
@@ -137,61 +137,97 @@ void MainWindow::initializePlay()
         paintPlayer(i, 0);
     }
     paintDice(6, 6);
+    _game.start();
 }
 
 void MainWindow::rollDice() {
-    // Call backend to get current player (TODO?)
-    static int player_number = 0;
-
-    int die1 = QRandomGenerator::global()->bounded(1, 7);
-    int die2 = QRandomGenerator::global()->bounded(1, 7);
-
-    qInfo() << die1;
-    qInfo() << die2;
+    // Call backend to get current player
+    int player_number = _game.getCurrentPlayer();
+    std::array<int,2> dices = _game.rollDice();
+    int die1 = dices[0];
+    int die2 = dices[1];
 
     paintDice(die1, die2);
 
     // Update player position according to dice
-    // 1. Get player position from backend
-    int position = 0;
-
-    // 2. New position due to dice
-    position += die1 + die2;
-
+    // 1. New position due to dice
+    int position = _game.movePlayer(die1+die2);
     // 3. Paint player at new position
-    paintPlayer(player_number, position);
-
-    // 4. Send updated position to backend (TODO?)
+    paintPlayer(player_number-1, position);
 
     // Show card in display area
-    paintCard(position);
+    int typeCard = _game.getTypeProperty(position);
+    if (typeCard == 1) { //if property
+        paintProperty(position);
+        if (_game.getOwnerProperty(position) == 0) { //if property is not owned
+            ui->PassButton->show();
+            // player can buy it, if enough money
+            if (_game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getPriceProperty(position)) {
+                int card_value = _game.getPriceProperty(position);
+                ui->BuyButton->show();
+                ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
+            }
+        }
+        else if (_game.getOwnerProperty(position) == player_number) {
+            ui->PassButton->show();
+            ui->BuildButton->show();
+            if (_game.getNumberhouse(position) == 4) {
+                ui->BuildButton->setText(QString("Buy hostel $%1").arg(_game.getHostelPrice(position)));
+            }
+            else {
+                ui->BuildButton->setText(QString("Buy house $%1").arg(_game.getHostelPrice(position)));
+            }
+        }
+        else {
+            // Print rent value in text field
+            int rent_value = _game.getPropertyRent(position);// TODO: Get from backend
+            ui->PayRentButton->show();
+            ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
 
-    bool card_status = true; // TODO (Backend): set the status of the card
-    int card_owner = 0; // TODO (Backend): set the card owner
-    int card_type = 1; // TODO (Backend): set the type of cards, int or str but change types everywhere in code
-
-    // Show buttons
-    if (card_status == false){
+        }
+    } else if (typeCard == 2) {
+        paintStation(position);
+        _game.goToJail();
+        paintPlayer(player_number-1, _game.getPlayerPosition(_game.getCurrentPlayer()));
         ui->PassButton->show();
-        ui->BuyButton->show();
-        // Print card value in text field
-        int card_value = 100;// TODO: Get from backend
-        ui->BuyButton->setText(QString("Acheter $%1").arg(card_value));
-    }else if (card_status == true && player_number == card_owner && card_type == 1) {
+        paintCardByPosition(position);
+    } else if (typeCard == 6) {
+        paintStation(position);
         ui->PassButton->show();
-        ui->BuildButton->show();
-    } else if (card_status == true && player_number != card_owner && (card_type == 1 or card_type == 1)) { // 1=property 2=station
-        ui->PayRentButton->show();
-        // Print rent value in text field
-        int rent_value = 100;// TODO: Get from backend
-        ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
-    } else{
+        if (_game.getOwnerProperty(position) == 0) {
+            ui->PassButton->show();
+            // Print card value in text field
+            if (_game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getPriceProperty(position)) {
+                int card_value = _game.getPriceProperty(position);
+                ui->BuyButton->show();
+                ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
+            }
+        } else {
+            // Print rent value in text field
+            int rent_value = _game.getPropertyRent(position);
+            ui->PayRentButton->show();
+            ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
+        }
+    } else if (typeCard == 3) {
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
+        _game.payTax();
+        paintCardByPosition(position);
+    } else if (typeCard == 4) {
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
+        paintChance();
+        _game.doActionCard();
+    } else if (typeCard == 5) {
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
+        _game.winCommunityChest();
+        paintTreasure();
+    } else if (typeCard == 0) {
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
+        paintCardByPosition(position);
     }
-
-    player_number += 1;
-    player_number %= 2;
 }
 
 void MainWindow::paintDice(int die1, int die2) {
@@ -213,26 +249,26 @@ void MainWindow::paintPlayer(int i, int position) {
 }
 
 void MainWindow::paintCard(int position) {
-    int card_type = 4; //TO DO: backend : choose type of card
-    if(card_type == 1){
+    int card_type = _game.getTypeProperty(position); // TODO : Get card type from backend
+    if (card_type == 1) {
         paintProperty(position);
-    }else if (card_type == 2){
+    }else if (card_type == 2) {
         paintStation(position);
-    }else if (card_type == 3){
+    }else if (card_type == 3) {
         paintChance();
-    }else if (card_type == 4){
+    }else if (card_type == 5) {
         paintTreasure();
-    }else{ // all the other cards appart from properties, stations, chance, treasure
-        paintCardByPosition(28);
+    }else if (card_type == 7) {
+        paintTreasure();
     }
 }
 
-void MainWindow::paintProperty(int position) { // Get the colour and all the details of the card through position
+void MainWindow::paintProperty(int position){ // Get the colour and all the details of the card through position
     auto card_pixmap = QPixmap(QString("Minopoly/Assets/card_background.png"));
     ui->CardBackground->setPixmap(card_pixmap);
     ui->CardBackground->setScaledContents(true);
 
-    int colour = 1; // TODO(backend): choode colour
+    int colour = dictionnaire[_game.getColor(position)];
     auto colour_pixmap = QPixmap(QString("Minopoly/Assets/colour%1.png").arg(colour));
     ui->Colour->setPixmap(colour_pixmap);
     ui->Colour->setScaledContents(true);
@@ -243,16 +279,17 @@ void MainWindow::paintProperty(int position) { // Get the colour and all the det
     ui->InfoBackground->setScaledContents(true);
 
     //Set card
-    QString name = "LE GARDEN"; // TODO(backend)
-    QString hotelPrice = "$200"; // TODO(backend)
-    QString housePrice = "$100"; // TODO(backend)
-    QString price = "$2000"; // TODO(backend)
-    QString rent0H = "10"; // TODO(backend)
-    QString rent1H = "100"; // TODO(backend)
-    QString rent2H = "1000"; // TODO(backend)
-    QString rent3H = "10000"; // TODO(backend)
-    QString rent4H = "100000"; // TODO(backend)
-    QString rentHotel = "10000000"; // TODO(backend)
+    QString name = QString::fromStdString(_game.getPropertyName(position));
+    QString hotelPrice = QString::number(_game.getHostelPrice(position));
+    QString housePrice = QString::number(_game.getHousePrice(position));
+    QString price = QString::number(_game.getPriceProperty(position));
+    std::array<int,6> rents = _game.getPropertyRents(position);
+    QString rent0H = QString::number(rents[0]);
+    QString rent1H = QString::number(rents[1]);
+    QString rent2H = QString::number(rents[2]);
+    QString rent3H = QString::number(rents[3]);
+    QString rent4H = QString::number(rents[4]);
+    QString rentHotel = QString::number(rents[5]);
     ui->NameLabel->setText(name);
     ui->PriceHotelLabel->setText(hotelPrice);
     ui->PriceHouseLabel->setText(housePrice);
@@ -266,10 +303,10 @@ void MainWindow::paintProperty(int position) { // Get the colour and all the det
 
 
     // Set card details based on position (replace with actual game logic)
-    QString owner = "Player 1"; // TODO(backend)
-    QString rent = "$200"; // TODO(backend)
-    QString houses = "2"; // TODO(backend)
-    QString hotels = "1"; // TODO(backend)
+    QString owner = QString::fromStdString(_game.getPlayerName(_game.getOwnerProperty(position))); // TODO(backend)
+    QString rent = QString::number(_game.getPropertyRent(position));
+    QString houses = QString::number(_game.getNumberhouse(position));
+    QString hotels = QString::number(_game.getNumberhostel(position));
     ui->OwnerLabel->setText(owner);
     ui->RentLabel->setText(rent);
     ui->HousesLabel->setText(houses);
@@ -309,10 +346,10 @@ void MainWindow::paintStation(int position) { // Get the details of the card thr
 
 
     // Set Stations Details
-    QString owner1 = "Player 1"; // TODO(backend)
-    QString owner2 = "Player 1"; // TODO(backend)
-    QString owner3 = "Player 2"; // TODO(backend)
-    QString owner4 = "Player 1"; // TODO(backend)
+    QString owner1 = QString::fromStdString(_game.owner(5));
+    QString owner2 = QString::fromStdString(_game.owner(15));
+    QString owner3 = QString::fromStdString(_game.owner(25));
+    QString owner4 = QString::fromStdString(_game.owner(35));
     ui->Station1OwnerLabel->setText(owner1);
     ui->Station2OwnerLabel->setText(owner2);
     ui->Station3OwnerLabel->setText(owner3);
@@ -321,6 +358,19 @@ void MainWindow::paintStation(int position) { // Get the details of the card thr
     // Show the vertical layout widget with the card details
     ui->gridLayoutWidget_4->show();
     ui->gridLayoutWidget_5->show();
+}
+
+void MainWindow::paintTreasure() {
+    auto card_pixmap = QPixmap(QString("Minopoly/Assets/caisseBDE.png"));
+    ui->CardsQLabel->setPixmap(card_pixmap);
+    ui->CardsQLabel->setScaledContents(true);
+    _game.winCommunityChest();
+}
+
+void MainWindow::paintCardByPosition(int position) { // Get the details of the card through position
+    auto card_pixmap = QPixmap(QString("Minopoly/Assets/card%1.png").arg(position));
+    ui->CardsQLabel->setPixmap(card_pixmap);
+    ui->CardsQLabel->setScaledContents(true);
 }
 
 void MainWindow::paintChance() { // Get the details of the card through position
@@ -333,12 +383,11 @@ void MainWindow::paintChance() { // Get the details of the card through position
     ui->ChanceLogo->setScaledContents(true);
 
     //Set card
-    QString ChanceAction = "Fait ca!"; // TODO(backend): description
+    QString ChanceAction =QString::fromStdString(_game.doActionCard());
     ui->ChanceAction->setText(ChanceAction);
 
     // Show the vertical layout widget with the card details
     ui->gridLayoutWidget_6->show();
-
     int chance_type = 1; //TODO: (1 money ++, 2 money --, 3 chance player position)
     if (chance_type == 1){
         //TODO: 1 money ++
@@ -387,6 +436,8 @@ void MainWindow::paintInactivePlayer(int player_number) {
 }
 
 void MainWindow::nextMove() {
+    ui->PayRentButton->hide();
+    ui->BuildButton->hide();
     ui->BuyButton->hide();
     ui->PassButton->hide();
     ui->CardBackground->clear();
@@ -402,20 +453,18 @@ void MainWindow::nextMove() {
 
     ui->Roll->setDisabled(false);
 
-    // TODO(backend): Retrieve all player balances from the backend
-    std::vector<int> balances = {10, 20};
     // Update the display for each player
-    for (int i = 0; i < balances.size(); ++i) {
+    for (int i = 0; i < _game.getNumberPlayer() ; ++i) {
         QString player_name = ui->PlayerList->item(i)->text().split(" - ")[0];
-        QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(balances[i]);
+        QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(_game.getPlayerBalance(i+1));
         ui->PlayerList->item(i)->setText(player_display_text);
     }
 
-    // TODO(backend): Switch active player
-    static int currently_active_player = 0;
-    paintInactivePlayer(currently_active_player);
-    currently_active_player = (currently_active_player + 1) % 2;
-    paintActivePlayer(currently_active_player);
+    int currently_active_player = _game.getCurrentPlayer();
+    paintInactivePlayer(currently_active_player-1);
+    _game.nextTurn();
+    currently_active_player = _game.getCurrentPlayer();
+    paintActivePlayer(currently_active_player-1);
 
     // Now we wait for a dice roll
 }

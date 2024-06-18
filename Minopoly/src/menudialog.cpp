@@ -1,6 +1,5 @@
 #include "menudialog.h"
 #include "ui_menudialog.h"
-
 MenuDialog::MenuDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::MenuDialog)
@@ -30,7 +29,6 @@ MenuDialog::MenuDialog(QWidget *parent)
     ui->back->setPixmap(pixmap);
     setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 }
-
 MenuDialog::~MenuDialog()
 {
     delete ui;

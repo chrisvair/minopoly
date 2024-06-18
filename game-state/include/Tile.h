@@ -9,11 +9,13 @@
 
 class Tile {
 protected :
-    int _type;
+    int _type{};
     std::string _name;
-    int _position;
+    int _position{};
 
 public:
+    Tile(){};
+
     Tile(int type, const std::string &name, int position)
         : _type(type),
           _name(name),
@@ -31,6 +33,8 @@ public:
     int getPosition() const {
         return _position;
     }
+
+
 };
 
 

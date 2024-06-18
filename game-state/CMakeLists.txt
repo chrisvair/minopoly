@@ -11,6 +11,16 @@ add_library(
         include/Board.h
         include/Board.cpp
         include/Property.h
+        src/Property.cpp
+
+        src/Player.cpp
+        include/Player.h
+        src/Property.cpp
+        include/Game.cpp
+        include/JsonSerializer.h
+        src/JsonSerializer.cpp
+
 )
 
 target_include_directories(game-state PUBLIC include)
+target_link_libraries(game-state PUBLIC nlohmann_json::nlohmann_json)
