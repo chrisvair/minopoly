@@ -115,12 +115,13 @@ public:
         return _board.getTile(position).getType();
     }
 
-    void buyHouse(int id) {
-        _players[_currentPlayer-1].buyHouse(_board.getTile(id));
-    }
-
-    void buyHostel(int id) {
-        _players[_currentPlayer-1].buyHostel(_board.getTile(id));
+    void build(int id) {
+        if (_board.getTile(id).house() == 4) {
+            _players[_currentPlayer-1].buyHostel(_board.getTile(id));
+        }
+        else {
+            _players[_currentPlayer-1].buyHouse(_board.getTile(id));
+        }
     }
 
     int getOwnerProperty(int id) {
@@ -189,9 +190,10 @@ public:
         return _board.getTile(position).group();
     }
 
-    void doActionCard() {
+    std::string doActionCard() {
         Card newCard = _board.drawCard(rand() % 40);
         _board.doAction(newCard, _players[_currentPlayer-1]);
+        return newCard.action();
     }
     std::string getPlayerName(int id) {
         return _players[id-1].getPlayerName();

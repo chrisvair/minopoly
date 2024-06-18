@@ -27,11 +27,7 @@ void Game::start() {
 
 void Game::play() {
     for (int i = 0; i < _nbTurns; i++) {
-        std::cout << "" << std::endl;
-        std::cout << "Turn number :  " << i+1 << std::endl;
         for (int j = 0; j < _players.size(); j++) {
-            std::cout << "" << std::endl;
-            std::cout << "It's "<< _players[j].getPlayerName() << " turn" << std::endl;
             // this->nextTurn(_players[j]);
             if (_players[j].isBankrupt()) {
                 return;

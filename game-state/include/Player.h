@@ -75,7 +75,6 @@ public:
     };
 
     void goToJail(){
-        std::cout << "You go to jail" << std::endl;
         _position = 10;
         _jail = 1;
     };
@@ -85,7 +84,6 @@ public:
     };
 
     void oneMoreTurnInJail(){
-        std::cout << "You spend one more night in jail" << std::endl;
         _jail++;
     };
 

@@ -64,4 +64,7 @@ void Board::doAction(Card& card, Player& player) {
         std::cout << card.action() << std::endl;
         player.goToStart();
     }
+    else if (card.getType() == 7) {
+        std::cout << card.action() << std::endl;
+    }
 }
