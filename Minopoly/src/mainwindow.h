@@ -41,6 +41,7 @@ private slots:
     void paintCardByPosition(int position);
     void checkEndGame();
     void updatePlayersPosition();
+    void onLand();
 
 private:
     Ui::MainWindow *ui;

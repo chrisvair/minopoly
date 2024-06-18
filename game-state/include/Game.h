@@ -52,7 +52,7 @@ public:
 
     int movePlayer(int amount);
 
-    void build(int id);
+    void build();
 
     void payTax();
 

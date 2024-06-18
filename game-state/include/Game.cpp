@@ -199,12 +199,13 @@ int Game::movePlayer(int amount) {
     return _players[_currentPlayer-1].getPosition();
 }
 
-void Game::build(int id) {
-    if (_board.getTile(id).house() == 4) {
-        _players[_currentPlayer-1].buyHostel(_board.getTile(id));
+void Game::build() {
+    int position = _players[_currentPlayer-1].getPosition();
+    if (_board.getTile(position).house() == 4) {
+        _players[_currentPlayer-1].buyHostel(_board.getTile(position));
     }
     else {
-        _players[_currentPlayer-1].buyHouse(_board.getTile(id));
+        _players[_currentPlayer-1].buyHouse(_board.getTile(position));
     }
 }
 

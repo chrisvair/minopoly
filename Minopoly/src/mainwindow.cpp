@@ -79,9 +79,13 @@ MainWindow::MainWindow(QWidget *parent)
         nextMove();
     });
 
-    connect(ui->PassButton, &QPushButton::clicked, this, [&](){
+    connect(ui->PassButton, &QPushButton::clicked, this, [&]() {
         updatePlayersPosition();
-        nextMove();
+        if (ui->PassButton->text() == QString("Tour Suivant")) {
+            nextMove();
+        } else if (ui->PassButton->text() == QString("Next")) {
+            onLand();
+        }
     });
 
     // Paying rent action
@@ -93,8 +97,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Building
     connect(ui->BuildButton, &QPushButton::clicked, this, [&]() {
-        int position = _game.getPlayerPosition(_game.getCurrentPlayer());
-        _game.build(position);
+        _game.build();
         ui->BuildButton->hide();
         nextMove();
     });
@@ -126,7 +129,7 @@ void MainWindow::initializePlay()
         lbArr[i]->setPixmap(playerPixmap.scaled(35, 35, Qt::KeepAspectRatio));
         lbArr[i]->setFixedSize(35, 35);
         // Initialize all players at position 0
-        paintPlayer(i, 0);
+        paintPlayer(i+1, 0);
     }
     paintDice(6, 6);
     _game.start();
@@ -134,93 +137,13 @@ void MainWindow::initializePlay()
 
 void MainWindow::rollDice() {
     // Call backend to get current player
-    int player_number = _game.getCurrentPlayer();
     std::array<int,2> dices = _game.rollDice();
     int die1 = dices[0];
     int die2 = dices[1];
 
     paintDice(die1, die2);
-
-    // Update player position according to dice
-    // 1. New position due to dice
-    int position = _game.movePlayer(die1+die2);
-    // 3. Paint player at new position
-    paintPlayer(player_number-1, position);
-
-    //TODO : update moneay players
-
-    // Show card in display area
-    int typeCard = _game.getTypeProperty(position);
-    paintCard(position);
-    if (typeCard == 0) {
-        ui->PassButton->show();
-        ui->PassButton->setText(QString("Tour Suivant"));
-    } else if (typeCard == 1) { //if property
-        if (_game.getOwnerProperty(position) == 0) { //if property is not owned
-            ui->PassButton->show();
-            ui->PassButton->setText(QString("Tour Suivant"));
-            // player can buy it, if enough money
-            if (_game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getPriceProperty(position)) {
-                int card_value = _game.getPriceProperty(position);
-                ui->BuyButton->show();
-                ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
-            }
-        } else if (_game.getOwnerProperty(position) == player_number) {
-            ui->PassButton->show();
-            ui->PassButton->setText(QString("Tour Suivant"));
-            if (_game.getNumberhouse(position) == 4 and _game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getHostelPrice(position)) {
-                ui->BuildButton->show();
-                ui->BuildButton->setText(QString("Buy hostel $%1").arg(_game.getHostelPrice(position)));
-            }
-            else if (_game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getHousePrice(position)) {
-                ui->BuildButton->show();
-                ui->BuildButton->setText(QString("Buy house $%1").arg(_game.getHostelPrice(position)));
-            }
-        } else {
-            // Print rent value in text field
-            int rent_value = _game.getPropertyRent(position);
-            ui->PayRentButton->show();
-            ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
-
-        }
-    } else if (typeCard == 2) {
-        _game.goToJail();
-        paintPlayer(player_number-1, _game.getPlayerPosition(_game.getCurrentPlayer()));
-        ui->PassButton->show();
-        ui->PassButton->setText(QString("Tour Suivant"));
-    } else if (typeCard == 3) {
-        _game.payTax();
-        ui->PassButton->show();
-        ui->PassButton->setText(QString("Tour Suivant"));
-    } else if (typeCard == 4) {
-        ui->PassButton->show();
-        ui->PassButton->setText(QString("Tour Suivant"));
-        paintChance();
-    } else if (typeCard == 5) {
-        _game.winCommunityChest();
-        ui->PassButton->show();
-        ui->PassButton->setText(QString("Tour Suivant"));
-    } else if (typeCard == 6) {
-        if (_game.getOwnerProperty(position) == 0) {
-            ui->PassButton->show();
-            ui->PassButton->setText(QString("Tour Suivant"));
-            // Print card value in text field
-            if (_game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getPriceProperty(position)) {
-                int card_value = _game.getPriceProperty(position);
-                ui->BuyButton->show();
-                ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
-            }
-        } else {
-            // Print rent value in text field
-            int rent_value = _game.getPropertyRent(position);
-            ui->PayRentButton->show();
-            ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
-        }
-    } else if (typeCard == 7) {
-        _game.winCommunityChest();
-        ui->PassButton->show();
-        ui->PassButton->setText(QString("Tour Suivant"));
-    }
+    _game.movePlayer(die1+die2);
+    onLand();
 }
 
 void MainWindow::paintDice(int die1, int die2) {
@@ -237,8 +160,8 @@ void MainWindow::paintDice(int die1, int die2) {
 
 void MainWindow::paintPlayer(int i, int position) {
     auto [x, y] = getPlayerPosition(position);
-    lbArr[i]->move(x, y);
-    lbArr[i]->show();
+    lbArr[i-1]->move(x, y);
+    lbArr[i-1]->show();
 }
 
 void MainWindow::paintCard(int position) {
@@ -374,12 +297,17 @@ void MainWindow::paintChance() { // Get the details of the card through position
     ui->ChanceLogo->setScaledContents(true);
 
     //Set card
+    int positionBefore = _game.getPlayerPosition(_game.getCurrentPlayer());
     QString ChanceAction = QString::fromStdString(_game.doActionCard());
-    paintPlayer(_game.getCurrentPlayer()-1,_game.getPlayerPosition(_game.getCurrentPlayer()));
+    int current_player = _game.getCurrentPlayer();
+    paintPlayer(current_player,_game.getPlayerPosition(current_player));
     ui->ChanceAction->setText(ChanceAction);
     ui->ChanceAction->setWordWrap(true);
     // Show the vertical layout widget with the card details
     ui->gridLayoutWidget_6->show();
+    if (positionBefore != _game.getPlayerPosition(_game.getCurrentPlayer())) {
+        ui->PassButton->setText(QString("Next"));
+    }
     updatePlayersPosition();
 }
 
@@ -431,16 +359,9 @@ void MainWindow::nextMove() {
         ui->PlayerList->item(i)->setText(player_display_text);
     }
 
-    int currently_active_player = _game.getCurrentPlayer();
-    paintInactivePlayer(currently_active_player-1);
+    paintInactivePlayer(_game.getCurrentPlayer()-1);
     _game.nextTurn();
-    currently_active_player = _game.getCurrentPlayer();
-    if (currently_active_player == -1) {
-        close();
-    }
-    paintActivePlayer(currently_active_player-1);
-
-    // Now we wait for a dice roll
+    paintActivePlayer(_game.getCurrentPlayer()-1);
 
     // Check if the game has ended
     checkEndGame();
@@ -509,7 +430,6 @@ void MainWindow::checkEndGame()
         {
             QString winner = QString::fromStdString(_game.getWinner()); //QString::fromStdString(_game.getPlayerName(1)); // Assuming player 1 is the winner
             message = QString("%1 a gagné la partie !").arg(winner);
-
         }
         EndGameDialog endGameDialog(this);
         endGameDialog.setMessage(message);
@@ -521,10 +441,90 @@ void MainWindow::checkEndGame()
 void MainWindow::updatePlayersPosition() {
     for (int i = 0; i < _game.getNumberPlayer(); ++i) {
         int position = _game.getPlayerPosition(i+1);
-        paintPlayer(i, position);
+        paintPlayer(i+1, position);
     }
 }
 
+void MainWindow::onLand() {
+    ui->gridLayoutWidget_6->hide();
+    int position = _game.getPlayerPosition(_game.getCurrentPlayer());
+    int current_player = _game.getCurrentPlayer();
+    paintPlayer(current_player, position);
+
+    // Show card in display area
+    int typeCard = _game.getTypeProperty(position);
+    paintCard(position);
+    if (typeCard == 0) {
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
+    } else if (typeCard == 1) { //if property
+        if (_game.getOwnerProperty(position) == 0) { //if property is not owned
+            ui->PassButton->show();
+            ui->PassButton->setText(QString("Tour Suivant"));
+            // player can buy it, if enough money
+            if (_game.getPlayerBalance(current_player) >= _game.getPriceProperty(position)) {
+                int card_value = _game.getPriceProperty(position);
+                ui->BuyButton->show();
+                ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
+            }
+        } else if (_game.getOwnerProperty(position) == current_player) {
+            ui->PassButton->show();
+            ui->PassButton->setText(QString("Tour Suivant"));
+            if (_game.getNumberhouse(position) == 4 and _game.getPlayerBalance(current_player) >= _game.getHostelPrice(position)) {
+                ui->BuildButton->show();
+                ui->BuildButton->setText(QString("Buy hostel $%1").arg(_game.getHostelPrice(position)));
+            }
+            else if (_game.getPlayerBalance(current_player) >= _game.getHousePrice(position)) {
+                ui->BuildButton->show();
+                ui->BuildButton->setText(QString("Buy house $%1").arg(_game.getHostelPrice(position)));
+            }
+        } else {
+            // Print rent value in text field
+            int rent_value = _game.getPropertyRent(position);
+            ui->PayRentButton->show();
+            ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
+
+        }
+    } else if (typeCard == 2) {
+        _game.goToJail();
+        paintPlayer(current_player, _game.getPlayerPosition(_game.getCurrentPlayer()));
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
+    } else if (typeCard == 3) {
+        _game.payTax();
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
+    } else if (typeCard == 4) {
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
+        paintChance();
+    } else if (typeCard == 5) {
+        _game.winCommunityChest();
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
+    } else if (typeCard == 6) {
+        if (_game.getOwnerProperty(position) == 0) {
+            ui->PassButton->show();
+            ui->PassButton->setText(QString("Tour Suivant"));
+            // Print card value in text field
+            if (_game.getPlayerBalance(current_player) >= _game.getPriceProperty(position)) {
+                int card_value = _game.getPriceProperty(position);
+                ui->BuyButton->show();
+                ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
+            }
+        } else {
+            // Print rent value in text field
+            int rent_value = _game.getPropertyRent(position);
+            ui->PayRentButton->show();
+            ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
+        }
+    } else if (typeCard == 7) {
+        _game.winCommunityChest();
+        ui->PassButton->show();
+        ui->PassButton->setText(QString("Tour Suivant"));
+    }
+
+}
 
 MainWindow::~MainWindow()
 {
