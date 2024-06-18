@@ -87,7 +87,7 @@ public:
     }
 
     void addPlayer(std::string playerName) {
-        Player player = Player(1,_nbPlayers+1,playerName,500,0,0);
+        Player player = Player(1,_nbPlayers+1,playerName,1500,0,0);
         _players[_nbPlayers] = player;
         _nbPlayers++;
     }
