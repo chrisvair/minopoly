@@ -113,6 +113,10 @@ public:
         return _currentPlayer;
     }
 
+    void setCurrentPlayer(int id) {
+        _currentPlayer = id;
+    }
+
     int getTypeProperty(int position) {
         return _board.getTile(position).getType();
     }

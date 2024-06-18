@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     std::string s = ""; //ex of calling backend
     Property p(1, s, 1, 1, s, 5, {1, 1, 1, 1, 1, 1}); //ex of calling backend
 
+
+
     // Transition with the menu window
     menu.setModal(true);// Makes the menu modal, meaning it blocks interaction with other windows until it's closed.
     connect(menu.ui->startPlay, SIGNAL(released()), this, SLOT(initializePlay()));
@@ -40,9 +42,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->gridLayoutWidget_6->hide();
 
     // Initially, we disable the roll button until the player has entered the players' names
-    ui->Roll->setDisabled(true);
 
-    // Connect the roll button to the rollDie function
+    // Connect the roll button to the rollDice function
     connect(ui->Roll, &QPushButton::released, this, [&]() {
         rollDice();
         // Disable until the next move
@@ -83,6 +84,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::initializePlay() {
     menu.hide(); // Hide the menu to go to the main window.
+    ui->Roll->setDisabled(true);
 
     // Load the Monopoly board image
     ui->Map->setPixmap(QPixmap("Minopoly/Assets/game_board.png"));
@@ -92,37 +94,53 @@ void MainWindow::initializePlay() {
     ui->Background->setPixmap(QPixmap("Minopoly/Assets/menu_background.png"));
     setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 
-    // Initialize player widgets
-    int playerCount = menu.ui->nbPlayers->currentText().toInt(); // Get the number of players from the menu
-    for (int i = 0; i < playerCount; ++i) {
-        lbArr[i] = new QLabel(this);
-        QPixmap playerPixmap(QString("Minopoly/Assets/Player%1.png").arg(i + 1));
-        lbArr[i]->setPixmap(playerPixmap.scaled(35, 35, Qt::KeepAspectRatio));
-        lbArr[i]->setFixedSize(35, 35);
-        // Initialize all players at position 0
-        paintPlayer(i, 0);
-    }
+
 
     // Load the game
     // the index of the selected game
     int selectedGameIndex = menu.ui->gameSelection->currentIndex();
 
-    if (selectedGameIndex == 0) {
-        // New game
+    if (selectedGameIndex == 0) { // New game
+        int playerCount = menu.ui->nbPlayers->currentText().toInt(); // Get the number of players from the menu
         _game = Game(playerCount, std::array<Player, 4>(), 20, 10000, 0, Board());
         _game.loadNewGame();
         std::cout << "New game loaded" << std::endl;
-    } else {
+
+        // Initialize player widgets
+        for (int i = 0; i < playerCount; ++i) {
+            lbArr[i] = new QLabel(this);
+            QPixmap playerPixmap(QString("Minopoly/Assets/Player%1.png").arg(i + 1));
+            lbArr[i]->setPixmap(playerPixmap.scaled(35, 35, Qt::KeepAspectRatio));
+            lbArr[i]->setFixedSize(35, 35);
+            // Initialize all players at position 0
+            paintPlayer(i, 0);
+        }
+    } else { // Load a game
         // Load the selected game
-        _game = Game(playerCount, std::array<Player, 4>(), 20, 10000, 0, Board());
+        _game = Game(0, std::array<Player, 4>(), 20, 10000, 0, Board());
         _game.loadGame(selectedGameIndex);
         std::cout << "Game " << selectedGameIndex << " loaded" << std::endl;
+        std::cout << "Number of players: " << _game.getNumberPlayer() << std::endl;
         setPlayerListFromALoadedGame();
+
+        // Initialize player widgets
+        for (int i = 0; i < _game.getNumberPlayer(); ++i) {
+            lbArr[i] = new QLabel(this);
+            QPixmap playerPixmap(QString("Minopoly/Assets/Player%1.png").arg(i + 1));
+            lbArr[i]->setPixmap(playerPixmap.scaled(35, 35, Qt::KeepAspectRatio));
+            lbArr[i]->setFixedSize(35, 35);
+            // Initialize all players at position 0
+            paintPlayer(i, _game.getPlayerPosition(i + 1));
+        }
+        std::cout << "Next move" << std::endl;
+        ui->Roll->setDisabled(false);
+
     }
 
 
     paintDice(6, 6);
     _game.start();
+
 }
 
 void MainWindow::rollDice() {
@@ -226,7 +244,17 @@ void MainWindow::paintDice(int die1, int die2) {
 }
 
 void MainWindow::paintPlayer(int i, int position) {
+    //Raise exception if position is out of range
+    if (position < 0 || position > 39) {
+        throw std::out_of_range("Position must be between 0 and 39");
+    }
+    // Raise exception if player number is out of range
+    if (i < 0 || i > 3) {
+        throw std::out_of_range("Player number must be between 0 and 3");
+    }
+    std::cout << "Trying to paint player " << i << " at position " << position << std::endl;
     auto [x, y] = getPlayerPosition(position);
+    std::cout << "Player " << i << " at x: " << x << " y: " << y << std::endl;
     lbArr[i]->move(x, y);
     lbArr[i]->show();
 }
@@ -455,7 +483,8 @@ void MainWindow::setPlayerList() {
     // // Hide the name entry related UI elements:
         ui->NameEnterEdit->hide();
         ui->NameEnterQuestion->hide();
-    }}
+    }
+}
 
 void MainWindow::setPlayerListFromALoadedGame(){
     for (int i = 0; i < _game.getNumberPlayer(); ++i) {
@@ -476,16 +505,20 @@ void MainWindow::setPlayerListFromALoadedGame(){
         }
     }
 
-    // Disable input field (and enable dice rolling) once all players are added
-    if (_game.getNumberPlayer() == ui->PlayerList->count()) {
-        ui->NameEnterEdit->setDisabled(true);
-        ui->Roll->setDisabled(false);
-        // Hide the name entry related UI elements:
-        ui->NameEnterEdit->hide();
-        ui->NameEnterQuestion->hide();
-    }
 
-    updatePosition();
+    // For simplicitly, clear the input field
+    ui->NameEnterEdit->clear();
+
+    // Disable input field (and enable dice rolling) once all players are added
+    ui->NameEnterEdit->setDisabled(true);
+    ui->Roll->setDisabled(false);
+    // Hide the name entry related UI elements:
+    ui->NameEnterEdit->hide();
+    ui->NameEnterQuestion->hide();
+
+
+    _game.setCurrentPlayer(1);
+    paintActivePlayer(0);
 
 }
 
