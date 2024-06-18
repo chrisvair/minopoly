@@ -8,6 +8,9 @@
 #include "menudialog.h"
 #include "ui_menudialog.h"
 
+#include "endgamedialog.h"
+
+
 #include <QStyle>
 #include <utility>
 
@@ -112,6 +115,10 @@ MainWindow::MainWindow(QWidget *parent)
         nextMove();
     });
 
+    // Save game action
+    // TODO(save the game) replace &MainWindow::close with you function
+    connect(ui->saveButton, &QPushButton::clicked, this, &MainWindow::close);
+
 }
 
 void MainWindow::initializePlay()
@@ -124,7 +131,8 @@ void MainWindow::initializePlay()
 
     // Set the background
     ui->Background->setPixmap(QPixmap("Minopoly/Assets/menu_background.png"));
-    setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
+    //setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
+    setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
 
     // Initialize player widgets
     int playerCount = menu.ui->nbPlayers->currentText().toInt(); // Get the number of players from the menu
@@ -375,6 +383,7 @@ void MainWindow::paintChance() { // Get the details of the card through position
     //Set card
     QString ChanceAction =QString::fromStdString(_game.doActionCard());
     ui->ChanceAction->setText(ChanceAction);
+    ui->ChanceAction->setWordWrap(true);
 
     // Show the vertical layout widget with the card details
     ui->gridLayoutWidget_6->show();
@@ -435,6 +444,9 @@ void MainWindow::nextMove() {
     paintActivePlayer(currently_active_player-1);
 
     // Now we wait for a dice roll
+
+    // Check if the game has ended
+    checkEndGame();
 }
 
 std::pair<int, int> MainWindow::getPlayerPosition(int position) {
@@ -479,6 +491,34 @@ std::pair<int, int> MainWindow::getPlayerPosition(int position) {
     }
 
     return std::make_pair(x, y);
+}
+
+void MainWindow::checkEndGame()
+{
+    //TODO
+    // Example conditions: max turns reached or a player has lost
+    // Replace with actual game logic
+    bool maxTurnsReached = true; //(_game.getCurrentTurn() >= _game.getMaxTurns());
+    bool playerLost = false;//(_game.getNumberPlayer() == 1); // Only one player left
+
+    if (maxTurnsReached || playerLost)
+    {
+        QString message;
+        if (maxTurnsReached)
+        {
+            message = "La limite maximale de tours a été atteinte. Le jeu est terminé !";
+        }
+        else if (playerLost)
+        {
+            QString looser = "LISE"; //QString::fromStdString(_game.getPlayerName(1)); // Assuming player 1 is the winner
+            message = QString("%1 aperdu!").arg(looser);
+        }
+
+        EndGameDialog endGameDialog(this);
+        endGameDialog.setMessage(message);
+        endGameDialog.exec();
+        close(); // Close the main window after the game ends
+    }
 }
 
 MainWindow::~MainWindow()
