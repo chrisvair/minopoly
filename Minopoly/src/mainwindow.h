@@ -33,6 +33,7 @@ private slots:
     void paintChance();
     void paintTreasure();
     void paintCardByPosition(int position);
+    void checkEndGame();
 
 private:
     Ui::MainWindow *ui;
