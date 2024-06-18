@@ -19,6 +19,7 @@ set(PROJECT_SOURCES
         src/mainwindow.ui
         src/menudialog.cpp
         src/endgamedialog.cpp
+        src/endgamedialog.cpp
         #src/menu.ui
 )
 

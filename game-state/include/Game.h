@@ -200,7 +200,7 @@ public:
     }
 
     void loadNewGame(){
-        _board.loadBoard("game-state/assets/board.json");
+        _board.loadBoard("game-state/assets/monopoly.json");
         _players = _board.players;
         _turn = 0;
     }

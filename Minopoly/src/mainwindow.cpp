@@ -112,9 +112,9 @@ void MainWindow::initializePlay() {
 
     if (selectedGameIndex == 0) { // New game
         int playerCount = menu.ui->nbPlayers->currentText().toInt(); // Get the number of players from the menu
-        _game = Game(playerCount, std::array<Player, 4>(), 20, 10000, 0, Board());
+        _game = Game(0, std::array<Player, 4>(), 20, 10000, 0, Board());
         _game.loadNewGame();
-        std::cout << "New game loaded" << std::endl;
+
 
         // Initialize player widgets
         for (int i = 0; i < playerCount; ++i) {
@@ -474,11 +474,14 @@ void MainWindow::setPlayerList() {
     // Backend only supports std::string, not QString
     _game.addPlayer(player_name.toStdString());
 
+    int current_player_number = ui->PlayerList->count();
+    std::cout << "Player " << current_player_number + 1 << " is " << player_name.toStdString() << std::endl;
+    std::cout << "They are currently " << _game.getNumberPlayer() << " players." << std::endl;
 
     // Create new list item for player and add it so new player is displayed in UI
     {
         int current_player_number = ui->PlayerList->count();
-        int initial_balance = _game.getPlayerBalance(current_player_number+1);
+        int initial_balance = _game.getPlayerBalance(current_player_number+1);;
         QString player_icon_path = QString("Minopoly/Assets/Player%1.png").arg(current_player_number + 1);
         QString player_display_text = QString("%1 - Balance: $%2").arg(player_name).arg(initial_balance);
         QListWidgetItem *new_player_item = new QListWidgetItem(QIcon(QPixmap(player_icon_path)), player_display_text);

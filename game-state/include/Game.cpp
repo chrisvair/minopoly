@@ -195,7 +195,7 @@ int Game::playersBankrupt(){
 
 
 void Game::chooseGame() {
-    if (_board.getNumberOfSavedGames() !=0) {
+    if (_board.getNumberOfSavedGames() != 0) {
         std::cout << "Do you want to load a saved game ? (y/n)" << std::endl;
         std::string answer;
         std::cin >> answer;
