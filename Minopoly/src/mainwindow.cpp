@@ -97,6 +97,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     connect(ui->PassButton, &QPushButton::clicked, this, [&](){
+        updatePlayersPosition();
         nextMove();
     });
 
@@ -209,10 +210,9 @@ void MainWindow::rollDice() {
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
     } else if (typeCard == 4) {
-        _game.doActionCard();
-        paintPlayer(player_number-1, _game.getPlayerPosition(_game.getCurrentPlayer()));
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
+        paintChance();
     } else if (typeCard == 5) {
         _game.winCommunityChest();
         ui->PassButton->show();
@@ -271,7 +271,7 @@ void MainWindow::paintCard(int position) {
     }else if (card_type == 2) {
         paintCardByPosition(position);
     }else if (card_type == 3) {
-        paintTreasure();
+        paintCardByPosition(position);
     } else if (card_type == 4) {
         paintChance();
     }else if (card_type == 5) {
@@ -391,12 +391,13 @@ void MainWindow::paintChance() { // Get the details of the card through position
     ui->ChanceLogo->setScaledContents(true);
 
     //Set card
-    QString ChanceAction =QString::fromStdString(_game.doActionCard());
+    QString ChanceAction = QString::fromStdString(_game.doActionCard());
+    paintPlayer(_game.getCurrentPlayer()-1,_game.getPlayerPosition(_game.getCurrentPlayer()));
     ui->ChanceAction->setText(ChanceAction);
     ui->ChanceAction->setWordWrap(true);
-
     // Show the vertical layout widget with the card details
     ui->gridLayoutWidget_6->show();
+    updatePlayersPosition();
 }
 
 void MainWindow::paintTreasure() {
@@ -508,12 +509,12 @@ std::pair<int, int> MainWindow::getPlayerPosition(int position) {
 
 void MainWindow::checkEndGame()
 {
-    //TODO
-    // Example conditions: max turns reached or a player has lost
+    if (_game.getCurrentPlayer() == -1) {
+        close();
+    }
     // Replace with actual game logic
-    bool maxTurnsReached = true; //(_game.getCurrentTurn() >= _game.getMaxTurns());
-    bool playerLost = false;//(_game.getNumberPlayer() == 1); // Only one player left
-
+    bool maxTurnsReached = (_game.getCurrentPlayer() == -1);
+    bool playerLost = (_game.getCurrentPlayer() == -2);
     if (maxTurnsReached || playerLost)
     {
         QString message;
@@ -523,16 +524,24 @@ void MainWindow::checkEndGame()
         }
         else if (playerLost)
         {
-            QString looser = "LISE"; //QString::fromStdString(_game.getPlayerName(1)); // Assuming player 1 is the winner
-            message = QString("%1 aperdu!").arg(looser);
-        }
+            QString winner = QString::fromStdString(_game.getWinner()); //QString::fromStdString(_game.getPlayerName(1)); // Assuming player 1 is the winner
+            message = QString("%1 a gagné la partie !").arg(winner);
 
+        }
         EndGameDialog endGameDialog(this);
         endGameDialog.setMessage(message);
         endGameDialog.exec();
         close(); // Close the main window after the game ends
     }
 }
+
+void MainWindow::updatePlayersPosition() {
+    for (int i = 0; i < _game.getNumberPlayer(); ++i) {
+        int position = _game.getPlayerPosition(i+1);
+        paintPlayer(i, position);
+    }
+}
+
 
 MainWindow::~MainWindow()
 {

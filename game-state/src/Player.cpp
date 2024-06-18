@@ -37,9 +37,11 @@ void Player::takeMoney(int amount) {
 
 void Player::move(int amount) {
     _position = _position + amount;
-    if (_position >= 40) { //if the player has done a full turn
-        _position = _position - 40; //We reset the position
+    if (_position >= 40 ) { //if the player has done a full turn
+        _position = _position%40; //We reset the position
         _money = _money + 200; //The player gets 200$ for passing by the start
+    } else if (_position < 0) {
+        _position = 40 + _position;
     }
 }
 

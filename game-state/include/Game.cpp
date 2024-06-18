@@ -51,6 +51,10 @@ void Game::nextTurn() {
         _currentPlayer = -1;
         return;
     }
+    if (playersBankrupt() == _nbPlayers - 1) {
+        _currentPlayer = -2;
+        return;
+    }
     Player& player = _players[_currentPlayer-1];
     //if in jail we check if you can get out of it
     if (player.isBankrupt()) {
@@ -171,5 +175,22 @@ void Game::selectNumberOfPlayers() {
         }
         std::cout << _players[i].getPlayerName() << std::endl;
     }
+}
+int Game::playersBankrupt(){
+    int nbPlayerBanrkurpt = 0;
+    for (int i = 0; i < _players.size(); i++) {
+        if (_players[i].isBankrupt()) {
+            nbPlayerBanrkurpt++;
+        }
+    }
+    return nbPlayerBanrkurpt;
+}
 
+std::string Game::getWinner() {
+    for (int i = 0; i < _players.size(); i++) {
+        if (!_players[i].isBankrupt()) {
+            return _players[i].getPlayerName();
+        }
+    }
+    return "Personne n'";
 }

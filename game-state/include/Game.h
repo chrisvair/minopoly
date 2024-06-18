@@ -202,6 +202,9 @@ public:
         return _players[_board.getTile(position).owned()-1].getPlayerName();
     }
 
+    int playersBankrupt();
+
+    std::string getWinner();
 };
 
 
