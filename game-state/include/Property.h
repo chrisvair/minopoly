@@ -132,6 +132,21 @@ public:
         j.at("house").get_to(property._house);
         j.at("hotel").get_to(property._hostel);
     }
+
+    void to_json(nlohmann::json& j, const Property& property) const {
+        j = nlohmann::json{{"type", property._type},
+                           {"name", property._name},
+                           {"position", property._position},
+                           {"price", property._price},
+                           {"group", property._group},
+                           {"owned", property._owned},
+                           {"rents", property._rents},
+                           {"houseCost", property._houseCost},
+                           {"hotelCost", property._hotelCost},
+                           {"house", property._house},
+                           {"hotel", property._hostel}};
+    }
+
     int rent();
 
     void isSell();

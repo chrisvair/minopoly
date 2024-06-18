@@ -523,6 +523,12 @@
   ],
   "cards": [
     {
+      "id": 0,
+      "description": "Vous croisez le responsable Sécurité, Hygiène et Environnement... Reculez de 3 cases.",
+      "type": 3,
+      "value": -3
+    },
+    {
       "id": 1,
       "description": "Vous gagnez 50€ pour avoir résolu un problème d'inférence statistique !",
       "type": 1,
@@ -759,12 +765,6 @@
       "description": "Participez à l'open en colocs. Avancez jusqu'à la rue des Ponts.",
       "type": 3,
       "value": 39
-    },
-    {
-      "id": 40,
-      "description": "Vous croisez Laurent Kaltenecker. Reculez de 3 cases pour éviter de lui parler.",
-      "type": 3,
-      "value": -3
     }
   ]
 }

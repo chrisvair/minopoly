@@ -23,6 +23,7 @@ private:
     int _communityBank = 0;
     Board _board{};
     int _currentPlayer = 1;
+    int _turn = 0;
 
 public:
     Game(){}
@@ -82,6 +83,7 @@ public:
     void saveBoard(const std::string& filename) const;
     void onLand(Player &player);
     void selectNumberOfPlayers();
+    void chooseGame();
 
     std::array<int,2> rollDice() {
         srand(time(0));

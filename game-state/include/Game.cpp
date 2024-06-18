@@ -11,34 +11,42 @@
 void Game::start() {
     //initialize the game
 
-
-    Board board = Board();
+    std::cout << "Welcome to Monopoly" << std::endl;
+    chooseGame();
+    //Board board = Board();
     // TODO: choisir le file qu'on importe (partie sauvegardée) ou celle par défaut (nouvelle partie)
-    board.loadBoard("game-state/assets/monopoly.json");
-
-  
-    auto players = std::array<Player,4>{};
-    _players = players;
-    _board = board;
+    //board.loadBoard("game-state/assets/monopoly.json");
+    //_board = board;
     //_players = board.players;
     // TODO: load the players from a file if they exist and if not, create them with the following code
     //selectNumberOfPlayers();
 }
 
 void Game::play() {
-    for (int i = 0; i < _nbTurns; i++) {
+    std::cout << "The game is starting with turn " << to_string(_turn) << std::endl;
+    for (int turn = _turn; turn < _nbTurns; turn++) {
+        std::cout << "" << std::endl;
+        std::cout << "Turn number :  " << turn+1 << std::endl;
         for (int j = 0; j < _players.size(); j++) {
-            // this->nextTurn(_players[j]);
+            std::cout << "" << std::endl;
+            std::cout << "It's "<< _players[j].getPlayerName() << "'s turn" << std::endl;
+            this->nextTurn(_players[j]);
             if (_players[j].isBankrupt()) {
+                std::cout << "You are bankrupt, you lose" << std::endl;
                 return;
             }
         }
+        std::cout << "Autosave" << std::endl;
+        _board.setTurn(turn+1);
+        _board.players = _players;
+        _board.saveBoard();
     }
 }
 
-void end() {
-    // TODO: save the game
-    //end the game
+void Game::end() {
+    std::cout << "The game is over" << std::endl;
+    _board.saveBoard();
+    std::cout << "The game has been saved with the number " << _board.getGameNumber() << std::endl;
 }
 
 void Game::nextTurn() {
@@ -194,5 +202,44 @@ void Game::selectNumberOfPlayers() {
         }
         std::cout << _players[i].getPlayerName() << std::endl;
     }
+}
 
+void Game::chooseGame() {
+    if (_board.getNumberOfSavedGames() !=0) {
+        std::cout << "Do you want to load a saved game ? (y/n)" << std::endl;
+        std::string answer;
+        std::cin >> answer;
+        if (answer == "y") { // load a saved game
+            std::cout << "They are " << _board.getNumberOfSavedGames() << " saved games :" << std::endl;
+            for (int i = 1; i <= _board.getNumberOfSavedGames(); i++) {
+                std::cout << "Game number " << i << std::endl;
+            }
+            std::cout << "Which one do you want to load ?" << std::endl;
+            int gameNumber;
+            while (true) {
+                std::cin >> gameNumber;
+                if (gameNumber > _board.getNumberOfSavedGames()) {
+                    std::cout << "This game doesn't exist, please enter a valid number" << std::endl;
+                } else {
+                    break;
+                }
+            }
+            _board.loadBoard("game-state/assets/partie" + std::to_string(gameNumber) + ".json");
+            _players = _board.players;
+            _turn = _board.getTurn();
+            std::cout << "You are starting the game number " << _board.getGameNumber() << std::endl;
+
+
+        } else if (answer == "n") {// start a new game
+            std::cout << "You will start a new game" << std::endl;
+            _board.loadBoard("game-state/assets/monopoly.json");
+            std::cout << "You are starting the game number " << _board.getGameNumber() << std::endl;
+            selectNumberOfPlayers();
+        }
+    } else {
+        std::cout << "There is no saved games. Let's start a new game" << std::endl;
+        _board.loadBoard("game-state/assets/monopoly.json");
+        std::cout << "You are starting the game number " << _board.getGameNumber() << std::endl;
+        selectNumberOfPlayers();
+    }
 }
