@@ -112,8 +112,6 @@ void MainWindow::initializePlay() {
 
         _game = Game(0, std::array<Player, 4>(), 20, 10000, 0, Board());
         _game.loadGame(selectedGameIndex);
-        std::cout << "Game " << selectedGameIndex << " loaded" << std::endl;
-        std::cout << "Number of players: " << _game.getNumberPlayer() << std::endl;
         setPlayerListFromALoadedGame();
 
         // Initialize player widgets
@@ -136,7 +134,6 @@ void MainWindow::rollDice() {
     std::array<int,2> dices = _game.rollDice();
     int die1 = dices[0];
     int die2 = dices[1];
-
     paintDice(die1, die2);
     _game.movePlayer(die1+die2);
     onLand();
@@ -170,7 +167,7 @@ void MainWindow::paintPlayer(int i, int position) {
 
 void MainWindow::paintCard(int position) {
     int card_type = _game.getTypeProperty(position);
-    if (card_type == 0) {
+    if (card_type == 0 || position == 0){
         paintCardByPosition(position);
     } else if (card_type == 1) {
         if (_game.getColor(position) == "utility") {
@@ -538,7 +535,7 @@ void MainWindow::onLand() {
     // Show card in display area
     int typeCard = _game.getTypeProperty(position);
     paintCard(position);
-    if (typeCard == 0) {
+    if (typeCard == 0 || position == 0) {
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
     } else if (typeCard == 1) { //if property
@@ -580,7 +577,6 @@ void MainWindow::onLand() {
     } else if (typeCard == 4) {
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
-        paintChance();
     } else if (typeCard == 5) {
         _game.winCommunityChest();
         ui->PassButton->show();

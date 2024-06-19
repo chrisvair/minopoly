@@ -36,7 +36,7 @@ void Player::move(int amount) {
         _position = _position%40; //We reset the position
         _money = _money + 200; //The player gets 200$ for passing by the start
     } else if (_position < 0) {
-        _position = 40 + _position;
+        _position = _position%40;
     }
 }
 
