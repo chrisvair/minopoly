@@ -1,9 +1,6 @@
-//
-// Created by lise babé on 22/05/2024.
-//
-
 #ifndef GAME_H
 #define GAME_H
+
 #include <array>
 #include <utility>
 #include <__filesystem/operations.h>
@@ -41,7 +38,35 @@ public:
 
     void play();
 
+    void addPlayer(std::string playerName);
+
+    void loadBoard(const std::string& filename);
+
+    void saveBoard(const std::string& filename) const;
+
+    void selectNumberOfPlayers();
+
+    void onLand(Player &player);
+
     void nextTurn();
+
+    std::array<int,2> rollDice();
+
+    int movePlayer(int amount);
+
+    void build();
+
+    void payTax();
+
+    void payRent();
+
+    void winCommunityChest();
+
+    std::string doActionCard() ;
+
+    int playersBankrupt();
+
+    std::string getWinner();
 
     std::array<Player,4> & players() {
         return _players;
@@ -98,11 +123,6 @@ public:
         return _players[id-1].getPosition();
     }
 
-    int movePlayer(int amount) {
-        _players[_currentPlayer-1].move(amount);
-        return _players[_currentPlayer-1].getPosition();
-    }
-
     void buyProperty() {
         _players[_currentPlayer-1].buyProperty(_board.getTile(_players[_currentPlayer-1].getPosition()));
     }
@@ -117,15 +137,6 @@ public:
 
     int getTypeProperty(int position) {
         return _board.getTile(position).getType();
-    }
-
-    void build(int id) {
-        if (_board.getTile(id).house() == 4) {
-            _players[_currentPlayer-1].buyHostel(_board.getTile(id));
-        }
-        else {
-            _players[_currentPlayer-1].buyHouse(_board.getTile(id));
-        }
     }
 
     int getOwnerProperty(int id) {
@@ -172,11 +183,6 @@ public:
         return _nbPlayers;
     }
 
-    void payRent(){
-        int position = _players[_currentPlayer-1].getPosition();
-        _players[_currentPlayer-1].payRent(_players[_board.getTile(position).owned()-1],_board.getTile(position));
-    }
-
     void goToJail() {
         _players[_currentPlayer-1].goToJail();
     }
@@ -220,11 +226,6 @@ public:
         return _board.getTile(position).group();
     }
 
-    std::string doActionCard() {
-        Card newCard = _board.drawCard(rand() % 40);
-        _board.doAction(newCard, _players[_currentPlayer-1]);
-        return newCard.action();
-    }
     std::string getPlayerName(int id) {
         return _players[id-1].getPlayerName();
     }
@@ -232,10 +233,6 @@ public:
     std::string owner(int position){
         return _players[_board.getTile(position).owned()-1].getPlayerName();
     }
-
-    int playersBankrupt();
-
-    std::string getWinner();
 };
 
 

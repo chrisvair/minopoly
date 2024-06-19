@@ -1,9 +1,4 @@
-//
-// Created by lise babé on 22/05/2024.
-//
-
 #include "Player.h"
-
 
 void Player::setPlayerName(string inputName) {
     _name = inputName;
@@ -121,12 +116,37 @@ void Player::payRent(Player& owner, Property& tile) {
     owner.giveMoney(tile.rent());
 }
 
-void reset();
-
 void Player::showProperties() {
     for (int i = 0; i < 40; i++) {
         if (_properties[i].id() == _id) {
             std::cout << " property number : " << i << " price : " << _properties[i].price() << std::endl;
+        }
+    }
+}
+
+void Player::goToStart(){
+    _position = 0;
+    _money = _money + 200;
+    _moneyWorth = _moneyWorth + 200;
+};
+
+void Player::from_json(const nlohmann::json& j, Player& player){
+    j.at("type").get_to(player._type);
+    if (j.contains("id")){ //if the json contains the id, we get it
+        j.at("id").get_to(player._id);
+    }
+    j.at("name").get_to(player._name);
+    j.at("money").get_to(player._money);
+    j.at("position").get_to(player._position);
+    j.at("jail").get_to(player._jail);
+
+    // Charger les propriétés (le tableau properties)
+    if (j.contains("properties")) {
+        auto json_properties = j.at("properties");
+        for (size_t i = 0; i < _properties.size() && i < json_properties.size(); ++i) {
+            Property property;
+            property.from_json(json_properties[i], property);
+            player._properties[i] = property;
         }
     }
 }

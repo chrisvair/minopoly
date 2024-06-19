@@ -2,6 +2,7 @@
 #define MENUDIALOG_H
 
 #include <QDialog>
+#include "ui_menudialog.h"
 
 namespace Ui {
 class MenuDialog;
@@ -16,7 +17,6 @@ public:
     Ui::MenuDialog *ui;
     ~MenuDialog();
 
-private:
 };
 
 #endif // MENUDIALOG_H

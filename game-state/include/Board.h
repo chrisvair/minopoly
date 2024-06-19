@@ -1,19 +1,16 @@
-//
-// Created by lise babé on 22/05/2024.
-//
-
 #ifndef BOARD_H
 #define BOARD_H
+
 #include <array>
 #include <nlohmann/json.hpp>
 #include "Card.h"
 #include "Player.h"
 #include "Property.h"
-#include "Player.h"
 
 
 class Board {
 protected:
+    std::array<Property,40> _tiles;
     std::array<Card,40> _cards; //the board has 40 cards
     std::array<Property,40> _tiles; //the board has 40 tiles
     int gameNumber;
@@ -33,13 +30,18 @@ public:
         return _cards;
     }
     void loadBoard(const std::string& filename);
+
+    void saveBoard(const std::string& filename) const;
+
     void saveBoard() const;
     void genBots(const std::string& filename);
 
     Property& getTile(int id);
+
     Card drawCard(int id);
 
     void doAction(Card& card, Player& player);
+
     std::array<Player,4> players;  // Exemple
     int getGameNumber(){
         return gameNumber;
@@ -62,21 +64,27 @@ public:
     void savePlayers();
 
 
+    std::array<Card,40> & cards() {
+        return _cards;
+    }
 
 private:
     std::vector<Property> properties;  // Exemple
+
     void loadFromFile(const std::string& filename);
+
+    void saveToFile(const std::string& filename) const;
+
     void saveToFile(const std::string& filename, int gameNumber, int turn) const;
     std::array<Card,40> gameCards;
+
     std::array<Card,15> chanceCards;
+
     std::array<Card,16> communityChestCards;
 
 
 
     friend class JsonSerializer;
-
 };
-
-
 
 #endif //BOARD_H
