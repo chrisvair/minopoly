@@ -40,11 +40,14 @@ public:
     void doAction(Card& card, Player& player);
 
     int findFirstGameNumberAvailable();
+
     int getNumberOfSavedGames();
 
     std::array<Card,40> & cards() {
         return _cards;
     }
+
+    std::array<Player,4> players;
 
     int getGameNumber(){
         return gameNumber;

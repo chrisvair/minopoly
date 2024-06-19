@@ -30,10 +30,6 @@ public:
           _board(board){
     }
 
-    void start();
-
-    void play();
-
     void addPlayer(std::string playerName);
 
     void loadBoard(const std::string& filename);
@@ -41,8 +37,6 @@ public:
     void saveBoard(const std::string& filename) const;
 
     void selectNumberOfPlayers();
-
-    void onLand(Player &player);
 
     void nextTurn();
 

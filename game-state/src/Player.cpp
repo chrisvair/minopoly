@@ -60,9 +60,9 @@ bool Player::sellProperty() {
 }
 
 void Player::buyProperty(Property& property) {
-    _properties[property.getPosition()] = property;
     property.setOwned(_id);
     takeMoney(property.price());
+    _properties[property.getPosition()] = property;
 }
 
 void Player::buyPropertyFromTheBank(Property& property) {

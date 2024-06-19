@@ -1,40 +1,5 @@
 #include "Game.h"
 
-void Game::start() {
-    //initialize the game
-
-    //std::cout << "Welcome to Monopoly" << std::endl;
-    //chooseGame();
-    //Board board = Board();
-    // TODO: choisir le file qu'on importe (partie sauvegardée) ou celle par défaut (nouvelle partie)
-    //board.loadBoard("game-state/assets/monopoly.json");
-    //_board = board;
-    //_players = board.players;
-    // TODO: load the players from a file if they exist and if not, create them with the following code
-    //selectNumberOfPlayers();
-}
-
-void Game::play() {
-    std::cout << "The game is starting with turn " << to_string(_turn) << std::endl;
-    for (int turn = _turn; turn < _nbTurns; turn++) {
-        std::cout << "" << std::endl;
-        std::cout << "Turn number :  " << turn+1 << std::endl;
-        for (int j = 0; j < _players.size(); j++) {
-            std::cout << "" << std::endl;
-            std::cout << "It's "<< _players[j].getPlayerName() << "'s turn" << std::endl;
-            this->nextTurn();
-            if (_players[j].isBankrupt()) {
-                std::cout << "You are bankrupt, you lose" << std::endl;
-                return;
-            }
-        }
-        std::cout << "Autosave" << std::endl;
-        _board.setTurn(turn+1);
-        _board.players = _players;
-        _board.saveBoard();
-    }
-}
-
 void Game::nextTurn() {
     _currentPlayer++;
     if (_currentPlayer == _nbPlayers + 1) {
@@ -60,72 +25,6 @@ void Game::nextTurn() {
     } else if(player.isInJail()!=0) {
         player.oneMoreTurnInJail();
         nextTurn();
-    }
-}
-
-void Game::onLand(Player& player) {
-    std::string answer;
-    Property& tile = _board.getTile(player.getPosition());
-
-    if (tile.type() == 1) {
-        std::cout << "You landed on " << tile.name() << std::endl;
-        if (tile.owned() == player.getId() ) {
-            std::cout << "It's your property" << std::endl;
-            if (tile.house() < 3 && tile.hostel() == 0 && player.getMoneyAmount() >= tile.costHouse()){
-                std::cout << "You have " << tile.house() << " house(s), do you want to buy one ? (y/n)" << std::endl;
-                std::cin >> answer;
-                if (answer == "y") {
-                    std::cout << "You buy a house" << std::endl;
-                    player.buyHouse(tile);
-                } else if (answer == "n") {
-                    std::cout << "You don't buy a house" << std::endl;
-                }
-            }
-            else if (tile.house() == 3 && tile.hostel() == 0 && player.getMoneyAmount() >= tile.costHostel()){
-                std::cout << "You have " << tile.house() << " houses, do you want to buy a hostel ? (yes/no)" << std::endl;
-                std::cin >> answer;
-                if (answer == "yes") {
-                    std::cout << "You buy a hostel" << std::endl;
-                    player.buyHostel(tile);
-                } else if (answer == "no") {
-                    std::cout << "You don't buy a hostel" << std::endl;
-                }
-            }
-            else {
-                std::cout << "You can't buy anything else" << std::endl;
-            }
-        }
-        // if the property is not owned
-        else if (tile.owned() == 0 ) {
-            // you canbuy it
-            player.buyProperty(tile);
-        }
-        // if the property is owned by the other player
-        else {
-            // you have to pay the rent
-            std::cout << "owner of the property :" << tile.owned() << std::endl;
-            player.payRent(_players[tile.owned()-1],tile);
-        }
-    }
-    else if (tile.type() == 2) {
-        std::cout << "You landed on a go to jail" << std::endl;
-        player.goToJail();
-    }
-    else if (tile.type() == 3) {
-        std::cout << "You landed on a tax, you have to pay " << tile.price() << " $$" << std::endl;
-        player.payTax(tile.price());
-        payToCommunityBank(tile.price());
-    }
-    else if (tile.type() == 4) {
-        std::cout << "You landed on a chance tile !" << std::endl;
-        Card newCard = _board.drawCard(rand() % 40);
-        _board.doAction(newCard, player);
-    }
-    else if (tile.type() == 5) {
-        std::cout << "You landed on the community chest" << std::endl;
-        std::cout << "You won " << _communityBank << " $$" << std::endl;
-        player.giveMoney(_communityBank);
-        emptyCommunityBank();
     }
 }
 
