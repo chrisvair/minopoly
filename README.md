@@ -45,11 +45,11 @@ By adhering to the correct data structure, you can import custom cards and games
  ```
 4. Open the project in Qt Creator (or any other preferred IDE). 
 
-   **Note**: Ensure to set the working directory to the root directory of the project ("minopoly") in the IDE's "edit configuration" settings.
+   **Note**: Ensure to set the working directory to the root directory of the project ("minopoly") in the IDE's "edit configuration" settings, to have access to the assets.
 6. Build the project.
-7. Run the executable to start the game.???
+7. Run the executable to start the game.
 
-**Note**: The project was developed on *iOS*; if you are using *UNIX*, you need to modify the CMake configuration in the Minopoly folder.
+**Note**: The project was developed on *MAC iOS*; if you are using *LINUX* or *WINDOWS*, you need to modify the CMake configuration in the Minopoly folder.
 
 ### Playing explanation
 
