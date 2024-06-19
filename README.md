@@ -19,6 +19,8 @@ The project is implemented using C++ due to its efficiency, object-oriented feat
 - **Minopoly/**: Contains the main application code including UI elements.
 - **third_party/**: Contains third-party dependencies: nlohmann_json library.
 
+To be more specific, *Minopoly* is used to manage the UI elements and the window displaying the game. To link the main window with the backend, we use the *Game* class. The Game class has access to all the other classes, which allows it to modify the game state. The *nlohmann_json library* is used to read and write JSON files. If you follow the right data structure, you can import your own cards and games.
+
 ## How to Use it
 
 ### Setup
