@@ -15,11 +15,13 @@ It was created as a second-year C++ project at École Nationale des Mines de Nan
 The project is implemented using C++ due to its efficiency, object-oriented features, and suitability for handling the complex logic and data structures required in a Monopoly game. The game data is managed through the integration of the [nlohmann_json](https://github.com/nlohmann/json) library for JSON serialization. The graphical user interface is developed using the Qt framework.
 
 ## Project Structure
-- **game-state/**: Manages the game state, including players, properties, and game rules.
-- **Minopoly/**: Contains the main application code including UI elements.
-- **third_party/**: Contains third-party dependencies: nlohmann_json library.
 
-To be more specific, *Minopoly* is used to manage the UI elements and the window displaying the game. To link the main window with the backend, we use the *Game* class. The Game class has access to all the other classes, which allows it to modify the game state. The *nlohmann_json library* is used to read and write JSON files. If you follow the right data structure, you can import your own cards and games.
+- **Minopoly/**: Manages the UI elements including the main window displaying the game.
+- **game-state/**: Manages the game state, including players, properties, and game rules. 
+The *Game* class in this directory links the UI with the backend, having access to all other classes to modify the game state.
+- **third_party/**: Contains the third-party nlohmann_json library used for reading and writing JSON files.
+By adhering to the correct data structure, you can import custom cards and games into the application.
+
 
 ## How to Use it
 
@@ -42,11 +44,12 @@ To be more specific, *Minopoly* is used to manage the UI elements and the window
     git submodule update --init --recursive
  ```
 4. Open the project in Qt Creator (or any other preferred IDE). 
-    - **Note**: Ensure to set the working directory to the root directory of the project ("minopoly") in the IDE's "edit configuration" settings.
-5. Build the project.
-6. Run the executable to start the game.???
 
-**Note**: The project was developed for iOS; if you are using LINUX, you need to modify the CMake configuration in the Minopoly folder.
+   **Note**: Ensure to set the working directory to the root directory of the project ("minopoly") in the IDE's "edit configuration" settings.
+6. Build the project.
+7. Run the executable to start the game.???
+
+**Note**: The project was developed on *iOS*; if you are using *UNIX*, you need to modify the CMake configuration in the Minopoly folder.
 
 ### Playing explanation
 
@@ -57,7 +60,7 @@ To be more specific, *Minopoly* is used to manage the UI elements and the window
 
 2. **Setup the Players**:
     - Enter the names of the players in the provided fields.
-    - Each player is assigned a token and starting money balance, and they are placed on the start cell.
+    - Each player is assigned a token, a starting money balance, and they are placed on the start cell.
     - Players take turns, which is visualized by the selection of their name.
 
 3. **Game Rules**:
