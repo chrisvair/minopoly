@@ -609,7 +609,6 @@ void MainWindow::onLand() {
 
 }
 
-
 void MainWindow::saveAndClose() {
     // Save the game
     _game.saveGame();

@@ -40,6 +40,13 @@ void Player::move(int amount) {
     }
 }
 
+void Player::goTo(int position) {
+    if (_position > position) {
+        _money = _money + 200;
+    }
+    _position = position;
+}
+
 void Player::reset() {
     _money = 1500;
     _position = 0;

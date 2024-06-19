@@ -60,6 +60,8 @@ public:
 
     void move(int amount);
 
+    void goTo(int position);
+
     void reset();
 
     void goToStart();

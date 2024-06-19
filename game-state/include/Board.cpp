@@ -45,8 +45,7 @@ void Board::doAction(Card& card, Player& player) {
         player.takeMoney(card.value());
     }
     else if (card.getType() == 3) {
-        player.goToStart();
-        player.move(card.value());
+        player.goTo(card.value());
     }
     else if (card.getType() == 4) {
         player.goToJail();

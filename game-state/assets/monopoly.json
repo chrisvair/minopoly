@@ -525,7 +525,7 @@
     {
       "id": 0,
       "description": "Vous croisez le responsable Sécurité, Hygiène et Environnement... Reculez de 3 cases.",
-      "type": 3,
+      "type": 6,
       "value": -3
     },
     {
@@ -579,7 +579,7 @@
     {
       "id": 9,
       "description": "Avancez de 3 cases.",
-      "type": 3,
+      "type": 6,
       "value": 3
     },
     {
@@ -687,7 +687,7 @@
     {
       "id": 27,
       "description": "Passez une soirée trop animée au bar de l'école. Reculez de 2 cases.",
-      "type": 3,
+      "type": 6,
       "value": -2
     },
     {
@@ -699,13 +699,13 @@
     {
       "id": 29,
       "description": "Explorez le local poubelle pour des matériaux de projet. Reculez de 1 case.",
-      "type": 3,
+      "type": 6,
       "value": -1
     },
     {
       "id": 30,
       "description": "Faites un tour de la mare. Reculez de 3 cases pour nettoyer vos chaussures.",
-      "type": 3,
+      "type": 6,
       "value": -3
     },
     {
@@ -729,13 +729,13 @@
     {
       "id": 34,
       "description": "Prenez le tram mais il est en travaux. Reculez de 2 cases pour trouver un autre chemin.",
-      "type": 3,
+      "type": 6,
       "value": -2
     },
     {
       "id": 35,
       "description": "La ligne A du tram a changé de parcours. Reculez de 1 case pour ajuster votre trajet.",
-      "type": 3,
+      "type": 6,
       "value": -1
     },
     {
