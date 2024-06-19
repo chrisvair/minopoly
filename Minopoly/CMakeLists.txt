@@ -9,18 +9,18 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
+        src/menudialog.h
+        src/mainwindow.h
+        src/endgamedialog.h
+
         src/main.cpp
         src/mainwindow.cpp
-        #src/menu.cpp
-
-        src/mainwindow.h
-        #src/menu.h
-
-        src/mainwindow.ui
         src/menudialog.cpp
         src/endgamedialog.cpp
-        src/endgamedialog.cpp
-        #src/menu.ui
+
+        src/mainwindow.ui
+        src/menudialog.ui
+        src/endgamedialog.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -58,8 +58,6 @@ set_target_properties(Minopoly PROPERTIES
 )
 
 include(GNUInstallDirs)
-
-# qt6_add_resources(RESOURCE_FILES src/assets.qrc)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 qt_finalize_executable(Minopoly)
