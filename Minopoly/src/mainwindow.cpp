@@ -132,18 +132,19 @@ void MainWindow::initializePlay() {
         std::cout << "Next move" << std::endl;
         ui->Roll->setDisabled(false);
 
-    // Initialize player widgets
-    int playerCount = menu.ui->nbPlayers->currentText().toInt(); // Get the number of players from the menu
-    for (int i = 0; i < playerCount; ++i) {
-        lbArr[i] = new QLabel(this);
-        QPixmap playerPixmap(QString("Minopoly/Assets/Player%1.png").arg(i+1));
-        lbArr[i]->setPixmap(playerPixmap.scaled(35, 35, Qt::KeepAspectRatio));
-        lbArr[i]->setFixedSize(35, 35);
-        // Initialize all players at position 0
-        paintPlayer(i+1, 0);
+        // Initialize player widgets
+        int playerCount = menu.ui->nbPlayers->currentText().toInt(); // Get the number of players from the menu
+        for (int i = 0; i < playerCount; ++i) {
+            lbArr[i] = new QLabel(this);
+            QPixmap playerPixmap(QString("Minopoly/Assets/Player%1.png").arg(i+1));
+            lbArr[i]->setPixmap(playerPixmap.scaled(35, 35, Qt::KeepAspectRatio));
+            lbArr[i]->setFixedSize(35, 35);
+            // Initialize all players at position 0
+            paintPlayer(i+1, 0);
+        }
+        paintDice(6, 6);
+        _game.start();
     }
-    paintDice(6, 6);
-    _game.start();
 }
 
 void MainWindow::rollDice() {
@@ -160,7 +161,7 @@ void MainWindow::rollDice() {
     // 1. New position due to dice
     int position = _game.movePlayer(die1+die2);
     // 3. Paint player at new position
-    paintPlayer(player_number-1, position);
+    paintPlayer(_game.getCurrentPlayer(), position);
 
     //TODO : update moneay players
 
@@ -180,7 +181,7 @@ void MainWindow::rollDice() {
                 ui->BuyButton->show();
                 ui->BuyButton->setText(QString("Buy $%1").arg(card_value));
             }
-        } else if (_game.getOwnerProperty(position) == player_number) {
+        } else if (_game.getOwnerProperty(position) == _game.getCurrentPlayer()) {
             ui->PassButton->show();
             ui->PassButton->setText(QString("Tour Suivant"));
             if (_game.getNumberhouse(position) == 4 and _game.getPlayerBalance(_game.getCurrentPlayer()) >= _game.getHostelPrice(position)) {
@@ -199,7 +200,7 @@ void MainWindow::rollDice() {
         }
     } else if (typeCard == 2) {
         _game.goToJail();
-        paintPlayer(player_number - 1, _game.getPlayerPosition(_game.getCurrentPlayer()));
+        paintPlayer(_game.getCurrentPlayer(), _game.getPlayerPosition(_game.getCurrentPlayer()));
         ui->PassButton->show();
         ui->PassButton->setText(QString("Tour Suivant"));
     } else if (typeCard == 3) {
@@ -669,12 +670,6 @@ void MainWindow::onLand() {
             int rent_value = _game.getPropertyRent(position);
             ui->PayRentButton->show();
             ui->PayRentButton->setText(QString("Payer le loyer de $%1").arg(rent_value));
-
-void MainWindow::saveAndClose() {
-    // Save the game
-    _game.saveGame();
-    close();
-}
         }
     } else if (typeCard == 2) {
         _game.goToJail();
@@ -715,6 +710,13 @@ void MainWindow::saveAndClose() {
         ui->PassButton->setText(QString("Tour Suivant"));
     }
 
+}
+
+
+void MainWindow::saveAndClose() {
+    // Save the game
+    _game.saveGame();
+    close();
 }
 
 MainWindow::~MainWindow()

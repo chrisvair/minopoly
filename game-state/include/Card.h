@@ -48,13 +48,6 @@ public:
         return _value;
     }
 
-    void from_json(const json& j, Card& card) {
-        j.at("id").get_to(card._id);
-        j.at("type").get_to(card._type);
-        j.at("description").get_to(card._action);
-        j.at("value").get_to(card._value);
-    }
-
     void to_json(json& j, const Card& card) const {
         j = json{{"id", card._id}, {"type", card._type}, {"description", card._action}, {"value", card._value}};
     }

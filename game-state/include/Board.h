@@ -10,7 +10,6 @@
 
 class Board {
 protected:
-    std::array<Property,40> _tiles;
     std::array<Card,40> _cards; //the board has 40 cards
     std::array<Property,40> _tiles; //the board has 40 tiles
     int gameNumber;
@@ -26,14 +25,12 @@ public:
               _tiles(tiles) {
     }
 
-    std::array<Card,40> & cards() {
-        return _cards;
-    }
     void loadBoard(const std::string& filename);
 
     void saveBoard(const std::string& filename) const;
 
     void saveBoard() const;
+
     void genBots(const std::string& filename);
 
     Property& getTile(int id);
@@ -42,47 +39,47 @@ public:
 
     void doAction(Card& card, Player& player);
 
-    std::array<Player,4> players;  // Exemple
+    int findFirstGameNumberAvailable();
+    int getNumberOfSavedGames();
+
+    std::array<Card,40> & cards() {
+        return _cards;
+    }
+
     int getGameNumber(){
         return gameNumber;
     }
-    int findFirstGameNumberAvailable();
-    int getNumberOfSavedGames();
+
     int getTurn(){
         return turn;
     }
+
     void setTurn(int turn){
         this->turn = turn;
     }
+
     int getNbPlayers(){
         return nbPlayers;
     }
+
     void setNbPlayers(int nbPlayers){
         this->nbPlayers = nbPlayers;
     };
 
     void savePlayers();
 
-
-    std::array<Card,40> & cards() {
-        return _cards;
-    }
-
 private:
     std::vector<Property> properties;  // Exemple
 
     void loadFromFile(const std::string& filename);
 
-    void saveToFile(const std::string& filename) const;
-
     void saveToFile(const std::string& filename, int gameNumber, int turn) const;
+
     std::array<Card,40> gameCards;
 
     std::array<Card,15> chanceCards;
 
     std::array<Card,16> communityChestCards;
-
-
 
     friend class JsonSerializer;
 };

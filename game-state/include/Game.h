@@ -2,13 +2,9 @@
 #define GAME_H
 
 #include <array>
-#include <utility>
-#include <__filesystem/operations.h>
-
 #include "Board.h"
 #include "Player.h"
 #include "Property.h"
-#include "Event.h"
 
 
 class Game {
@@ -68,6 +64,8 @@ public:
 
     std::string getWinner();
 
+    void chooseGame();
+
     std::array<Player,4> & players() {
         return _players;
     }
@@ -98,25 +96,6 @@ public:
 
     Board & board() {
         return _board;
-    }
-
-
-
-    void loadBoard(const std::string& filename);
-    void saveBoard(const std::string& filename) const;
-    void onLand(Player &player);
-    void selectNumberOfPlayers();
-    void chooseGame();
-
-    std::array<int,2> rollDice() {
-        srand(time(0));
-        return {rand() % 6 + 1, rand() % 6 + 1};
-    }
-
-    void addPlayer(std::string playerName) {
-        Player player = Player(1,_nbPlayers+1,playerName,1500,0,0);
-        _players[_nbPlayers] = player;
-        _nbPlayers++;
     }
 
     int getPlayerPosition(int id) {
@@ -187,16 +166,6 @@ public:
         _players[_currentPlayer-1].goToJail();
     }
 
-    void payTax() {
-        _players[_currentPlayer-1].payTax(_board.getTile(_players[_currentPlayer-1].getPosition()).price());
-        _communityBank += _board.getTile(_players[_currentPlayer-1].getPosition()).price();
-    }
-
-    void winCommunityChest() {
-        _players[_currentPlayer-1].giveMoney(_communityBank);
-        emptyCommunityBank();
-    }
-
     void loadGame(int gameNumber) {
         _board.loadBoard("game-state/assets/partie" + std::to_string(gameNumber) + ".json");
         _players = _board.players;
@@ -216,7 +185,6 @@ public:
         _board.setTurn(_turn);
         _board.saveBoard();
     }
-
 
     int getNumberOfSavedGames(){
         return _board.getNumberOfSavedGames();

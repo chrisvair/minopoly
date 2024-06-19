@@ -17,7 +17,6 @@ void Board::saveBoard() const {
     saveToFile(filename, gameNumber, turn);
 }
 
-
 void Board::loadFromFile(const std::string& filename) {
     JsonSerializer::deserialize(*this, filename);
 }

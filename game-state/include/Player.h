@@ -84,6 +84,8 @@ public:
 
     void from_json(const nlohmann::json& j, Player& player);
 
+    void to_json(json& j, const Player& player) const;
+
     string getPlayerName(){
         return _name;
     };
@@ -146,42 +148,6 @@ public:
     int type(){
         return _type;
     };
-
-    void from_json(const nlohmann::json& j, Player& player){
-        j.at("type").get_to(player._type);
-        if (j.contains("id")){ //if the json contains the id, we get it
-            j.at("id").get_to(player._id);
-        }
-        j.at("name").get_to(player._name);
-        j.at("money").get_to(player._money);
-        j.at("position").get_to(player._position);
-        j.at("jail").get_to(player._jail);
-
-        // Charger les propriétés (le tableau properties)
-        if (j.contains("properties")) {
-            auto json_properties = j.at("properties");
-            for (size_t i = 0; i < _properties.size() && i < json_properties.size(); ++i) {
-                Property property;
-                property.from_json(json_properties[i], property);
-                player._properties[i] = property;
-            }
-        }
-    }
-    void to_json(json& j, const Player& player) const {
-        j = json{{"type", player._type},
-                 {"id", player._id},
-                 {"name", player._name},
-                 {"money", player._money},
-                 {"position", player._position},
-                 {"jail", player._jail}};
-        json properties;
-        for (const auto& property : player._properties) {
-            json property_json;
-            property.to_json(property_json, property);
-            properties.push_back(property_json);
-        }
-        j["properties"] = properties;
-    }
 };
 
 #endif //PLAYER_H
