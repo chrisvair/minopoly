@@ -6,6 +6,12 @@
 #include "Player.h"
 #include "Property.h"
 
+/**
+     * This class represents the game itself.
+     * It contains the players, the board, the bank, the community bank, the current player and the number of turns.
+     * It also contains the methods to play the game.
+     * The class allow the applicatio to do the link between the front and the back.
+ **/
 
 class Game {
 private:

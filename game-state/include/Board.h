@@ -7,6 +7,10 @@
 #include "Player.h"
 #include "Property.h"
 
+/**
+    * This class represents the board of the game.
+    * It contains the cards, the tiles, the players, the game number, the turn and the number of players.
+**/
 
 class Board {
 protected:

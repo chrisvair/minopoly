@@ -4,6 +4,10 @@
 #include <QDialog>
 #include "ui_endgamedialog.h"
 
+/**
+    * This class is the dialog that appears when the game is over.
+ **/
+
 namespace Ui {
 class EndGameDialog;
 }

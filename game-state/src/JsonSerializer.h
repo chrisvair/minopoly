@@ -1,15 +1,15 @@
-//
-// Created by Aymeri Germain on 29/05/2024.
-//
-
 #ifndef MINOPOLY_JSONSERIALIZER_H
 #define MINOPOLY_JSONSERIALIZER_H
-
 
 #include <string>
 #include <nlohmann/json.hpp>
 #include "Game.h"
 #include "Property.h"
+
+/**
+     * This class is used to serialize and deserialize the game state.
+     * It can be used to save the game state to a file and load it back.
+ **/
 
 class JsonSerializer {
 public:

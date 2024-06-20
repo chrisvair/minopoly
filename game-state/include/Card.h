@@ -4,16 +4,20 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
+/**
+     * This class represents a card in the game.
+     * The action of the card can be to win money, to lose money, to move, to go to jail, to get out of jail or to move according to a number.
+     * The action is given by the type :
+         * 1 is for winning money
+         * 2 is for losing money
+         * 3 is for moving
+         * 4 is for going to jail
+         * 5 is for getting out of jail
+         * 6 is for moving according to a number
+ **/
+
 using namespace std;
 using json = nlohmann::json;
-
-// the type is used to define the action to do
-// 1 is for winning money
-// 2 is for losing money
-// 3 is for moving
-// 4 is for going to jail
-// 5 is for getting out of jail
-// 6 is for moving according to a number
 
 class Card {
 private:

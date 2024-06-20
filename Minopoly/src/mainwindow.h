@@ -12,6 +12,11 @@
 #include "../src/Game.h"
 #include "./ui_mainwindow.h"
 
+/**
+    * This class is the main window of the game.
+    * It allows the user to play the game.
+    * The class is responsible for the display of the game, and the interactions with the backend.
+ **/
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

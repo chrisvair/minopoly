@@ -7,6 +7,12 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 
+
+/**
+     * This class is used to represent a property in the game.
+     * A property represent a tile on the board.
+     * It can either be a property or an event, it is given by the type.
+ */
 class Property {
 protected:
     int _type;

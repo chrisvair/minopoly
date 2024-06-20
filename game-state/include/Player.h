@@ -7,6 +7,10 @@
 #include <nlohmann/json.hpp>
 #include "Property.h"
 
+/**
+    * This class represents a player in the game.
+ **/
+
 using namespace std;
 using json = nlohmann::json;
 
