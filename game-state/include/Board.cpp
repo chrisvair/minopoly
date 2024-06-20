@@ -33,7 +33,7 @@ Card Board::drawCard(int id) {
     return _cards[id];
 }
 
-Property& Board::getTile(int id) {
+Tile& Board::getTile(int id) {
     return _tiles[id];
 }
 

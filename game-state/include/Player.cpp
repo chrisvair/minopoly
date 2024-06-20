@@ -43,18 +43,18 @@ void Player::goTo(int position) {
     _position = position;
 }
 
-void Player::buyProperty(Property& property) {
+void Player::buyProperty(Tile& property) {
     property.setOwned(_id);
     takeMoney(property.price());
     _properties[property.getPosition()] = property;
 }
 
-void Player::buyHouse(Property& tile) {
+void Player::buyHouse(Tile& tile) {
     tile.buyHouse();
     takeMoney(tile.costHouse());
 }
 
-void Player::buyHostel(Property& tile) {
+void Player::buyHostel(Tile& tile) {
     tile.buyHostel();
     takeMoney(tile.costHostel());
 }
@@ -68,7 +68,7 @@ void Player::payTax(int amount) {
     _moneyWorth = _moneyWorth - amount;
 }
 
-void Player::payRent(Player& owner, Property& tile) {
+void Player::payRent(Player& owner, Tile& tile) {
     if (_money < tile.rent()) {
         setBankrupt();
         return;
@@ -91,7 +91,7 @@ void Player::from_json(const nlohmann::json& j, Player& player){
     if (j.contains("properties")) {
         auto json_properties = j.at("properties");
         for (size_t i = 0; i < _properties.size() && i < json_properties.size(); ++i) {
-            Property property;
+            Tile property;
             property.from_json(json_properties[i], property);
             player._properties[i] = property;
         }

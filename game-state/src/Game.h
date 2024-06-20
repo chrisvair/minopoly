@@ -4,7 +4,7 @@
 #include <array>
 #include "Board.h"
 #include "Player.h"
-#include "Property.h"
+#include "Tile.h"
 
 /**
      * This class represents the game itself.

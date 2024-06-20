@@ -5,7 +5,7 @@
 #include <array>
 #include <iostream>
 #include <nlohmann/json.hpp>
-#include "Property.h"
+#include "Tile.h"
 
 /**
     * This class represents a player in the game.
@@ -20,7 +20,7 @@ private:
     int _id;
     string _name;
     int _money;
-    std::array<Property, 40> _properties{}; //we stock the properties the player owns, at most, he can have 40 properties
+    std::array<Tile, 40> _properties{}; //we stock the properties the player owns, at most, he can have 40 properties
     int _nbProperties = 0;
     int _position = 0;
     int _jail = 0;
@@ -72,19 +72,19 @@ public:
 
     bool sellProperty(); //return true if the property has been sold, false otherwise
 
-    bool sellPropertyToTheBank(Property property); //return true if the property has been sold, false otherwise
+    bool sellPropertyToTheBank(Tile property); //return true if the property has been sold, false otherwise
 
-    void buyPropertyFromTheBank(Property& property); //add the property to the player's properties
+    void buyPropertyFromTheBank(Tile& property); //add the property to the player's properties
 
-    void buyProperty(Property& property);
+    void buyProperty(Tile& property);
 
-    void buyHouse(Property& tile);
+    void buyHouse(Tile& tile);
 
-    void buyHostel(Property& tile);
+    void buyHostel(Tile& tile);
 
     void payTax(int amount);
 
-    void payRent(Player& owner, Property& tile);
+    void payRent(Player& owner, Tile& tile);
 
     void showProperties();
 

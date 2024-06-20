@@ -5,7 +5,7 @@
 #include <nlohmann/json.hpp>
 #include "Card.h"
 #include "Player.h"
-#include "Property.h"
+#include "Tile.h"
 
 /**
     * This class represents the board of the game.
@@ -15,7 +15,7 @@
 class Board {
 protected:
     std::array<Card,40> _cards; //the board has 40 cards
-    std::array<Property,40> _tiles; //the board has 40 tiles
+    std::array<Tile,40> _tiles; //the board has 40 tiles
     int gameNumber;
     int turn;
     int nbPlayers;
@@ -24,7 +24,7 @@ public:
     Board(){
         this->gameNumber = findFirstGameNumberAvailable();
     }
-    Board(const std::array<Card, 40> &cards, const std::array<Property, 40> &tiles, int gameNumber)
+    Board(const std::array<Card, 40> &cards, const std::array<Tile, 40> &tiles, int gameNumber)
             : _cards(cards),
               _tiles(tiles) {
     }
@@ -37,7 +37,7 @@ public:
 
     void genBots(const std::string& filename);
 
-    Property& getTile(int id);
+    Tile& getTile(int id);
 
     Card drawCard(int id);
 
@@ -76,7 +76,7 @@ public:
     void savePlayers();
 
 private:
-    std::vector<Property> properties;  // Exemple
+    std::vector<Tile> properties;  // Exemple
 
     void loadFromFile(const std::string& filename);
 

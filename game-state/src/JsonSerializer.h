@@ -4,7 +4,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 #include "Game.h"
-#include "Property.h"
+#include "Tile.h"
 
 /**
      * This class is used to serialize and deserialize the game state.

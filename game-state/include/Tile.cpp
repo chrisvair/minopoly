@@ -1,13 +1,13 @@
-#include "Property.h"
+#include "Tile.h"
 
-int Property::rent() {
+int Tile::rent() {
     if (_hostel == 1) {
         return _rents[4];
     }
     return _rents[_house];
 }
 
-void Property::from_json(const nlohmann::json& j, Property& property) {
+void Tile::from_json(const nlohmann::json& j, Tile& property) {
     j.at("type").get_to(property._type);
     j.at("name").get_to(property._name);
     j.at("position").get_to(property._position);
@@ -21,7 +21,7 @@ void Property::from_json(const nlohmann::json& j, Property& property) {
     j.at("hotel").get_to(property._hostel);
 }
 
-void Property::to_json(nlohmann::json& j, const Property& property) const {
+void Tile::to_json(nlohmann::json& j, const Tile& property) const {
     j = nlohmann::json{{"type", property._type},
                        {"name", property._name},
                        {"position", property._position},

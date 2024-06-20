@@ -8,12 +8,12 @@ add_library(
         game-state
         include/Board.h
         include/Board.cpp
-        include/Property.h
-        include/Property.cpp
+        include/Tile.h
+        include/Tile.cpp
 
         include/Player.cpp
         include/Player.h
-        include/Property.cpp
+        include/Tile.cpp
         include/Game.cpp
         src/JsonSerializer.h
         include/JsonSerializer.cpp

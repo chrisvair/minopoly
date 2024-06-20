@@ -73,9 +73,9 @@ void JsonSerializer::deserialize(Board& board, const std::string& filename) {
     file.close();
 
     // Désérialiser les cases
-    std::vector<Property> properties;
+    std::vector<Tile> properties;
     for (const auto& property_json : data["properties"]) {
-        Property property;
+        Tile property;
         property.from_json(property_json, property);
         properties.push_back(property);
         board._tiles[property.id()] = property;

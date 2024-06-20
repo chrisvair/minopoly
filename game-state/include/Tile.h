@@ -7,13 +7,12 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 
-
 /**
-     * This class is used to represent a property in the game.
-     * A property represent a tile on the board.
+     * This class is used to represent a tile on the board in the game.
      * It can either be a property or an event, it is given by the type.
  */
-class Property {
+
+class Tile {
 protected:
     int _type;
     std::string _name;
@@ -29,8 +28,8 @@ protected:
     int _hotelCost;
 
 public:
-    Property()= default;
-    Property(int type, std::string name, int position, int price, std::string group, int owned,
+    Tile()= default;
+    Tile(int type, std::string name, int position, int price, std::string group, int owned,
         const std::array<int, 6> &rents)
         : _price(price),
           _group(group),
@@ -41,13 +40,13 @@ public:
           _position(position),
           _id(position){};
 
-    void from_json(const nlohmann::json& j, Property& property);
+    void from_json(const nlohmann::json& j, Tile& property);
 
     int rent();
 
     void isSell();
 
-    void to_json(nlohmann::json& j, const Property& property) const ;
+    void to_json(nlohmann::json& j, const Tile& property) const ;
 
     int price() const {
         return _price;
