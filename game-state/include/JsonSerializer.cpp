@@ -2,7 +2,7 @@
 // Created by Aymeri Germain on 29/05/2024.
 //
 
-#include "JsonSerializer.h"
+#include "../src/JsonSerializer.h"
 #include <fstream>
 #include <iostream>
 

@@ -7,12 +7,6 @@ int Property::rent() {
     return _rents[_house];
 }
 
-void Property::isSell() {
-    _owned = 0;
-    _house = 0;
-    _hostel = 0;
-}
-
 void Property::from_json(const nlohmann::json& j, Property& property) {
     j.at("type").get_to(property._type);
     j.at("name").get_to(property._name);

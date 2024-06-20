@@ -6,19 +6,17 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 add_library(
         game-state
-        src/GameState.cpp
-        include/game-state/GameState.h
         include/Board.h
         include/Board.cpp
         include/Property.h
-        src/Property.cpp
+        include/Property.cpp
 
-        src/Player.cpp
+        include/Player.cpp
         include/Player.h
-        src/Property.cpp
+        include/Property.cpp
         include/Game.cpp
-        include/JsonSerializer.h
-        src/JsonSerializer.cpp
+        src/JsonSerializer.h
+        include/JsonSerializer.cpp
         include/Card.cpp
 
 )

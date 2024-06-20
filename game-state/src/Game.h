@@ -36,8 +36,6 @@ public:
 
     void saveBoard(const std::string& filename) const;
 
-    void selectNumberOfPlayers();
-
     void nextTurn();
 
     std::array<int,2> rollDice();
@@ -57,8 +55,6 @@ public:
     int playersBankrupt();
 
     std::string getWinner();
-
-    void chooseGame();
 
     std::array<Player,4> & players() {
         return _players;

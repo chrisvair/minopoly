@@ -43,10 +43,6 @@ public:
 
     void to_json(nlohmann::json& j, const Property& property) const ;
 
-    int getId() const {
-        return _id;
-    }
-
     int price() const {
         return _price;
     }
@@ -79,20 +75,8 @@ public:
         return _rents;
     }
 
-    void setPrice(int price) {
-        _price = price;
-    }
-
-    void setGroup(std::string group) {
-        _group = group;
-    }
-
     void setOwned(int owned) {
         _owned = owned;
-    }
-
-    void setRents(std::array<int,6> rents) {
-        _rents = rents;
     }
 
     int type() {

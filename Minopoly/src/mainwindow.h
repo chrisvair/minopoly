@@ -9,7 +9,7 @@
 #include "menudialog.h"
 #include "ui_menudialog.h"
 #include "endgamedialog.h"
-#include "Game.h"
+#include "../src/Game.h"
 #include "./ui_mainwindow.h"
 
 
@@ -28,12 +28,12 @@ public:
 private slots:
     void initializePlay();
     void rollDice();
+    void nextMove();
     void paintDice(int die1, int die2);
     void paintPlayer(int player_number, int position);
     void paintCard(int position);
     void paintActivePlayer(int player_number);
     void paintInactivePlayer(int player_number);
-    void nextMove();
     void paintProperty(int position);
     void paintStation(int position);
     void paintChance();

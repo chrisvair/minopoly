@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "../src/Game.h"
 
 void Game::nextTurn() {
     _currentPlayer++;
@@ -28,48 +28,6 @@ void Game::nextTurn() {
     }
 }
 
-void Game::selectNumberOfPlayers() {
-    int nbPlayers;
-    int nbBots;
-    // if players have been loaded
-    if (_players[0].getPlayerName() != "") {
-        std::cout << "4 Players have been loaded" << std::endl;
-        return;
-    }
-
-    // if not, we ask the user to enter the number of real players
-    std::cout << "With how many real players do you want to play with ? (2-4)" << std::endl;
-    std::cin >> nbPlayers;
-    nbBots = 4 - nbPlayers;
-    std::cout << "You will play with " << nbPlayers << " players and " << nbBots << " bots" << std::endl;
-
-    //Add the real players to the players array
-    for (int i = 0; i < nbPlayers; i++) {
-        std::string name;
-        std::cout << "Player " << i+1 << " name : ";
-        std::cin >> name;
-        auto player = Player(1,i+1, name, 1500, 0, false);
-        _players[i] = player;
-    }
-    //Create a board of bots to import bots from a file
-    Board boardBots = Board();
-    boardBots.genBots("game-state/assets/bots.json");
-
-    //Add the bots to the players array
-    for (int i = nbPlayers; i < 4; i++) {
-        _players[i] = boardBots.players[i-nbPlayers];
-    }
-
-    std:: cout << "The 4 players are : " << std::endl;
-    for (int i = 0; i < 4; i++) {
-        // Si c'est un bot, on lui donne un id
-        if (_players[i].type() == 0){
-            _players[i].setId(i+1);
-        }
-        std::cout << _players[i].getPlayerName() << std::endl;
-    }
-}
-
 int Game::playersBankrupt(){
     int nbPlayerBanrkurpt = 0;
     for (int i = 0; i < _players.size(); i++) {
@@ -78,45 +36,6 @@ int Game::playersBankrupt(){
         }
     }
     return nbPlayerBanrkurpt;
-}
-
-
-void Game::chooseGame() {
-    if (_board.getNumberOfSavedGames() != 0) {
-        std::cout << "Do you want to load a saved game ? (y/n)" << std::endl;
-        std::string answer;
-        std::cin >> answer;
-        if (answer == "y") { // load a saved game
-            std::cout << "They are " << _board.getNumberOfSavedGames() << " saved games :" << std::endl;
-            for (int i = 1; i <= _board.getNumberOfSavedGames(); i++) {
-                std::cout << "Game number " << i << std::endl;
-            }
-            std::cout << "Which one do you want to load ?" << std::endl;
-            int gameNumber;
-            while (true) {
-                std::cin >> gameNumber;
-                if (gameNumber > _board.getNumberOfSavedGames()) {
-                    std::cout << "This game doesn't exist, please enter a valid number" << std::endl;
-                } else {
-                    break;
-                }
-            }
-            _board.loadBoard("game-state/assets/partie" + std::to_string(gameNumber) + ".json");
-            _players = _board.players;
-            _turn = _board.getTurn();
-            std::cout << "You are starting the game number " << _board.getGameNumber() << std::endl;
-        } else if (answer == "n") {// start a new game
-            std::cout << "You will start a new game" << std::endl;
-            _board.loadBoard("game-state/assets/monopoly.json");
-            std::cout << "You are starting the game number " << _board.getGameNumber() << std::endl;
-            selectNumberOfPlayers();
-        }
-    } else {
-        std::cout << "There is no saved games. Let's start a new game" << std::endl;
-        _board.loadBoard("game-state/assets/monopoly.json");
-        std::cout << "You are starting the game number " << _board.getGameNumber() << std::endl;
-        selectNumberOfPlayers();
-    }
 }
 
 std::string Game::getWinner() {

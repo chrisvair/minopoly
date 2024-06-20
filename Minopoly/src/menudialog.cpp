@@ -1,6 +1,6 @@
 #include "menudialog.h"
 #include "ui_menudialog.h"
-#include "Game.h"
+#include "../src/Game.h"
 
 
 MenuDialog::MenuDialog(QWidget *parent)

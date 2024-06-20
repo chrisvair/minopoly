@@ -4,10 +4,6 @@ void Player::setPlayerName(string inputName) {
     _name = inputName;
 }
 
-void Player::setMoneyAmount(int inputNum) {
-    _money = inputNum;
-}
-
 int Player::getMoneyAmount() {
     return _money;
 }
@@ -47,52 +43,10 @@ void Player::goTo(int position) {
     _position = position;
 }
 
-void Player::reset() {
-    _money = 1500;
-    _position = 0;
-    _jail = false;
-}
-
-bool Player::sellProperty() {
-    showProperties();
-    int idProperty;
-    std::cin >> idProperty;
-    if (_properties[idProperty].id() == _id) {
-        _properties[idProperty].isSell();
-        _money = _money + _properties[idProperty].price() + _properties[idProperty].house() * _properties[idProperty].costHouse() + _properties[idProperty].hostel() * _properties[idProperty].costHostel();
-        _properties[idProperty] = Property{};
-        return true;
-    }
-    return false;
-}
-
 void Player::buyProperty(Property& property) {
     property.setOwned(_id);
     takeMoney(property.price());
     _properties[property.getPosition()] = property;
-}
-
-void Player::buyPropertyFromTheBank(Property& property) {
-    _properties[property.getPosition()] = property;
-    property.setOwned(_id);
-    takeMoney(property.price());
-}
-
-bool Player::sellPropertyToTheBank(Property property) {
-    showProperties();
-    // int property;
-    // std::cin >> property;
-
-
-
-    // for (int i = 0; i < 40; i++) {
-    //     if (_properties[i].id() == property.id()) {
-    //         _properties[i] = 0; //We remove the property from the seller
-    //         giveMoney(property.price()); // The seller gets the money
-    //         return true; //property sold
-    //     }
-    // }
-    return false; //Player does not own this property
 }
 
 void Player::buyHouse(Property& tile) {
@@ -122,20 +76,6 @@ void Player::payRent(Player& owner, Property& tile) {
     takeMoney(tile.rent());
     owner.giveMoney(tile.rent());
 }
-
-void Player::showProperties() {
-    for (int i = 0; i < 40; i++) {
-        if (_properties[i].id() == _id) {
-            std::cout << " property number : " << i << " price : " << _properties[i].price() << std::endl;
-        }
-    }
-}
-
-void Player::goToStart(){
-    _position = 0;
-    _money = _money + 200;
-    _moneyWorth = _moneyWorth + 200;
-};
 
 void Player::from_json(const nlohmann::json& j, Player& player){
     j.at("type").get_to(player._type);

@@ -1,5 +1,5 @@
 #include "Board.h"
-#include "JsonSerializer.h"
+#include "../src/JsonSerializer.h"
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
